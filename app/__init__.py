@@ -13,12 +13,15 @@
     你将会看到routes模块需要导入在这个脚本中定义的app变量，因此将routes的导入放在底部可以避免由于这两个文件之间的相互引用而导致的错误。
 """
 
-from config import Config
 from flask import Flask
+from config import Config
+from flask_sqlalchemy import SQLAlchemy  # Flask扩展, 数据库配置
+from flask_migrate import Migrate
 
 app = Flask(__name__)
 app.config.from_object(Config)
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
-from app import routes
-
+from app import routes, models
 
