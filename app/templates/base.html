@@ -1,0 +1,31 @@
+<html lang="en">
+    <head>
+        <!-- 基础模版，掌握整个页面布局，以便后续模版只需写内容部分即可 -->
+         <meta charset="UTF-8">
+        {% if title %}
+        <title>{{ title }} - microblog</title>
+        {% else %}
+        <title>microblog</title>
+        {% endif %}
+    </head>
+    <body>
+        <div>
+            Microblog:
+            <!-- url_for()的函数，它使用URL到视图函数的内部映射关系来生成URL -->
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('login') }}">Login</a>
+        </div>
+        <hr>
+        <!-- get_flashed_messages()，Flask中的一个函数，它返回用flash()注册过的消息列表。-->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}  <!--匹配模版合并语句-->
+    </body>
+</html>

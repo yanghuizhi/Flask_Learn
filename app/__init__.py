@@ -13,10 +13,11 @@
     你将会看到routes模块需要导入在这个脚本中定义的app变量，因此将routes的导入放在底部可以避免由于这两个文件之间的相互引用而导致的错误。
 """
 
+from config import Config
 from flask import Flask
 
 app = Flask(__name__)
-app.run(debug=True)  # 开启 Debug 模式
+app.config.from_object(Config)
 
 from app import routes
 
