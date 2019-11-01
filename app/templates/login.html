@@ -1,25 +1,18 @@
-{% extends "base.html" %}  <!-- 表单登录模版 -->
+{% extends "base.html" %}  {# <!-- 表单登录模版 --> #}
+{% import 'bootstrap/wtf.html' as wtf %}
 
-{% block content %}
+
+{% block app_content %}
     <h1>Sign In</h1>
-    <form action="" method="post" novalidate>
-        {{ form.hidden_tag() }}  <!-- 此参数生成一个隐藏字段，保护表单收到CSRF攻击的token -->
-        <p>
-            {{ form.username.label }}<br>
-            {{ form.username(size=32) }}<br>
-            {% for error in form.username.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.password.label }}<br>
-            {{ form.password(size=32) }}<br>
-            {% for error in form.password.errors %}
-            <!-- form.<field_name>.errors 循环渲染错误信息-->
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-        <p>{{ form.submit() }}</p>
-    </form>
+        <div class="row">
+        <div class="col-md-4">
+            {{ wtf.quick_form(form) }}
+        </div>
+    </div>
+    <br>
+<p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
+<p>
+        Forgot Your Password?
+        <a href="{{ url_for('reset_password_request') }}">Click to Reset It</a>
+    </p>
 {% endblock %}
