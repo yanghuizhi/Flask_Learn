@@ -8,8 +8,10 @@
 """
 
 
-from app import app, db
+from app import app, db, cli
 from app.models import User, Post
+
+
 
 @app.shell_context_processor  # 添加一个shell上下文，方便咱们操作
 def make_shell_context():

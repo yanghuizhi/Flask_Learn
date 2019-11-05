@@ -23,3 +23,5 @@ class Config(object):
     ADMINS = ['your-email@example.com']
 
     POSTS_PER_PAGE = 3  # 用户动态 分页
+
+    LANGUAGES = ['en', 'es']    # 语言配置，可以使用en-US，en-GB和en-CA来支持美国、英国和加拿大的英语以示区分。

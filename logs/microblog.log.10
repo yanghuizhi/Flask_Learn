@@ -1,4 +1,4 @@
-2019-10-30 16:50:24,939 ERROR: Exception on /edit_profile [POST] [in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py:1761]
+2019-10-30 16:56:51,099 ERROR: Exception on /edit_profile [POST] [in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1249, in _execute_context
     cursor, statement, parameters, context
@@ -73,3 +73,12 @@ sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed
 [SQL: UPDATE user SET username=?, about_me=? WHERE user.id = ?]
 [parameters: ('1', '哈哈，关于我', 2)]
 (Background on this error at: http://sqlalche.me/e/gkpj)
+2019-10-30 16:57:00,331 INFO: Microblog startup [in /Users/yhz/Desktop/pypy/Flask_Learn/app/__init__.py:61]
+2019-10-30 17:00:32,917 INFO: Microblog startup [in /Users/yhz/Desktop/pypy/Flask_Learn/app/__init__.py:61]
+2019-10-30 17:37:46,264 INFO: Microblog startup [in /Users/yhz/Desktop/pypy/Flask_Learn/app/__init__.py:61]
+2019-10-30 17:37:56,592 INFO: Microblog startup [in /Users/yhz/Desktop/pypy/Flask_Learn/app/__init__.py:61]
+2019-10-30 17:48:00,688 INFO: Microblog startup [in /Users/yhz/Desktop/pypy/Flask_Learn/app/__init__.py:60]
+2019-10-31 17:10:21,521 INFO: Microblog startup [in /Users/yhz/Desktop/pypy/Flask_Learn/app/__init__.py:60]
+2019-10-31 17:14:25,811 INFO: Microblog startup [in /Users/yhz/Desktop/pypy/Flask_Learn/app/__init__.py:60]
+2019-10-31 19:46:59,707 INFO: Microblog startup [in /Users/yhz/Desktop/pypy/Flask_Learn/app/__init__.py:60]
+2019-10-31 20:03:45,611 INFO: Microblog startup [in /Users/yhz/Desktop/pypy/Flask_Learn/app/__init__.py:60]
