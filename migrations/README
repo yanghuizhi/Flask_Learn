@@ -1,8 +1,0 @@
-Generic single-database configuration.
-
-
-#-- 数据库 --#
-
-flask db migrate -m "..."    # 数据库迁移
-flask db upgrade             # 迁移完成后更新数据库
-flask db downgrade           # 回滚
