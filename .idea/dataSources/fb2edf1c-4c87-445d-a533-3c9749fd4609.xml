@@ -255,15 +255,15 @@
       <Position>6</Position>
       <DataType>DATETIME|0s</DataType>
     </column>
-    <column id="68" parent="13" name="token">
+    <column id="68" parent="13" name="last_message_read_time">
       <Position>7</Position>
-      <DataType>VARCHAR(32)|0s</DataType>
-    </column>
-    <column id="69" parent="13" name="token_expiration">
-      <Position>8</Position>
       <DataType>DATETIME|0s</DataType>
     </column>
-    <column id="70" parent="13" name="last_message_read_time">
+    <column id="69" parent="13" name="token">
+      <Position>8</Position>
+      <DataType>VARCHAR(32)|0s</DataType>
+    </column>
+    <column id="70" parent="13" name="token_expiration">
       <Position>9</Position>
       <DataType>DATETIME|0s</DataType>
     </column>
