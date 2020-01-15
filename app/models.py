@@ -14,9 +14,9 @@ from app import db, login
 from app.search import add_to_index, remove_from_index, query_index
 
 
-class SearchableMixin(object):
+class SearchableMixin(object):  # 搜索类
     @classmethod
-    def search(cls, expression, page, per_page):
+    def search(cls, expression, page, per_page):  # 将id列表转化成实例对象
         ids, total = query_index(cls.__tablename__, expression, page, per_page)
         if total == 0:
             return cls.query.filter_by(id=0), 0
@@ -27,7 +27,7 @@ class SearchableMixin(object):
             db.case(when, value=cls.id)), total
 
     @classmethod
-    def before_commit(cls, session):
+    def before_commit(cls, session):  # SQLAlchemy事件，事件之前触发
         session._changes = {
             'add': list(session.new),
             'update': list(session.dirty),
@@ -35,7 +35,7 @@ class SearchableMixin(object):
         }
 
     @classmethod
-    def after_commit(cls, session):
+    def after_commit(cls, session):  # SQLAlchemy事件，事件之后触发
         for obj in session._changes['add']:
             if isinstance(obj, SearchableMixin):
                 add_to_index(obj.__tablename__, obj)
@@ -48,11 +48,13 @@ class SearchableMixin(object):
         session._changes = None
 
     @classmethod
-    def reindex(cls):
+    def reindex(cls):  # 帮助方法，刷新所有数据索引
         for obj in cls.query:
             add_to_index(cls.__tablename__, obj)
 
 
+# Post模型会自动为用户动态维护一个全文搜索索引。
+# 这两行代码设置了每次提交之前和之后调用的事件处理程序。
 db.event.listen(db.session, 'before_commit', SearchableMixin.before_commit)
 db.event.listen(db.session, 'after_commit', SearchableMixin.after_commit)
 
@@ -268,7 +270,7 @@ class Post(SearchableMixin, db.Model):  # 用户动态表
     body = db.Column(db.String(140))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)  # 时间字段
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))  # 用户表ID
-    language = db.Column(db.String(5))
+    language = db.Column(db.String(5))  # 检测语言并存储
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)

@@ -1,5 +1,10 @@
+# 搜索模块
+
 from flask import current_app
 
+# 这些函数都是通过检查app.elasticsearch是否为None开始的，如果是None，则不做任何事情就返回。
+# 当Elasticsearch服务器未配置时，应用会在没有搜索功能的状态下继续运行，不会出现任何错误。
+# 这都是为了方便开发或运行单元测试。
 
 def add_to_index(index, model):
     if not current_app.elasticsearch:

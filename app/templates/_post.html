@@ -21,16 +21,21 @@
                     when=moment(post.timestamp).fromNow()) }}<br>
 
                 <span id="post{{ post.id }}">{{ post.body }}</span>
-                {% if post.language and post.language != g.locale %}
-                <br><br>
-                <span id="translation{{ post.id }}">
-                    <a href="javascript:translate(
-                                '#post{{ post.id }}',
-                                '#translation{{ post.id }}',
-                                '{{ post.language }}',
-                                '{{ g.locale }}');">{{ _('Translate') }}</a>
-                </span>
-                {% endif %}
+
+
+    <!--展示一个"翻译"链接，我在_post.html子模板中执行此操作，以便此功能出现在显示用户动态的任何页面上。 翻译链接只会出现在检测到语言种类的动态下，并且必须满足的条件是，这种语言与用Flask-Babel的localeselector装饰器装饰的函数选择的语言不匹配。-->
+    {% if post.language and post.language != g.locale %}
+        <br><br>
+        <span id="translation{{ post.id }}">
+            <a href="javascript:translate(
+                        '#post{{ post.id }}',
+                        '#translation{{ post.id }}',
+                        '{{ post.language }}',
+                        '{{ g.locale }}');">
+            {{ _('Translate') }}</a>
+        </span>
+    {% endif %}
+
             </td>
         </tr>
     </table>

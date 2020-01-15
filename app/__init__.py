@@ -8,7 +8,7 @@ from flask_login import LoginManager
 from flask_mail import Mail
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
-from flask_babel import Babel, lazy_gettext as _l # 国际化工具包、延迟翻译
+from flask_babel import Babel, lazy_gettext as _l # 翻译
 from elasticsearch import Elasticsearch
 from redis import Redis
 import rq
@@ -41,6 +41,12 @@ def create_app(config_class=Config):
     app.redis = Redis.from_url(app.config['REDIS_URL'])
     app.task_queue = rq.Queue('microblog-tasks', connection=app.redis)
 
+    """
+    为了注册blueprint，将使用Flask应用实例的register_blueprint()方法。 
+    在注册blueprint时，任何视图函数，模板，静态文件，错误处理程序等均连接到应用。
+    将blueprint的导入放在app.register_blueprint()的上方，以避免循环依赖。
+    """
+    # 注册 app.errors
     from app.errors import bp as errors_bp
     app.register_blueprint(errors_bp)
 

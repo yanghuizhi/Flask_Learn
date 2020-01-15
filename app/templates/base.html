@@ -1,8 +1,11 @@
 {% extends 'bootstrap/base.html' %}
+
 <!-- block控制语句来定义派生模板可以插入代码的位置 -->
+<!-- 网页标题 -->
+
 {% block title %}
     {% if title %}
-        {{ title }} - Microblog  <!-- 网页标题 -->
+        {{ title }} - Microblog
     {% else %}
         {{ _('Welcome to Flask_Learn') }}
     {% endif %}
@@ -26,11 +29,12 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url_for('main.index') }}">{{ _('Home') }}</a></li>
                     <li><a href="{{ url_for('main.explore') }}">{{ _('Explore') }}</a></li>
-                    <!--发现栏-->
+                    <!--发现栏，搜索栏-->
                 </ul>
                 {% if g.search_form %}
                 <form class="navbar-form navbar-left" method="get" action="{{ url_for('main.search') }}">
                     <div class="form-group">
+                        <!--只有在定义了g.search_form时才会渲染表单。 -->
                         {{ g.search_form.q(size=20, class='form-control', placeholder=g.search_form.q.label.text) }}
                     </div>
                 </form>
@@ -77,7 +81,7 @@
         {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for message in messages %}
-            <div class="alert alert-info" role="alert">{{ message }}</div>
+            <div clas="alert alert-info" role="alert">{{ message }}</div>
             {% endfor %}
         {% endif %}
         {% endwith %}
@@ -87,96 +91,101 @@
     </div>
 {% endblock %}
 
-<!--如果追加moment.js库的话，就需要使用super()语句，
-才能继承基础模板中已有的内容，否则就是替换。-->
+<!--如果追加moment.js库的话，就需要使用super()语句，才能继承基础模板中已有的内容，否则就是替换。
+现在所有的日期和时间都与文本使用相同的语言了。 你可以在下面看到对应的外观：，-->
 {% block scripts %}
     {{ super() }}
     {{ moment.include_moment() }}
     {{ moment.lang(g.locale) }}
-    <script>
-        function translate(sourceElem, destElem, sourceLang, destLang) {
-            $(destElem).html('<img src="{{ url_for('static', filename='loading.gif') }}">');
-            $.post('/translate', {
-                text: $(sourceElem).text(),
-                source_language: sourceLang,
-                dest_language: destLang
-            }).done(function(response) {
-                $(destElem).text(response['text'])
-            }).fail(function() {
-                $(destElem).text("{{ _('Error: Could not contact server.') }}");
-            });
-        }
-        $(function () {
-            var timer = null;
-            var xhr = null;
-            $('.user_popup').hover(
-                function(event) {
-                    // mouse in event handler
-                    var elem = $(event.currentTarget);
-                    timer = setTimeout(function() {
-                        timer = null;
-                        xhr = $.ajax(
-                            '/user/' + elem.first().text().trim() + '/popup').done(
-                                function(data) {
-                                    xhr = null;
-                                    elem.popover({
-                                        trigger: 'manual',
-                                        html: true,
-                                        animation: false,
-                                        container: elem,
-                                        content: data
-                                    }).popover('show');
-                                    flask_moment_render_all();
-                                }
-                            );
-                    }, 1000);
-                },
-                function(event) {
-                    // mouse out event handler
-                    var elem = $(event.currentTarget);
-                    if (timer) {
-                        clearTimeout(timer);
-                        timer = null;
-                    }
-                    else if (xhr) {
-                        xhr.abort();
-                        xhr = null;
-                    }
-                    else {
-                        elem.popover('destroy');
+
+<!--创建一个页面加载完毕后运行的 JavaScript 函数-->
+<!--函数完成时，将为所有页面配置悬停和弹出行为-->
+<!--这个函数来查找页面中的所有用户链接，并使用Bootstrap中的弹出窗口组件配置它们-->
+
+<script>
+    function translate(sourceElem, destElem, sourceLang, destLang) {
+        $(destElem).html('<img src="{{ url_for('static', filename='loading.gif') }}">');
+        $.post('/translate', {
+            text: $(sourceElem).text(),
+            source_language: sourceLang,
+            dest_language: destLang
+        }).done(function(response) {
+            $(destElem).text(response['text'])
+        }).fail(function() {
+            $(destElem).text("{{ _('Error: Could not contact server.') }}");
+        });
+    }
+    $(function () {
+        var timer = null;
+        var xhr = null;
+        $('.user_popup').hover(
+            function(event) {
+                // mouse in event handler
+                var elem = $(event.currentTarget);
+                timer = setTimeout(function() {
+                    timer = null;
+                    xhr = $.ajax('/user/' + elem.first().text().trim() + '/popup'
+                        ).done(
+                        function(data) {
+                            xhr = null;
+                            elem.popover({
+                                trigger: 'manual',
+                                html: true,
+                                animation: false,
+                                container: elem,
+                                content: data
+                            }).popover('show');
+                            flask_moment_render_all();
+                            }
+                        );
+                }, 1000);
+            },
+            function(event) {
+                // mouse out event handler
+                var elem = $(event.currentTarget);
+                if (timer) {
+                    clearTimeout(timer);
+                    timer = null;
+                }
+                else if (xhr) {
+                    xhr.abort();
+                    xhr = null;
+                }
+                else {
+                    elem.popover('destroy');
+                }
+            }
+        );
+    });
+    function set_message_count(n) {
+        $('#message_count').text(n);
+        $('#message_count').css('visibility', n ? 'visible' : 'hidden');
+    }
+    function set_task_progress(task_id, progress) {
+        $('#' + task_id + '-progress').text(progress);
+    }
+    {% if current_user.is_authenticated %}
+    $(function() {
+        var since = 0;
+        setInterval(function() {
+            $.ajax('{{ url_for('main.notifications') }}?since=' + since).done(
+                function(notifications) {
+                    for (var i = 0; i < notifications.length; i++) {
+                        switch (notifications[i].name) {
+                            case 'unread_message_count':
+                                set_message_count(notifications[i].data);
+                                break;
+                            case 'task_progress':
+                                set_task_progress(notifications[i].data.task_id,
+                                    notifications[i].data.progress);
+                                break;
+                        }
+                        since = notifications[i].timestamp;
                     }
                 }
             );
-        });
-        function set_message_count(n) {
-            $('#message_count').text(n);
-            $('#message_count').css('visibility', n ? 'visible' : 'hidden');
-        }
-        function set_task_progress(task_id, progress) {
-            $('#' + task_id + '-progress').text(progress);
-        }
-        {% if current_user.is_authenticated %}
-        $(function() {
-            var since = 0;
-            setInterval(function() {
-                $.ajax('{{ url_for('main.notifications') }}?since=' + since).done(
-                    function(notifications) {
-                        for (var i = 0; i < notifications.length; i++) {
-                            switch (notifications[i].name) {
-                                case 'unread_message_count':
-                                    set_message_count(notifications[i].data);
-                                    break;
-                                case 'task_progress':
-                                    set_task_progress(notifications[i].data.task_id,
-                                        notifications[i].data.progress);
-                                    break;
-                            }
-                            since = notifications[i].timestamp;
-                        }
-                    }
-                );
-            }, 10000);
-        });
-        {% endif %}
-    </script>
+        }, 10000);
+    });
+    {% endif %}
+</script>
 {% endblock %}

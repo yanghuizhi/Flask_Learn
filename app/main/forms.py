@@ -27,7 +27,7 @@ class PostForm(FlaskForm):  # 表单，键入新动态
     submit = SubmitField(_l('Submit'))
 
 
-class SearchForm(FlaskForm):
+class SearchForm(FlaskForm):  # 搜索表单
     q = StringField(_l('Search'), validators=[DataRequired()])
 
     def __init__(self, *args, **kwargs):

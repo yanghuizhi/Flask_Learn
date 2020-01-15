@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 
 basedir = os.path.abspath(os.path.dirname(__file__))
-load_dotenv(os.path.join(basedir, '.env'))
+load_dotenv(os.path.join(basedir, '.env'))  # 环境变量
 
 
 class Config(object):
@@ -21,7 +21,7 @@ class Config(object):
     ADMINS = ['your-email@example.com']
 
     MS_TRANSLATOR_KEY = os.environ.get('MS_TRANSLATOR_KEY')
-    ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL')
+    ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL')  # Elasticsearch
     REDIS_URL = os.environ.get('REDIS_URL') or 'redis://'
     POSTS_PER_PAGE = 25
-    LANGUAGES = ['en', 'es', 'zh_Hans_CN']  # 语言explore
+    LANGUAGES = ['zh', 'en', 'zh_Hans_CN']  # 语言explore

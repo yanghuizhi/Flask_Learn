@@ -2,8 +2,8 @@ from datetime import datetime
 from flask import render_template, flash, redirect, url_for, request, g, \
     jsonify, current_app
 from flask_login import current_user, login_required
-from flask_babel import _, get_locale
-from guess_language import guess_language
+from flask_babel import _, get_locale  # 本地语言对象
+from guess_language import guess_language  # 动态语言检测库
 from app import db
 from app.main.forms import EditProfileForm, PostForm, SearchForm, MessageForm
 from app.models import User, Post, Message, Notification
@@ -13,10 +13,14 @@ from app.main import bp
 
 @bp.before_app_request
 def before_request():  # 记录用户最后访问时间
+    """
+    Flask-Babel的get_locale()函数返回一个本地语言对象，但我们只需要语言代码，可以通过将该对象转换为字符串来获取语言代码。 现在我有了g.locale，可以从基础模板中访问它，并以正确的语言配置moment.js：
+    app/templates/base.html：为moment.js设置本地语言
+    """
     if current_user.is_authenticated:  # 将last_seen 置为当前时间
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
-        g.search_form = SearchForm()
+        g.search_form = SearchForm()  # 在请求处理前的处理器中初始化搜索表单
     g.locale = str(get_locale())
 
 
@@ -84,7 +88,7 @@ def user(username):
 
 @bp.route('/user/<username>/popup')
 @login_required
-def user_popup(username):
+def user_popup(username):  # 用户弹窗视图函数
     user = User.query.filter_by(username=username).first_or_404()
     return render_template('user_popup.html', user=user)
 
