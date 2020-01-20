@@ -7,6 +7,7 @@ from app.models import User
 # _() 用于原始语言标记翻译
 # _l() 针对无法提前评估的文本，进行延迟评估
 
+
 class LoginForm(FlaskForm):  # 用户登录表单
     username = StringField(_l('Username'), validators=[DataRequired()])  # 用户名
     password = PasswordField(_l('Password'), validators=[DataRequired()])  # 密码

@@ -1,7 +1,8 @@
 # Welcome to Flask_Learn!
 
 ### 运行Flask
-`flask run`  
+
+flask run
 
 ### 环境变量设置
 
@@ -9,13 +10,12 @@
 2. 或者mac Terminal输入：`export FLASK_APP=Flask_Learn.py`
 3. 或者Window Terminal输入：`set FLASK_APP=Flask_Learn.py`
 
-
 ### 配置DEBUG模式
 
-`export FLASK_DEBUG=1`
+export FLASK_DEBUG=1
 
 
-### 依赖文件
+### 输出依赖文件
 ```python
 pip freeze > requirements.txt  # 输出/更新依赖文件
 pip install -r requirements.txt  # 下载依赖文件

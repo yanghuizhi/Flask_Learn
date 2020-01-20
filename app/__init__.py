@@ -21,7 +21,7 @@ login.login_view = 'auth.login'  # 强制用户查看特定页面之前登录
 login.login_message = _l('Please log in to access this page.')
 mail = Mail()
 bootstrap = Bootstrap() # css
-moment = Moment() # 时间
+moment = Moment()
 babel = Babel() # 全局扫描提取翻译
 
 

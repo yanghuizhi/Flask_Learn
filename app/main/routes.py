@@ -24,7 +24,7 @@ def before_request():  # 记录用户最后访问时间
     g.locale = str(get_locale())
 
 
-@bp.route('/', methods=['GET', 'POST'])
+@bp.route('/', methods=['GET', 'POST']) # 修饰器在作为参数给出的URL和函数之间创建一个关联
 @bp.route('/index', methods=['GET', 'POST'])
 @login_required  # 拒绝匿名用户的访问以保护某个视图函数
 def index():

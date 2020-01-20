@@ -118,14 +118,16 @@
     $(function () {
         var timer = null;
         var xhr = null;
+        // 悬停事件
         $('.user_popup').hover(
             function(event) {
-                // mouse in event handler
+                // mouse in event handler, 鼠标在事件处理程序中
                 var elem = $(event.currentTarget);
                 timer = setTimeout(function() {
                     timer = null;
                     xhr = $.ajax('/user/' + elem.first().text().trim() + '/popup'
                         ).done(
+                        // 显示弹窗
                         function(data) {
                             xhr = null;
                             elem.popover({
@@ -140,8 +142,9 @@
                         );
                 }, 1000);
             },
+            // 销毁弹窗
             function(event) {
-                // mouse out event handler
+                // mouse out event handler, 鼠标移出事件处理程序
                 var elem = $(event.currentTarget);
                 if (timer) {
                     clearTimeout(timer);
