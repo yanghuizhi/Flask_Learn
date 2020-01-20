@@ -2,7 +2,7 @@
 
 ### 运行Flask
 
-flask run
+`flask run`
 
 ### 环境变量设置
 
@@ -12,7 +12,7 @@ flask run
 
 ### 配置DEBUG模式
 
-export FLASK_DEBUG=1
+`export FLASK_DEBUG=1`
 
 
 ### 输出依赖文件
