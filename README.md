@@ -21,14 +21,6 @@ pip freeze > requirements.txt  # 输出/更新依赖文件
 pip install -r requirements.txt  # 下载依赖文件
 ```
 
-### 数据库
-```python
-flask db init                  # 创建迁移数据库，产生migrations的新目录
-flask db migrate -m "。。。"    # 数据库迁移
-flask db upgrade               # 将更改应用到数据库
-flask db downgrade             # 回滚数据库迁移
-```
-
 ### 翻译
 ```python
 # pybabel extract命令读取-F选项中给出的配置文件，然后从命令给出的目录（当前目录或本处的. ）扫描与配置的源匹配的目录中的所有代码和模板文件。 默认情况下，pybabel将查找_()以作为文本标记，但我也使用了重命名为_l()的延迟版本，所以我需要用-k _l来告诉该工具也要查找它 。 -o选项提供输出文件的名称。

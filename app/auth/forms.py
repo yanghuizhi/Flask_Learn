@@ -1,4 +1,4 @@
-from flask_wtf import FlaskForm  # 处理web表单
+from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 from flask_babel import _, lazy_gettext as _l
@@ -9,6 +9,12 @@ from app.models import User
 
 
 class LoginForm(FlaskForm):  # 用户登录表单
+    """
+    Flask-WTF插件不提供字段类型，从WTForms包中导入四个表示表单字段的类。
+    每个字段类都接受一个描述或别名作为第一个参数，并生成一个实例来作为LoginForm的类属性。
+    可选参数validators用于验证输入字段是否符合预期。
+    DataRequired验证器仅验证字段输入是否为空。
+    """
     username = StringField(_l('Username'), validators=[DataRequired()])  # 用户名
     password = PasswordField(_l('Password'), validators=[DataRequired()])  # 密码
     remember_me = BooleanField(_l('Remember Me'))  # 复选框

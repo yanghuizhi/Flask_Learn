@@ -1,8 +1,6 @@
 {% extends 'bootstrap/base.html' %}
 
-<!-- block控制语句来定义派生模板可以插入代码的位置 -->
 <!-- 网页标题 -->
-
 {% block title %}
     {% if title %}
         {{ title }} - Microblog
@@ -11,7 +9,7 @@
     {% endif %}
 {% endblock %}
 
-<!--navbar块是一个可选块，用于定义导航栏。-->
+<!--导航栏-->
 {% block navbar %}
     <nav class="navbar navbar-default">
         <div class="container">
@@ -39,24 +37,33 @@
                     </div>
                 </form>
                 {% endif %}
-                <ul class="nav navbar-nav navbar-right">
-                    {% if current_user.is_anonymous %}  <!--仅当用户未登录时的值是True。-->
-                    <li><a href="{{ url_for('auth.login') }}">{{ _('Login') }}</a></li>
-                    {% else %}
-                    <li>
-                        <a href="{{ url_for('main.messages') }}">{{ _('Messages') }}
-                            {% set new_messages = current_user.new_messages() %}
-                            <span id="message_count" class="badge" style="visibility:            {% if new_messages %} visible
-                                {% else %} hidden
-                                {% endif %} ;">
-                                {{ new_messages }}
-                            </span>
-                        </a>
-                    </li>
-                    <li><a href="{{ url_for('main.user', username=current_user.username) }}">{{ _('Profile') }}</a></li>
-                    <li><a href="{{ url_for('auth.logout') }}">{{ _('Logout') }}</a></li>
-                    {% endif %}
-                </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+        {% if current_user.is_anonymous %}  <!--用户未登录时传True-->
+        <li>
+            <a href="{{ url_for('auth.login') }}">{{ _('Login') }}</a>
+        </li>
+        {% else %}
+        <li>
+            <a href="{{ url_for('main.messages') }}">{{ _('Messages') }}
+                {% set new_messages = current_user.new_messages() %}
+                <!--不知道是啥，貌似可以注释掉-->
+                <!--<span id="message_count" class="badge" style="visibility:{% if new_messages %} visible-->
+                    <!--{% else %} hidden-->
+                    <!--{% endif %} ;">-->
+                    <!--{{ new_messages }}-->
+                <!--</span>-->
+            </a>
+        </li>
+        <li>
+            <a href="{{ url_for('main.user', username=current_user.username) }}">{{ _('Profile') }}</a>
+        </li>
+        <li>
+            <a href="{{ url_for('auth.logout') }}">{{ _('Logout') }}</a>
+        </li>
+        {% endif %}
+    </ul>
+
             </div>
         </div>
     </nav>
@@ -78,10 +85,10 @@
         {% endwith %}
 
         {% endif %}
-        {% with messages = get_flashed_messages() %}
+        {% with messages = get_flashed_messages() %}  <!--返回用flash()注册过的消息列表-->
         {% if messages %}
             {% for message in messages %}
-            <div clas="alert alert-info" role="alert">{{ message }}</div>
+            <div class="alert alert-info" role="alert">{{ message }}</div>
             {% endfor %}
         {% endif %}
         {% endwith %}

@@ -5,7 +5,7 @@
 
 {% block app_content %}
     <h1>{{ _('Sign In') }}</h1>
-            <br/>
+    <br/>
     <div class="row">
         <div class="col-md-4">
             {{ wtf.quick_form(form) }}
@@ -13,7 +13,13 @@
     </div>
     <br>
     <p>{{ _('New User?') }}
-        <a href="{{ url_for('auth.register') }}">&nbsp;&nbsp;{{ _('Click to Register !') }}</a></p>
+        <a href="{{ url_for('auth.register') }}">&nbsp;&nbsp;
+            {{ _('Click to Register !') }}
+        </a>
+    </p>
     <p>{{ _('Forgot Your Password?') }}
-        <a href="{{ url_for('auth.reset_password_request') }}">&nbsp;&nbsp;{{ _('Click to Reset It !') }}</a></p>
+        <a href="{{ url_for('auth.reset_password_request') }}">
+            &nbsp;&nbsp;{{ _('Click to Reset It !') }}
+        </a>
+    </p>
 {% endblock %}

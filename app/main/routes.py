@@ -1,6 +1,5 @@
 from datetime import datetime
-from flask import render_template, flash, redirect, url_for, request, g, \
-    jsonify, current_app
+from flask import render_template, flash, redirect, url_for, request, g, jsonify, current_app
 from flask_login import current_user, login_required
 from flask_babel import _, get_locale  # 本地语言对象
 from guess_language import guess_language  # 动态语言检测库
@@ -35,7 +34,7 @@ def index():
     prev_num: 上一页的页码
     """
     form = PostForm()
-    if form.validate_on_submit():
+    if form.validate_on_submit():  # form校验
         language = guess_language(form.post.data)
         if language == 'UNKNOWN' or len(language) > 5:
             language = ''

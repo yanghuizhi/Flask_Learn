@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-01-09 16:51+0800\n"
+"POT-Creation-Date: 2020-01-21 14:52+0800\n"
 "PO-Revision-Date: 2020-01-04 20:17+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -20,13 +20,13 @@ msgstr ""
 
 #: app/__init__.py:21
 msgid "Please log in to access this page."
-msgstr ""
+msgstr "请先登录"
 
-#: app/translate.py:10
+#: app/translate.py:11
 msgid "Error: the translation service is not configured."
 msgstr "错误：未配置翻译服务"
 
-#: app/translate.py:18
+#: app/translate.py:19
 msgid "Error: the translation service failed."
 msgstr "错误：翻译服务失败"
 
@@ -34,44 +34,44 @@ msgstr "错误：翻译服务失败"
 msgid "[Microblog] Reset Your Password"
 msgstr "[Microblog] 重新设置密码"
 
-#: app/auth/forms.py:11 app/auth/forms.py:18 app/main/forms.py:10
+#: app/auth/forms.py:18 app/auth/forms.py:25 app/main/forms.py:10
 msgid "Username"
 msgstr "用户名"
 
-#: app/auth/forms.py:12 app/auth/forms.py:20 app/auth/forms.py:41
+#: app/auth/forms.py:19 app/auth/forms.py:27 app/auth/forms.py:48
 msgid "Password"
 msgstr "密码"
 
-#: app/auth/forms.py:13
+#: app/auth/forms.py:20
 msgid "Remember Me"
 msgstr "记住我"
 
-#: app/auth/forms.py:14 app/auth/routes.py:35 app/templates/auth/login.html:5
+#: app/auth/forms.py:21 app/auth/routes.py:35 app/templates/auth/login.html:7
 msgid "Sign In"
 msgstr "登录"
 
-#: app/auth/forms.py:19 app/auth/forms.py:36
+#: app/auth/forms.py:26 app/auth/forms.py:43
 msgid "Email"
 msgstr "邮件"
 
-#: app/auth/forms.py:21 app/auth/forms.py:43
+#: app/auth/forms.py:28 app/auth/forms.py:50
 msgid "Repeat Password"
 msgstr "重复输入密码"
 
-#: app/auth/forms.py:22 app/auth/routes.py:56
+#: app/auth/forms.py:29 app/auth/routes.py:56
 #: app/templates/auth/register.html:5
 msgid "Register"
 msgstr "注册"
 
-#: app/auth/forms.py:27 app/main/forms.py:22
+#: app/auth/forms.py:34 app/main/forms.py:22
 msgid "Please use a different username."
 msgstr "请使用其他用户名"
 
-#: app/auth/forms.py:32
+#: app/auth/forms.py:39
 msgid "Please use a different email address."
 msgstr "请使用其他电子邮件地址"
 
-#: app/auth/forms.py:37 app/auth/forms.py:45
+#: app/auth/forms.py:44 app/auth/forms.py:52
 msgid "Request Password Reset"
 msgstr ""
 
@@ -107,7 +107,7 @@ msgstr ""
 msgid "Say something"
 msgstr "说点什么？"
 
-#: app/main/forms.py:31 app/main/routes.py:165
+#: app/main/forms.py:31 app/main/routes.py:164
 msgid "Search"
 msgstr "搜索"
 
@@ -115,58 +115,58 @@ msgstr "搜索"
 msgid "Message"
 msgstr ""
 
-#: app/main/routes.py:45
+#: app/main/routes.py:44
 msgid "Your post is now live!"
 msgstr "你的的帖子已上线"
 
-#: app/main/routes.py:54 app/templates/base.html:30
+#: app/main/routes.py:53 app/templates/base.html:28
 msgid "Home"
 msgstr "Home"
 
-#: app/main/routes.py:69 app/templates/base.html:31
+#: app/main/routes.py:68 app/templates/base.html:29
 msgid "Explore"
 msgstr "探索"
 
-#: app/main/routes.py:104
+#: app/main/routes.py:103
 msgid "Your changes have been saved."
 msgstr "你的修改已被保存!"
 
-#: app/main/routes.py:109 app/templates/edit_profile.html:6
+#: app/main/routes.py:108 app/templates/edit_profile.html:6
 msgid "Edit Profile"
 msgstr "编辑个人资料"
 
-#: app/main/routes.py:118 app/main/routes.py:134
+#: app/main/routes.py:117 app/main/routes.py:133
 #, python-format
 msgid "User %(username)s not found."
 msgstr ""
 
-#: app/main/routes.py:121 app/main/routes.py:137
+#: app/main/routes.py:120 app/main/routes.py:136
 msgid "You cannot follow yourself!"
 msgstr "你不能关注你自己!"
 
-#: app/main/routes.py:125
+#: app/main/routes.py:124
 #, python-format
 msgid "You are following %(username)s!"
 msgstr ""
 
-#: app/main/routes.py:141
+#: app/main/routes.py:140
 #, python-format
 msgid "You are not following %(username)s."
 msgstr "您不能关注 %(username)s."
 
-#: app/main/routes.py:180
+#: app/main/routes.py:179
 msgid "Your message has been sent."
 msgstr "您的留言已发送."
 
-#: app/main/routes.py:182
+#: app/main/routes.py:181
 msgid "Send Message"
 msgstr "发送信息"
 
-#: app/main/routes.py:208
+#: app/main/routes.py:207
 msgid "An export task is currently in progress"
 msgstr "导出任务目前正在进行中"
 
-#: app/main/routes.py:210
+#: app/main/routes.py:209
 msgid "Exporting posts..."
 msgstr "正在导出帖子..."
 
@@ -175,44 +175,44 @@ msgstr "正在导出帖子..."
 msgid "%(username)s said %(when)s"
 msgstr "%(username)s 说 %(when)s"
 
-#: app/templates/_post.html:31
+#: app/templates/_post.html:35
 msgid "Translate"
 msgstr "翻译"
 
-#: app/templates/base.html:10
+#: app/templates/base.html:8
 msgid "Welcome to Flask_Learn"
 msgstr "欢迎来到Flask_Learn"
 
-#: app/templates/base.html:43
+#: app/templates/base.html:44
 msgid "Login"
 msgstr "登录"
 
-#: app/templates/base.html:46 app/templates/messages.html:4
+#: app/templates/base.html:48 app/templates/messages.html:4
 msgid "Messages"
 msgstr "消息"
 
-#: app/templates/base.html:55
+#: app/templates/base.html:58
 msgid "Profile"
 msgstr "个人主页"
 
-#: app/templates/base.html:56
+#: app/templates/base.html:61
 msgid "Logout"
 msgstr "退出"
 
-#: app/templates/base.html:109
+#: app/templates/base.html:121
 msgid "Error: Could not contact server."
 msgstr "错误: 无法联系服务器"
 
-#: app/templates/index.html:6
+#: app/templates/index.html:8
 #, python-format
 msgid "Hi, %(username)s!"
 msgstr "嗨  %(username)s"
 
-#: app/templates/index.html:20 app/templates/user.html:65
+#: app/templates/index.html:22 app/templates/user.html:65
 msgid "Newer posts"
 msgstr "新帖子"
 
-#: app/templates/index.html:25 app/templates/user.html:70
+#: app/templates/index.html:27 app/templates/user.html:70
 msgid "Older posts"
 msgstr "旧帖子"
 
@@ -224,15 +224,15 @@ msgstr "新消息"
 msgid "Older messages"
 msgstr "旧消息"
 
-#: app/templates/search.html:4
+#: app/templates/search.html:5
 msgid "Search Results"
 msgstr "搜索结果"
 
-#: app/templates/search.html:12
+#: app/templates/search.html:13
 msgid "Previous results"
 msgstr "上一个结果"
 
-#: app/templates/search.html:17
+#: app/templates/search.html:18
 msgid "Next results"
 msgstr "下一个结果"
 
@@ -245,16 +245,16 @@ msgstr "发送消息到 %(recipient)s"
 msgid "User"
 msgstr "用户"
 
-#: app/templates/user.html:31 app/templates/user_popup.html:9
+#: app/templates/user.html:31 app/templates/user_popup.html:11
 msgid "Last seen on"
 msgstr "上次看到"
 
-#: app/templates/user.html:34 app/templates/user_popup.html:11
+#: app/templates/user.html:34 app/templates/user_popup.html:13
 #, python-format
 msgid "%(count)d followers"
 msgstr "%(count)d 关注"
 
-#: app/templates/user.html:34 app/templates/user_popup.html:11
+#: app/templates/user.html:34 app/templates/user_popup.html:13
 #, python-format
 msgid "%(count)d following"
 msgstr "%(count)d 关注"
@@ -267,11 +267,11 @@ msgstr "编辑您的个人资料"
 msgid "Export your posts"
 msgstr "导出您的帖子"
 
-#: app/templates/user.html:44 app/templates/user_popup.html:14
+#: app/templates/user.html:44 app/templates/user_popup.html:16
 msgid "Follow"
 msgstr "关注"
 
-#: app/templates/user.html:46 app/templates/user_popup.html:16
+#: app/templates/user.html:46 app/templates/user_popup.html:18
 msgid "Unfollow"
 msgstr "取消关注"
 
@@ -279,19 +279,19 @@ msgstr "取消关注"
 msgid "Send private message"
 msgstr "发送私信"
 
-#: app/templates/auth/login.html:13
+#: app/templates/auth/login.html:15
 msgid "New User?"
 msgstr "新用户?"
 
-#: app/templates/auth/login.html:14
+#: app/templates/auth/login.html:17
 msgid "Click to Register !"
 msgstr "点击注册!"
 
-#: app/templates/auth/login.html:15
+#: app/templates/auth/login.html:20
 msgid "Forgot Your Password?"
 msgstr "忘记密码?"
 
-#: app/templates/auth/login.html:16
+#: app/templates/auth/login.html:22
 msgid "Click to Reset It !"
 msgstr "点击重置!"
 

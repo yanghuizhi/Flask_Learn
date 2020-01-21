@@ -2,8 +2,8 @@ import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
 from flask import Flask, request, current_app
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
+from flask_sqlalchemy import SQLAlchemy  # 数据库
+from flask_migrate import Migrate # 数据库迁移引擎
 from flask_login import LoginManager
 from flask_mail import Mail
 from flask_bootstrap import Bootstrap
