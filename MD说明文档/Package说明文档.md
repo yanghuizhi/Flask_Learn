@@ -340,7 +340,7 @@ app/templates/base.html：为moment.js设置本地语言
 
 
 
-
+ 
 # Flask中，blueprint
 
 - 在Flask中，blueprint是代表应用子集的逻辑结构。
