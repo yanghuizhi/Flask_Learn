@@ -9,12 +9,6 @@ from app.models import User
 
 
 class LoginForm(FlaskForm):  # 用户登录表单
-    """
-    Flask-WTF插件不提供字段类型，从WTForms包中导入四个表示表单字段的类。
-    每个字段类都接受一个描述或别名作为第一个参数，并生成一个实例来作为LoginForm的类属性。
-    可选参数validators用于验证输入字段是否符合预期。
-    DataRequired验证器仅验证字段输入是否为空。
-    """
     username = StringField(_l('Username'), validators=[DataRequired()])  # 用户名
     password = PasswordField(_l('Password'), validators=[DataRequired()])  # 密码
     remember_me = BooleanField(_l('Remember Me'))  # 复选框
@@ -23,28 +17,32 @@ class LoginForm(FlaskForm):  # 用户登录表单
 
 class RegistrationForm(FlaskForm):  # 用户注册表单
     username = StringField(_l('Username'), validators=[DataRequired()])
-    email = StringField(_l('Email'), validators=[DataRequired(), Email()])  # 双验证器，来自WTForms的Email()验证器确保用户输入的内容同邮件结构匹配
+    email = StringField(_l('Email'), validators=[DataRequired(), Email()])  # 双验证器，确保内容与邮件格式结构匹配
     password = PasswordField(_l('Password'), validators=[DataRequired()])
     password2 = PasswordField(_l('Repeat Password'), validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField(_l('Register'))
 
     def validate_username(self, username):
+        # 自定义验证，保证不会同数据库中已存在数据产生冲突
         user = User.query.filter_by(username=username.data).first()
         if user is not None:
             raise ValidationError(_('Please use a different username.'))
 
     def validate_email(self, email):
+        # 自定义验证，保证不会同数据库中已存在数据产生冲突
         user = User.query.filter_by(email=email.data).first()
         if user is not None:
             raise ValidationError(_('Please use a different email address.'))
 
 
 class ResetPasswordRequestForm(FlaskForm):
+    # 重置密码表单类
     email = StringField(_l('Email'), validators=[DataRequired(), Email()])
     submit = SubmitField(_l('Request Password Reset'))
 
 
 class ResetPasswordForm(FlaskForm):
+    # 输入新的密码
     password = PasswordField(_l('Password'), validators=[DataRequired()])
     password2 = PasswordField(
         _l('Repeat Password'), validators=[DataRequired(),

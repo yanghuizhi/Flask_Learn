@@ -83,30 +83,20 @@ class PaginatedAPIMixin(object):
         return data
 
 # 粉丝机制关联表
-followers = db.Table(
-    'followers',
+followers = db.Table('followers',
     db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
     db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
 )
 
 
 class User(UserMixin, PaginatedAPIMixin, db.Model):  # 用户表
-    """
-    UserMixin：Flask-Login用来管理用户登录状态，继承后实现某些属性和方法
-    db.Model：Flask-SQLAlchemy中所有模型的基类。 可选参数中允许指示哪些字段是唯一的并且是可索引的，这对高效的数据检索十分重要
-
-    is_authenticated: 一个用来表示用户是否通过登录认证的属性，用True和False表示。
-    is_active: 如果用户账户是活跃的，那么这个属性是True，否则就是False（译者注：活跃用户的定义是该用户的登录状态是否通过用户名密码登录，通过“记住我”功能保持登录状态的用户是非活跃的）。
-    is_anonymous: 常规用户的该属性是False，对特定的匿名用户是True。
-    get_id(): 返回用户的唯一id的方法，返回值类型是字符串(Python 2下返回unicode字符串).
-    """
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
-    password_hash = db.Column(db.String(128))  # 保存用户密码的哈希值
+    password_hash = db.Column(db.String(128))                           # 保存用户密码的哈希值
     posts = db.relationship('Post', backref='author', lazy='dynamic')
-    about_me = db.Column(db.String(140))  # 新字段，需更新数据库
-    last_seen = db.Column(db.DateTime, default=datetime.utcnow)  # 新字段，需更新数据库
+    about_me = db.Column(db.String(140))                                # 个人资料编辑器
+    last_seen = db.Column(db.DateTime, default=datetime.utcnow)         # 记录用户的最后访问时间
     token = db.Column(db.String(32), index=True, unique=True)
     token_expiration = db.Column(db.DateTime)
 
@@ -136,7 +126,7 @@ class User(UserMixin, PaginatedAPIMixin, db.Model):  # 用户表
                                     lazy='dynamic')
     tasks = db.relationship('Task', backref='user', lazy='dynamic')
 
-    def __repr__(self):  # 字符串表示形式
+    def __repr__(self):  # 调试时打印用户实例
         return '<User {}>'.format(self.username)
 
     def set_password(self, password):  # 设置密码
@@ -145,27 +135,27 @@ class User(UserMixin, PaginatedAPIMixin, db.Model):  # 用户表
     def check_password(self, password):  # 检查密码
         return check_password_hash(self.password_hash, password)
 
-    def avatar(self, size):
+    def avatar(self, size):  # 用户头像
         digest = md5(self.email.lower().encode('utf-8')).hexdigest()
         return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(
             digest, size)
 
-    def follow(self, user):  # 关注对方
+    def follow(self, user):  # 粉丝机制-关注对方
         if not self.is_following(user):
             self.followed.append(user)
 
-    def unfollow(self, user):  # 取消关注
+    def unfollow(self, user):  # 粉丝机制-取消关注对方
         if self.is_following(user):
             self.followed.remove(user)
 
-    def is_following(self, user):  # 判断是否已关注，减少重复操作
+    def is_following(self, user):  # 粉丝机制-判断是否已关注，减少重复操作
         """
         这里使用的filter()方法很类似，但是更加偏向底层，因为它可以包含任意的过滤条件，而不像filter_by()，它只能检查是否等于一个常量值。 我在is_following()中使用的过滤条件是，查找关联表中左侧外键设置为self用户且右侧设置为user参数的数据行。 查询以count()方法结束，返回结果的数量。 这个查询的结果是0或1，因此检查计数是1还是大于0实际上是
         """
         return self.followed.filter(
             followers.c.followed_id == user.id).count() > 0
 
-    def followed_posts(self):  # 组合查询
+    def followed_posts(self):  # 查看已关注用户的动态
         followed = Post.query.join(
             followers, (followers.c.followed_id == Post.user_id)).filter(
                 followers.c.follower_id == self.id)
@@ -173,7 +163,8 @@ class User(UserMixin, PaginatedAPIMixin, db.Model):  # 用户表
         return followed.union(own).order_by(Post.timestamp.desc())
 
     def get_reset_password_token(self, expires_in=600):
-        # 在模型中编写令牌的生成和验证方式，JWT令牌
+        # JWT令牌生成方式
+        # jwt.encode()函数将令牌作为字节序列返回，但是在应用中将令牌表示为字符串更方便
         return jwt.encode(
             {'reset_password': self.id, 'exp': time() + expires_in},
             current_app.config['SECRET_KEY'],
@@ -181,7 +172,7 @@ class User(UserMixin, PaginatedAPIMixin, db.Model):  # 用户表
 
     @staticmethod
     def verify_reset_password_token(token):
-        # 静态方法，，解析验证令牌有效期
+        # 验证JWT令牌
         try:
             id = jwt.decode(token, current_app.config['SECRET_KEY'],
                             algorithms=['HS256'])['reset_password']
@@ -259,9 +250,9 @@ class User(UserMixin, PaginatedAPIMixin, db.Model):  # 用户表
         return user
 
 
-@login.user_loader  # 加载功能注册函数，将字符串类型参数 id 转化为整数
-def load_user(id):  # 用户加载函数
-    return User.query.get(int(id))
+@login.user_loader  # 加载功能注册函数
+def load_user(id):  # 用户加载函数，每当已登录的用户导航到新页面时，Flask-Login将从会话中检索用户的ID
+    return User.query.get(int(id))  # 传入字符串类型，使用数字ID的数据库需要将字符串转换为整数。
 
 
 class Post(SearchableMixin, db.Model):  # 用户动态表

@@ -4,7 +4,7 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
-    <h1>{{ _('Sign In') }}</h1>
+    <h1>{{ _('Sign In') }}</h1>    <!--登录-->
     <br/>
     <div class="row">
         <div class="col-md-4">
@@ -12,14 +12,14 @@
         </div>
     </div>
     <br>
-    <p>{{ _('New User?') }}
+    <p>{{ _('New User?') }}    <!--未注册的用户引导-->
         <a href="{{ url_for('auth.register') }}">&nbsp;&nbsp;
             {{ _('Click to Register !') }}
         </a>
     </p>
-    <p>{{ _('Forgot Your Password?') }}
-        <a href="{{ url_for('auth.reset_password_request') }}">
-            &nbsp;&nbsp;{{ _('Click to Reset It !') }}
+    <p>{{ _('Forgot Your Password?') }}    <!--重置密码-->
+        <a href="{{ url_for('auth.reset_password_request') }}">&nbsp;&nbsp;
+            {{ _('Click to Reset It !') }}
         </a>
     </p>
 {% endblock %}

@@ -16,7 +16,7 @@ def before_request():  # 记录用户最后访问时间
     Flask-Babel的get_locale()函数返回一个本地语言对象，但我们只需要语言代码，可以通过将该对象转换为字符串来获取语言代码。 现在我有了g.locale，可以从基础模板中访问它，并以正确的语言配置moment.js：
     app/templates/base.html：为moment.js设置本地语言
     """
-    if current_user.is_authenticated:  # 将last_seen 置为当前时间
+    if current_user.is_authenticated:  # 用户若已登录，给一个当前时间节点
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
         g.search_form = SearchForm()  # 在请求处理前的处理器中初始化搜索表单
@@ -25,14 +25,8 @@ def before_request():  # 记录用户最后访问时间
 
 @bp.route('/', methods=['GET', 'POST']) # 修饰器在作为参数给出的URL和函数之间创建一个关联
 @bp.route('/index', methods=['GET', 'POST'])
-@login_required  # 拒绝匿名用户的访问以保护某个视图函数
+@login_required  # 拒绝匿名用户访问
 def index():
-    """
-    has_next: 当前页之后存在后续页面时为真
-    has_prev: 当前页之前存在前置页面时为真
-    next_num: 下一页的页码
-    prev_num: 上一页的页码
-    """
     form = PostForm()
     if form.validate_on_submit():  # form校验
         language = guess_language(form.post.data)
@@ -43,13 +37,18 @@ def index():
         db.session.commit()
         flash(_('Your post is now live!'))
         return redirect(url_for('main.index'))
+    # 添加分页
     page = request.args.get('page', 1, type=int)
+    # 表单逻辑
     posts = current_user.followed_posts().paginate(
         page, current_app.config['POSTS_PER_PAGE'], False)
-    next_url = url_for('main.index', page=posts.next_num) \
-        if posts.has_next else None
-    prev_url = url_for('main.index', page=posts.prev_num) \
-        if posts.has_prev else None
+    # has_next: 当前页之后存在后续页面时为真
+    # has_prev: 当前页之前存在前置页面时为真
+    # next_num: 下一页的页码
+    # prev_num: 上一页的页码
+    prev_url = url_for('main.index', page=posts.prev_num) if posts.has_prev else None
+    next_url = url_for('main.index', page=posts.next_num) if posts.has_next else None
+
     return render_template('index.html', title=_('Home'), form=form,
                            posts=posts.items, next_url=next_url,
                            prev_url=prev_url)
@@ -58,13 +57,12 @@ def index():
 @bp.route('/explore')
 @login_required
 def explore(): # 发现页面，展示所有用户的全部动态。
+    # paginate()方法来检索指定范围的结果
     page = request.args.get('page', 1, type=int)
     posts = Post.query.order_by(Post.timestamp.desc()).paginate(
         page, current_app.config['POSTS_PER_PAGE'], False)
-    next_url = url_for('main.explore', page=posts.next_num) \
-        if posts.has_next else None
-    prev_url = url_for('main.explore', page=posts.prev_num) \
-        if posts.has_prev else None
+    next_url = url_for('main.explore', page=posts.next_num) if posts.has_next else None
+    prev_url = url_for('main.explore', page=posts.prev_num) if posts.has_prev else None
     return render_template('index.html', title=_('Explore'),
                            posts=posts.items, next_url=next_url,
                            prev_url=prev_url)
@@ -72,17 +70,15 @@ def explore(): # 发现页面，展示所有用户的全部动态。
 
 @bp.route('/user/<username>')
 @login_required
-def user(username):
+def user(username):  # 个人主页
     user = User.query.filter_by(username=username).first_or_404()
     page = request.args.get('page', 1, type=int)
-    posts = user.posts.order_by(Post.timestamp.desc()).paginate(
-        page, current_app.config['POSTS_PER_PAGE'], False)
-    next_url = url_for('main.user', username=user.username,
-                       page=posts.next_num) if posts.has_next else None
-    prev_url = url_for('main.user', username=user.username,
-                       page=posts.prev_num) if posts.has_prev else None
-    return render_template('user.html', user=user, posts=posts.items,
-                           next_url=next_url, prev_url=prev_url)
+    posts = user.posts.order_by(Post.timestamp.desc()
+            ).paginate(page, current_app.config['POSTS_PER_PAGE'], False)
+    # 分页导航
+    next_url = url_for('main.user', username=user.username, page=posts.next_num) if posts.has_next else None
+    prev_url = url_for('main.user', username=user.username, page=posts.prev_num) if posts.has_prev else None
+    return render_template('user.html', user=user, posts=posts.items, next_url=next_url, prev_url=prev_url)
 
 
 @bp.route('/user/<username>/popup')
@@ -94,8 +90,8 @@ def user_popup(username):  # 用户弹窗视图函数
 
 @bp.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
-def edit_profile(): # 将EditProfileForm和模版结合起来
-    form = EditProfileForm(current_user.username) # 使校验方式生效
+def edit_profile():  # 个人资料编辑器, 将 EditProfileForm 和模版结合起来
+    form = EditProfileForm(current_user.username)  # validate_username 校验生效
     if form.validate_on_submit():
         current_user.username = form.username.data
         current_user.about_me = form.about_me.data
@@ -111,7 +107,7 @@ def edit_profile(): # 将EditProfileForm和模版结合起来
 
 @bp.route('/follow/<username>')
 @login_required
-def follow(username): # 集成粉丝机制
+def follow(username): # 集成粉丝关注机制
     user = User.query.filter_by(username=username).first()
     if user is None:
         flash(_('User %(username)s not found.', username=username))
@@ -127,7 +123,7 @@ def follow(username): # 集成粉丝机制
 
 @bp.route('/unfollow/<username>')
 @login_required
-def unfollow(username):  # 取消粉丝
+def unfollow(username):  # 集成取消关注粉丝机制
     user = User.query.filter_by(username=username).first()
     if user is None:
         flash(_('User %(username)s not found.', username=username))
@@ -218,7 +214,7 @@ def notifications():
     notifications = current_user.notifications.filter(
         Notification.timestamp > since).order_by(Notification.timestamp.asc())
     return jsonify([{
-        'name': n.name,
-        'data': n.get_data(),
-        'timestamp': n.timestamp
-    } for n in notifications])
+            'name': n.name,
+            'data': n.get_data(),
+            'timestamp': n.timestamp
+            } for n in notifications])

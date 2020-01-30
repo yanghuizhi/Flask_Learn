@@ -2,9 +2,9 @@ import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
 from flask import Flask, request, current_app
-from flask_sqlalchemy import SQLAlchemy  # 数据库
-from flask_migrate import Migrate # 数据库迁移引擎
-from flask_login import LoginManager
+from flask_sqlalchemy import SQLAlchemy     # 数据库
+from flask_migrate import Migrate           # 数据库迁移引擎
+from flask_login import LoginManager        # 管理用户登录状态
 from flask_mail import Mail
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
@@ -20,7 +20,8 @@ login = LoginManager()
 login.login_view = 'auth.login'  # 强制用户查看特定页面之前登录
 login.login_message = _l('Please log in to access this page.')
 mail = Mail()
-bootstrap = Bootstrap() # css
+# 初始化插件后，bootstrap/base.html模板就会变为可用状态，可以使用extends子句从应用模板中引用
+bootstrap = Bootstrap()
 moment = Moment()
 babel = Babel() # 全局扫描提取翻译
 
@@ -59,9 +60,9 @@ def create_app(config_class=Config):
     from app.api import bp as api_bp
     app.register_blueprint(api_bp, url_prefix='/api')
 
-    if not app.debug and not app.testing:
-    # 仅当应用未以调试模式运行，且配置中存在邮件服务器时，我才会启用电子邮件日志记录器。
-        if app.config['MAIL_SERVER']:
+    if not app.debug and not app.testing: # 是否非 Debug模式 and Test模式
+
+        if app.config['MAIL_SERVER']:  # 是否配置中存在邮件服务器
             auth = None
             if app.config['MAIL_USERNAME'] or app.config['MAIL_PASSWORD']:
                 auth = (app.config['MAIL_USERNAME'],
@@ -77,19 +78,19 @@ def create_app(config_class=Config):
             mail_handler.setLevel(logging.ERROR)
             app.logger.addHandler(mail_handler)
 
-        if app.config['LOG_TO_STDOUT']:  # 记录日志到文件
+        if app.config['LOG_TO_STDOUT']:  # 记录日志
             stream_handler = logging.StreamHandler()
             stream_handler.setLevel(logging.INFO)
             app.logger.addHandler(stream_handler)
         else:
             if not os.path.exists('logs'):
                 os.mkdir('logs')
-            file_handler = RotatingFileHandler('logs/microblog.log', maxBytes=10240, backupCount=10)
-            # RotatingFileHandler可以切割和清理日志文件，以确保日志文件在应用运行很长时间时不会变得太大。
-            # 日志大小，保留最后的十个日志文件作为备份
-            file_handler.setFormatter(logging.Formatter(  # 自定义格式
+            file_handler = RotatingFileHandler('logs/microblog.log', maxBytes=10240, backupCount=100) # 10KB
+            file_handler.setFormatter(  # 日志格式
+                logging.Formatter(
                 '%(asctime)s %(levelname)s: %(message)s '
-                '[in %(pathname)s:%(lineno)d]'))
+                '[in %(pathname)s:%(lineno)d]'
+                ))
             file_handler.setLevel(logging.INFO)
             app.logger.addHandler(file_handler)
 
@@ -99,10 +100,11 @@ def create_app(config_class=Config):
     return app
 
 
+ # Babel实例提供了一个localeselector装饰器。 为每个请求调用装饰器函数以选择用于该请求的语言
 @babel.localeselector
-def get_locale():
+def get_locale():  # 选择最匹配的语言
     # return request.accept_languages.best_match(current_app.config['LANGUAGES'])
-    return 'zh' # 特殊的中文格式
+    return 'zh'
 
 
 from app import models  # 解决循环导入问题

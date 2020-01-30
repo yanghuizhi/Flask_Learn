@@ -15,14 +15,14 @@ class EditProfileForm(FlaskForm):  # 个人资料编辑器
         super(EditProfileForm, self).__init__(*args, **kwargs)
         self.original_username = original_username
 
-    def validate_username(self, username): # 编辑个人资料，校验原始name和修改后的name，减少数据库校验
+    def validate_username(self, username): # 校验用户名是否和修改前一致，减少数据库校验
         if username.data != self.original_username:
             user = User.query.filter_by(username=self.username.data).first()
             if user is not None:
                 raise ValidationError(_('Please use a different username.'))
 
 
-class PostForm(FlaskForm):  # 表单，键入新动态
+class PostForm(FlaskForm):  # 用户动态表单
     post = TextAreaField(_l('Say something'), validators=[DataRequired()])
     submit = SubmitField(_l('Submit'))
 

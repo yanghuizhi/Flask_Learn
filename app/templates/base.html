@@ -9,7 +9,7 @@
     {% endif %}
 {% endblock %}
 
-<!--导航栏-->
+<!--网页导航栏-->
 {% block navbar %}
     <nav class="navbar navbar-default">
         <div class="container">
@@ -25,9 +25,12 @@
             <!-- 网页标题 -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url_for('main.index') }}">{{ _('Home') }}</a></li>
-                    <li><a href="{{ url_for('main.explore') }}">{{ _('Explore') }}</a></li>
-                    <!--发现栏，搜索栏-->
+                    <li>
+                        <a href="{{ url_for('main.index') }}">{{ _('Home') }}</a>
+                    </li>
+                    <li>  <!--发现栏-->
+                        <a href="{{ url_for('main.explore') }}">{{ _('Explore') }}</a>
+                    </li>
                 </ul>
                 {% if g.search_form %}
                 <form class="navbar-form navbar-left" method="get" action="{{ url_for('main.search') }}">
@@ -39,9 +42,9 @@
                 {% endif %}
 
     <ul class="nav navbar-nav navbar-right">
-        {% if current_user.is_anonymous %}  <!--用户未登录时传True-->
+        {% if current_user.is_anonymous %}  <!--用户未登录时的值是True-->
         <li>
-            <a href="{{ url_for('auth.login') }}">{{ _('Login') }}</a>
+            <a href="{{ url_for('auth.login') }}">{{ _('Login') }}</a>  <!--用户登录-->
         </li>
         {% else %}
         <li>
@@ -56,10 +59,14 @@
             </a>
         </li>
         <li>
-            <a href="{{ url_for('main.user', username=current_user.username) }}">{{ _('Profile') }}</a>
+            <a href="{{ url_for('main.user', username=current_user.username) }}">
+                {{ _('Profile') }}  <!--个人主页-->
+            </a>
         </li>
         <li>
-            <a href="{{ url_for('auth.logout') }}">{{ _('Logout') }}</a>
+            <a href="{{ url_for('auth.logout') }}">
+                {{ _('Logout') }}  <!--用户登出-->
+            </a>
         </li>
         {% endif %}
     </ul>
@@ -69,6 +76,7 @@
     </nav>
 {% endblock %}
 
+<!--网页内容-->
 {% block content %}
     <div class="container">
         {% if current_user.is_authenticated %}
@@ -98,8 +106,8 @@
     </div>
 {% endblock %}
 
-<!--如果追加moment.js库的话，就需要使用super()语句，才能继承基础模板中已有的内容，否则就是替换。
-现在所有的日期和时间都与文本使用相同的语言了。 你可以在下面看到对应的外观：，-->
+<!--如果追加moment.js库的话，就需要使用super()语句，才能继承基础模板中已有的内容，否则就是替换-->
+<!--在基础模板中包含moment.js-->
 {% block scripts %}
     {{ super() }}
     {{ moment.include_moment() }}

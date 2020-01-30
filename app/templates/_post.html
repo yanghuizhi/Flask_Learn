@@ -1,41 +1,42 @@
-    <table class="table table-hover">
-        <tr>
-            <td width="70px">
-                <a href="{{ url_for('main.user', username=post.author.username) }}">
-                    <img src="{{ post.author.avatar(70) }}" />
-                    <!--小头像大小-->
-                </a>
-            </td>
-            <td>
-                {% set user_link %}
-                    <span class="user_popup">
-                        <!--将用户动态作者的用户名显示为一个链接-->
-                        <a href="{{ url_for('main.user', username=post.author.username) }}">
-                            {{ post.author.username }}
-                        </a>
-                    </span>
-                {% endset %}
-                <!--登录的用户说了什么-->
-                {{ _('%(username)s said %(when)s',
-                    username=user_link,
-                    when=moment(post.timestamp).fromNow()) }}<br>
+<!--使用Jinja2子模板，创建一个只渲染一条用户动态的子模板。-->
 
-                <span id="post{{ post.id }}">{{ post.body }}</span>
+<table class="table table-hover">
+    <tr>
+        <td width="70px">  <!--小头像大小-->
+            <a href="{{ url_for('main.user', username=post.author.username) }}">
+                <img src="{{ post.author.avatar(70) }}"/>
+            </a>
+        </td>
+        <td>
+            {% set user_link %}
+                <span class="user_popup">
+                    <!--将用户动态作者的用户名显示为一个链接-->
+                    <a href="{{ url_for('main.user', username=post.author.username) }}">
+                        {{ post.author.username }}
+                    </a>
+                </span>
+            {% endset %}
+            <!--登录的用户说了什么-->
+            <!--在用户动态子模板中渲染时间戳-->
+            {{ _('%(username)s said %(when)s',
+                username=user_link,
+                when=moment(post.timestamp).fromNow()) }}<br>
+            <span id="post{{ post.id }}">{{ post.body }}</span>
 
 
-    <!--展示一个"翻译"链接，我在_post.html子模板中执行此操作，以便此功能出现在显示用户动态的任何页面上。 翻译链接只会出现在检测到语言种类的动态下，并且必须满足的条件是，这种语言与用Flask-Babel的localeselector装饰器装饰的函数选择的语言不匹配。-->
-    {% if post.language and post.language != g.locale %}
-        <br><br>
-        <span id="translation{{ post.id }}">
-            <a href="javascript:translate(
-                        '#post{{ post.id }}',
-                        '#translation{{ post.id }}',
-                        '{{ post.language }}',
-                        '{{ g.locale }}');">
-            {{ _('Translate') }}</a>
-        </span>
-    {% endif %}
+<!--展示一个"翻译"链接，我在_post.html子模板中执行此操作，以便此功能出现在显示用户动态的任何页面上。 翻译链接只会出现在检测到语言种类的动态下，并且必须满足的条件是，这种语言与用Flask-Babel的localeselector装饰器装饰的函数选择的语言不匹配。-->
+{% if post.language and post.language != g.locale %}
+    <br><br>
+    <span id="translation{{ post.id }}">
+        <a href="javascript:translate(
+                    '#post{{ post.id }}',
+                    '#translation{{ post.id }}',
+                    '{{ post.language }}',
+                    '{{ g.locale }}');">
+        {{ _('Translate') }}</a>
+    </span>
+{% endif %}
 
-            </td>
-        </tr>
-    </table>
+        </td>
+    </tr>
+</table>
