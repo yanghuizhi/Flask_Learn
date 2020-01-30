@@ -93,11 +93,11 @@ flask db downgrade           # 回滚数据库迁移
 
 
 ## Flask-Moment
-Moment.js是一个小型的JavaScript开源库，它将日期和时间转换成目前可以想象到的所有格式。 不久前，我创建了Flask-Moment，一个小型Flask插件，它可以使你在应用中轻松使用moment.js。
+Moment.js是一个小型的JavaScript开源库，它将日期和时间转换成目前可以想象到的所有格式。 
  
-与其他插件不同的是，Flask-Moment与moment.js一起工作，因此应用的所有模板都必须包含moment.js。为了确保该库始终可用，我将把它添加到基础模板中，可以通过两种方式完成。 最直接的方法是显式添加一个<script>标签来引入库，但Flask-Moment的moment.include_moment()函数可以更容易地实现它，它直接生成了一个<script>标签并在其中包含moment.js：
+与其他插件不同的是，Flask-Moment与moment.js一起工作，因此应用的所有模板都必须包含moment.js。为了确保该库始终可用，可将它添加到基础模板中，可以通过两种方式完成。 
 
-app/templates/base.html：在基础模板中包含moment.js
+最直接的方法是显式添加一个`<script>`标签来引入库，但Flask-Moment的`moment.include_moment()`函数可以更容易地实现它，它直接生成了一个`<script>`标签并在其中包含moment.js：
 
     {% block scripts %}
         {{ super() }}
@@ -106,14 +106,15 @@ app/templates/base.html：在基础模板中包含moment.js
 
 我在这里添加的scripts块是Flask-Bootstrap基础模板暴露的另一个块，这是JavaScript引入的地方。该块与之前的块不同的地方在于它已经在基础模板中定义了一些内容了。我想要追加moment.js库的话，就需要使用super()语句，才能继承基础模板中已有的内容，否则就是替换。
 
-使用Moment.js
+### 使用Moment.js
 Moment.js为浏览器提供了一个moment类。 呈现时间戳的第一步是创建此类的对象，并以ISO 8601格式传递所需的时间戳。 这里是一个例子：
 
-t = moment('2017-09-28T21:45:23Z')
-如果你对日期和时间不熟悉ISO 8601标准格式，格式如下：{{ year }}-{{ month }}-{{ day }}T{{ hour }}:{{ minute }}:{{ second }}{{ timezone }}。 我已经决定我只使用UTC时区，因此最后一部分总是将会是Z，它表示ISO 8601标准中的UTC。
+`t = moment('2017-09-28T21:45:23Z')`
+
+如果你对日期和时间不熟悉ISO 8601标准格式，格式如下：`{{ year }}-{{ month }}-{{ day }}T{{ hour }}:{{ minute }}:{{ second }}{{ timezone }}`。 我已经决定我只使用UTC时区，因此最后一部分总是将会是Z，它表示ISO 8601标准中的UTC。
 
 moment对象为不同的渲染选项提供了几种方法。 以下是一些最常见的几种：
-
+```python
 moment('2017-09-28T21:45:23Z').format('L')
 "09/28/2017"
 moment('2017-09-28T21:45:23Z').format('LL')
@@ -128,7 +129,9 @@ moment('2017-09-28T21:45:23Z').fromNow()
 "7 hours ago"
 moment('2017-09-28T21:45:23Z').calendar()
 "Today at 2:45 PM"
-此示例创建了一个moment对象，该对象被初始化为2017年9月28日晚上9:45 UTC。 你可以看到，我上面尝试的所有选项都以UTC-7时区来呈现，因为这是我计算机上配置的时区。你可以在microblog上进行此操作，只要你引入了moment.js。或者你也可以在 https://momentjs.com/ 上尝试。
+```
+
+此示例创建了一个moment对象，该对象被初始化为2017年9月28日晚上9:45 UTC。 你可以看到，我上面尝试的所有选项都以UTC-7时区来呈现，因为这是我计算机上配置的时区。你可以在microblog上进行此操作，只要你引入了[moment.js](https://momentjs.com/)。或者你也可以在上面尝试。
 
 请注意不同的方法是如何创建的不同的表示。 使用format()，你可以控制字符串的输出格式，类似于Python中的strftime函数。 fromNow()和calendar()方法很有趣，因为它们会根据当前时间显示时间戳，因此你可以获得诸如“一分钟前”或“两小时内”等输出。
 
@@ -138,144 +141,82 @@ moment('2017-09-28T21:45:23Z').calendar()
 
 app/templates/user.html: 使用moment.js渲染时间戳。
 
-                {% if user.last_seen %}
-                <p>Last seen on: {{ moment(user.last_seen).format('LLL') }}</p>
-                {% endif %}
+    {% if user.last_seen %}
+        <p>Last seen on: {{ moment(user.last_seen).format('LLL') }}</p>
+    {% endif %}
+                
 如你所见，Flask-Moment使用的语法类似于JavaScript库的语法，其中一个区别是，moment()的参数现在是Python的datetime对象，而不是ISO 8601字符串。 从模板发出的moment()调用也会自动生成所需的JavaScript代码，以将呈现的时间戳插入DOM的适当位置。
 
 我可以利用Flask-Moment和moment.js的第二个地方是被主页和个人主页调用的*_post.html*子模板。 在该模板的当前版本中，每条用户动态都以“用户名说：”行开头。 现在我可以添加一个用fromNow()渲染的时间戳：
 
 app/templates/_post.html: 在用户动态子模板中渲染时间戳。
 
-                 <a href="{{ url_for('user', username=post.author.username) }}">
-                    {{ post.author.username }}
-                </a>
-                said {{ moment(post.timestamp).fromNow() }}:
-                <br>
-                {{ post.body }}
+     <a href="{{ url_for('user', username=post.author.username) }}">
+        {{ post.author.username }}
+    </a>
+    said {{ moment(post.timestamp).fromNow() }}:
+    <br>
+    {{ post.body }}
                 
 # Flask-Babel
-用于简化翻译工作
-
-标记文本以在Python源代码中执行翻译
-好吧，坏消息来了。 支持多语言的常规流程是在源代码中标记所有需要翻译的文本。 文本标记后，Flask-Babel将扫描所有文件，并使用gettext工具将这些文本提取到单独的翻译文件中。 不幸的是，这是一个繁琐的任务，并且是启用翻译的必要条件。
-
-我将在这里向你展示标记操作的几个示例，你也可以从下载包获取本章完整的更改集，当然，也可以直接查看GitHub的页面。
+用于简化翻译工作, 支持多语言的常规流程是在源代码中标记所有需要翻译的文本。 文本标记后，Flask-Babel将扫描所有文件，并使用gettext工具将这些文本提取到单独的翻译文件中。 不幸的是，这是一个繁琐的任务，并且是启用翻译的必要条件。
 
 为翻译而标记文本的方式是将它们封装在一个函数调用中，该函数调用为_()，仅仅是一个下划线。最简单的情况是源代码中出现的字符串。下面是一个flask()语句的例子：
 
-from flask_babel import _
-# ...
-flash(_('Your post is now live!'))
-_()函数用于原始语言文本（在这种情况下是英文）的封装。 该函数将使用由localeselector装饰器装饰的选择函数，来为给定客户端查找正确的翻译语言。 _()函数随后返回翻译后的文本，在本处，翻译后的文本将成为flash()的参数。
-
-但是不可能每个情况都这么简单，试想如下的另一个flash()调用：
-
-flash('User {} not found.'.format(username))
-该文本具有一个安插在静态文本中间的动态组件。 _()函数的语法支持这种类型的文本，但它基于旧版本的字符串替换语法：
-
-flash(_('User %(username)s not found.', username=username))
-还有更难处理的情况。 有些字符串文字并非是在发生请求时分配的，比如在应用启动时。因此在评估这些文本时，无法知道要使用哪种语言。 一个例子是与表单字段相关的标签，处理这些文本的唯一解决方案是找到一种方法来延迟对字符串的评估，直到它被使用，比如有实际上的请求发生了。 Flask-Babel提供了一个称为lazy_gettext()的_()函数的延迟评估的版本：
-
-from flask_babel import lazy_gettext as _l
-
-class LoginForm(FlaskForm):
-    username = StringField(_l('Username'), validators=[DataRequired()])
+    from flask_babel import _
     # ...
-在这里，我正在导入的这个翻译函数被重命名为_l()，以使其看起来与原始的_()相似。 这个新函数将文本包装在一个特殊的对象中，这个对象会在稍后的字符串使用时触发翻译。
+    flash(_('Your post is now live!'))
 
-Flask-Login插件只要将用户重定向到登录页面，就会闪现消息。 此消息为英文，来自插件本身。 为了确保这个消息也能被翻译，我将重写默认消息，并用_l()函数进行延迟处理：
+`_()`函数用于原始语言文本（在这种情况下是英文）的封装。 该函数将使用由localeselector装饰器装饰的选择函数，来为给定客户端查找正确的翻译语言。 _()函数随后返回翻译后的文本，在本处，翻译后的文本将成为flash()的参数。
 
-login = LoginManager(app)
-login.login_view = 'login'
-login.login_message = _l('Please log in to access this page.')
-标记文本以在模板中进行翻译
+但是不可能每个情况都这么简单，有些字符串文字并非是在发生请求时分配的，比如在应用启动时。因此在评估这些文本时，无法知道要使用哪种语言。 一个例子是与表单字段相关的标签，处理这些文本的唯一解决方案是找到一种方法来延迟对字符串的评估，直到它被使用，比如有实际上的请求发生了。 `Flask-Babel`提供了一个称为`lazy_gettext()`的`_()`函数的延迟评估的版本：
 
-提取文本进行翻译
+    from flask_babel import lazy_gettext as _l
+
+在这里，我正在导入的这个翻译函数被重命名为`_l()`，以使其看起来与原始的`_()`相似。 这个新函数将文本包装在一个特殊的对象中，这个对象会在稍后的字符串使用时触发翻译。
+
+Flask-Login插件只要将用户重定向到登录页面，就会闪现消息。 此消息为英文，来自插件本身。 为了确保这个消息也能被翻译，我将重写默认消息，并用`_l()`函数进行延迟处理：
+
+### 提取文本进行翻译
 一旦应用所有_()和_l()都到位了，你可以使用pybabel命令将它们提取到一个*.pot文件中，该文件代表可移植对象模板*。 这是一个文本文件，其中包含所有标记为需要翻译的文本。 这个文件的目的是作为一个模板来为每种语言创建翻译文件。
 
 提取过程需要一个小型配置文件，告诉pybabel哪些文件应该被扫描以获得可翻译的文本。 下面你可以看到我为这个应用创建的babel.cfg：
 
-babel.cfg：PyBabel配置文件。
+babel.cfg：PyBabel配置文件
 
-[python: app/**.py]
-[jinja2: app/templates/**.html]
-extensions=jinja2.ext.autoescape,jinja2.ext.with_
+    [python: app/**.py]
+    [jinja2: app/templates/**.html]
+    extensions=jinja2.ext.autoescape,jinja2.ext.with_
+
 前两行分别定义了Python和Jinja2模板文件的文件名匹配模式。 第三行定义了Jinja2模板引擎提供的两个扩展，以帮助Flask-Babel正确解析模板文件。
 
 可以使用以下命令来将所有文本提取到* .pot *文件：
 
-(venv) $ pybabel extract -F babel.cfg -k _l -o messages.pot .
+    (venv) $ pybabel extract -F babel.cfg -k _l -o messages.pot .
 pybabel extract命令读取-F选项中给出的配置文件，然后从命令给出的目录（当前目录或本处的. ）扫描与配置的源匹配的目录中的所有代码和模板文件。 默认情况下，pybabel将查找_()以作为文本标记，但我也使用了重命名为_l()的延迟版本，所以我需要用-k _l来告诉该工具也要查找它 。 -o选项提供输出文件的名称。
 
 我应该注意，messages.pot文件不需要合并到项目中。 这是一个只要再次运行上面的命令，就可以在需要时轻松地重新生成的文件。 因此，不需要将该文件提交到源代码管理。
 
-生成语言目录
+### 生成语言目录
 该过程的下一步是在除了原始语言（在本例中为英语）之外，为每种语言创建一份翻译。 我要从添加西班牙语（语言代码es）开始，所以这样做的命令是：
 
-(venv) $ pybabel init -i messages.pot -d app/translations -l es
-creating catalog app/translations/es/LC_MESSAGES/messages.po based on messages.pot
+    (venv) $ pybabel init -i messages.pot -d app/translations -l es
+    creating catalog app/translations/es/LC_MESSAGES/messages.po based on messages.pot
 pybabel init命令将messages.pot文件作为输入，并将语言目录写入-d选项中指定的目录中，-l选项中指定的是翻译语言。 我将在app/translations目录中安装所有翻译，因为这是Flask-Babel默认提取翻译文件的地方。 该命令将在该目录内为西班牙数据文件创建一个es子目录。 特别是，将会有一个名为app/translations/es/LC_MESSAGES/messages.po的新文件，是需要翻译的文件路径。
 
 如果你想支持其他语言，只需要各自的语言代码重复上述命令，就能使得每种语言都有一个包含messages.po文件的存储库。
 
-在每个语言存储库中创建的messages.po文件使用的格式是语言翻译的事实标准，使用的格式为gettext。 以下是西班牙语messages.po开头的若干行：
+在每个语言存储库中创建的messages.po文件使用的格式是语言翻译的事实标准，使用的格式为gettext。   
 
-# Spanish translations for PROJECT.
-# Copyright (C) 2017 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
-#
-msgid ""
-msgstr ""
-"Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-09-29 23:23-0700\n"
-"PO-Revision-Date: 2017-09-29 23:25-0700\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: es\n"
-"Language-Team: es <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.5.1\n"
-
-#: app/email.py:21
-msgid "[Microblog] Reset Your Password"
-msgstr ""
-
-#: app/forms.py:12 app/forms.py:19 app/forms.py:50
-msgid "Username"
-msgstr ""
-
-#: app/forms.py:13 app/forms.py:21 app/forms.py:43
-msgid "Password"
-msgstr ""
 如果你跳过首段，可以看到后面的是从_()和_l()调用中提取的字符串列表。 对每个文本，都会展示其在应用中的引用位置。 然后，msgid行包含原始语言的文本，后面的msgstr行包含一个空字符串。 这些空字符串需要被编辑，以使目标语言中的文本内容被填充。
 
 有很多翻译应用程序与.po文件一起工作。 如果你擅长编辑文本文件，量少的时候也就罢了，但如果你正在处理大型项目，可能会推荐使用专门的编辑器。 最流行的翻译应用程序是开源的poedit，可用于所有主流操作系统。 如果你熟悉vim，那么po.vim 插件会提供一些键值映射，使得处理这些文件更加轻松。
 
-在添加翻译后，你可以在下面看到一部分西班牙语messages.po：
-
-#: app/email.py:21
-msgid "[Microblog] Reset Your Password"
-msgstr "[Microblog] Nueva Contraseña"
-
-#: app/forms.py:12 app/forms.py:19 app/forms.py:50
-msgid "Username"
-msgstr "Nombre de usuario"
-
-#: app/forms.py:13 app/forms.py:21 app/forms.py:43
-msgid "Password"
-msgstr "Contraseña"
-本章的下载包中包含所有翻译，此文件当然也在其中，所以你不必担心这部分的翻译工作。
-
 messages.po文件是一种用于翻译的源文件。 当你想开始使用这些翻译后的文本时，这个文件需要被编译成一种格式，这种格式在运行时可以被应用程序使用。 要编译应用程序的所有翻译，可以使用pybabel compile命令，如下所示：
 
-(venv) $ pybabel compile -d app/translations
-compiling catalog app/translations/es/LC_MESSAGES/messages.po to
-app/translations/es/LC_MESSAGES/messages.mo
+    (venv) $ pybabel compile -d app/translations
+    compiling catalog   app/translations/es/LC_MESSAGES/messages.po to
+    app/translations/es/LC_MESSAGES/messages.mo
 此操作在每个语言存储库中的messages.po旁边添加messages.mo文件。 .mo文件是Flask-Babel将用于为应用程序加载翻译的文件。
 
 在为西班牙语或任何其他添加到项目中的语言创建messages.mo文件之后，可以在应用中使用这些语言。 如果你想查看应用程序以西班牙语显示的方式，则可以在Web浏览器中编辑语言配置，以将西班牙语作为首选语言。 对Chrome，这是设置页面的高级部分：
@@ -284,65 +225,45 @@ Chrome语言选项
 
 如果你不想更改浏览器设置，另一种方法是通过使localeselector函数始终返回一种语言来强制实现。 对西班牙语，你可以这样做：
 
-app/__init__.py：选择最佳语言。
-
-@babel.localeselector
-def get_locale():
-    # return request.accept_languages.best_match(app.config['LANGUAGES'])
-    return 'es'
+    app/__init__.py：选择最佳语言。
+    
+    @babel.localeselector
+    def get_locale():
+        # return request.accept_languages.best_match(app.config['LANGUAGES'])
+        return 'es'
 使用为西班牙语配置的浏览器运行该应用或返回es的localeselector函数，将使所有文本在使用该应用时显示为西班牙文。
 
-更新翻译
+### 更新翻译
 处理翻译时的一个常见情况是，即使翻译文件不完整，你也可能要开始使用翻译文件。 这是非常好的，你可以编译一个不完整的messages.po文件，任何可用的翻译都将被使用，而任何缺失的部分将使用原始语言。 随后，你可以继续处理翻译并再次编译，以便在取得进展时更新messages.mo文件。
 
 如果在添加_()包装器时错过了一些文本，则会出现另一种常见情况。 在这种情况下，你会发现你错过的那些文本将保持为英文，因为Flask-Babel对他们一无所知。 当你检测到这种情况时，会想要将其用_()或_l()包装，然后执行更新过程，这包括两个步骤：
 
-(venv) $ pybabel extract -F babel.cfg -k _l -o messages.pot .
-(venv) $ pybabel update -i messages.pot -d app/translations
+    (venv) $ pybabel extract -F babel.cfg -k _l -o messages.pot .
+    (venv) $ pybabel update -i messages.pot -d app/translations
 extract命令与我之前执行的命令相同，但现在它会生成messages.pot的新版本，其中包含所有以前的文本以及最近用_()或_l()包装的文本。 update调用采用新的messages.pot文件并将其合并到与项目相关的所有messages.po文件中。 这将是一个智能合并，其中任何现有的文本将被单独保留，而只有在messages.pot中添加或删除的条目才会受到影响。
 
 messages.po文件更新后，你就可以继续新的测试了，再次编译它，以便对应用生效。
 
-翻译日期和时间
+### 翻译日期和时间
 现在，我已经为Python代码和模板中的所有文本提供了完整的西班牙语翻译，但是如果你使用西班牙语运行应用并且是一个很好的观察者，那么会注意到还有一些内容以英文显示。 我指的是由Flask-Moment和moment.js生成的时间戳，显然这些时间戳并未包含在翻译工作中，因为这些包生成的文本都不是应用程序源代码或模板的一部分。
 
 moment.js库确实支持本地化和国际化，所以我需要做的就是配置适当的语言。 Flask-Babel通过get_locale()函数返回给定请求的语言和语言环境，所以我要做的就是将语言环境添加到g对象，以便我可以从基础模板中访问它：
 
-app/routes.py：存储选择的语言到flask.g中。
-
-# ...
-from flask import g
-from flask_babel import get_locale
-
-# ...
-
-@app.before_request
-def before_request():
-    # ...
-    g.locale = str(get_locale())
 Flask-Babel的get_locale()函数返回一个本地语言对象，但我只想获得语言代码，可以通过将该对象转换为字符串来获取语言代码。 现在我有了g.locale，可以从基础模板中访问它，并以正确的语言配置moment.js：
 
 app/templates/base.html：为moment.js设置本地语言
 
-...
-{% block scripts %}
-    {{ super() }}
-    {{ moment.include_moment() }}
-    {{ moment.lang(g.locale) }}
-{% endblock %}
-现在所有的日期和时间都与文本使用相同的语言了。 你可以在下面看到西班牙语的外观：
-
-西班牙语的Microblog
-
-此时，除用户在用户动态或个人资料说明中提供的文本外，所有其他的文本均可翻译成其他语言。
-
-命令行增强
-
-
-
+    ...
+    {% block scripts %}
+        {{ super() }}
+        {{ moment.include_moment() }}
+        {{ moment.lang(g.locale) }}
+    {% endblock %}
+现在所有的日期和时间都与文本使用相同的语言了。  
  
-# Flask中，blueprint
-
+此时，除用户在用户动态或个人资料说明中提供的文本外，所有其他的文本均可翻译成其他语言。
+ 
+## Flask中，blueprint
 - 在Flask中，blueprint是代表应用子集的逻辑结构。
 - blueprint可以包括路由，视图函数，表单，模板和静态文件等元素。
 - 如果在单独的Python包中编写blueprint，那么你将拥有一个封装了应用特定功能的组件。
