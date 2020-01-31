@@ -1,3 +1,9 @@
+# !/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Author: yanghuizhi
+# Time: 2020/1/21 6:58 PM
+
+
 from flask import render_template, current_app
 from flask_babel import _
 from app.email import send_email

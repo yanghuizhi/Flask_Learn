@@ -1,3 +1,9 @@
+# !/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Author: yanghuizhi
+# Time: 2020/1/31 2:32 PM
+
+
 # 搜索模块
 
 from flask import current_app
@@ -26,7 +32,15 @@ def query_index(index, query, page, per_page):
         return [], 0
     search = current_app.elasticsearch.search(
         index=index,
-        body={'query': {'multi_match': {'query': query, 'fields': ['*']}},
-              'from': (page - 1) * per_page, 'size': per_page})
+        body={
+            'query': {
+                'multi_match': {
+                    'query': query,
+                    'fields': ['*']
+                }
+            },
+                'from': (page - 1) * per_page,
+                'size': per_page}
+    )
     ids = [int(hit['_id']) for hit in search['hits']['hits']]
     return ids, search['hits']['total']['value']

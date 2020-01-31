@@ -1,3 +1,9 @@
+# !/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Author: yanghuizhi
+# Time: 2020/1/21 6:58 PM
+
+
 from flask import request
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, TextAreaField

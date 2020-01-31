@@ -1,18 +1,24 @@
+# !/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Author: yanghuizhi
+# Time: 2020/1/31 2:32 PM
+
+
+# 命令行增强功能，所以现在工作流程就简便多了，而且不需要记住长而复杂的命令。
+#
+# 要添加新的语言，请使用：
+# (venv) $ flask translate init <language-code>
+#
+# 在更改_()和_l()语言标记后更新所有语言：
+# (venv) $ flask translate update
+#
+# 在更新翻译文件后编译所有语言：
+# (venv) $ flask translate compile
+# """
+
 import os
 import click
 
-"""
-命令行增强功能，所以现在工作流程就简便多了，而且不需要记住长而复杂的命令。 
-
-要添加新的语言，请使用：
-(venv) $ flask translate init <language-code>
-
-在更改_()和_l()语言标记后更新所有语言：
-(venv) $ flask translate update
-
-在更新翻译文件后编译所有语言：
-(venv) $ flask translate compile
-"""
 
 def register(app):
     @app.cli.group()

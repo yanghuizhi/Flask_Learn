@@ -1,4 +1,4 @@
+# 存储公开环境变量
 
-# 这是注释
 
 FLASK_APP=Flask_Learn.py

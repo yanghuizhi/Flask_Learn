@@ -1,11 +1,14 @@
+# !/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Author: yanghuizhi
+# Time: 2020/1/21 6:58 PM
+
+
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 from flask_babel import _, lazy_gettext as _l
 from app.models import User
-
-# _() 用于原始语言标记翻译
-# _l() 针对无法提前评估的文本，进行延迟评估
 
 
 class LoginForm(FlaskForm):  # 用户登录表单

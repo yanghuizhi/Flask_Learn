@@ -157,7 +157,11 @@ app/templates/_post.html: 在用户动态子模板中渲染时间戳。
     said {{ moment(post.timestamp).fromNow() }}:
     <br>
     {{ post.body }}
-                
+  
+
+
+
+             
 # Flask-Babel
 用于简化翻译工作, 支持多语言的常规流程是在源代码中标记所有需要翻译的文本。 文本标记后，Flask-Babel将扫描所有文件，并使用gettext工具将这些文本提取到单独的翻译文件中。 不幸的是，这是一个繁琐的任务，并且是启用翻译的必要条件。
 
@@ -176,6 +180,9 @@ app/templates/_post.html: 在用户动态子模板中渲染时间戳。
 在这里，我正在导入的这个翻译函数被重命名为`_l()`，以使其看起来与原始的`_()`相似。 这个新函数将文本包装在一个特殊的对象中，这个对象会在稍后的字符串使用时触发翻译。
 
 Flask-Login插件只要将用户重定向到登录页面，就会闪现消息。 此消息为英文，来自插件本身。 为了确保这个消息也能被翻译，我将重写默认消息，并用`_l()`函数进行延迟处理：
+
+    _() 用于原始语言标记翻译
+    _l() 针对无法提前评估的文本，进行延迟评估
 
 ### 提取文本进行翻译
 一旦应用所有_()和_l()都到位了，你可以使用pybabel命令将它们提取到一个*.pot文件中，该文件代表可移植对象模板*。 这是一个文本文件，其中包含所有标记为需要翻译的文本。 这个文件的目的是作为一个模板来为每种语言创建翻译文件。
@@ -231,6 +238,7 @@ Chrome语言选项
     def get_locale():
         # return request.accept_languages.best_match(app.config['LANGUAGES'])
         return 'es'
+
 使用为西班牙语配置的浏览器运行该应用或返回es的localeselector函数，将使所有文本在使用该应用时显示为西班牙文。
 
 ### 更新翻译
@@ -264,6 +272,7 @@ app/templates/base.html：为moment.js设置本地语言
 此时，除用户在用户动态或个人资料说明中提供的文本外，所有其他的文本均可翻译成其他语言。
  
 ## Flask中，blueprint
+
 - 在Flask中，blueprint是代表应用子集的逻辑结构。
 - blueprint可以包括路由，视图函数，表单，模板和静态文件等元素。
 - 如果在单独的Python包中编写blueprint，那么你将拥有一个封装了应用特定功能的组件。
@@ -272,7 +281,7 @@ app/templates/base.html：为moment.js设置本地语言
 - 在注册过程中，需要将添加到blueprint中的所有元素传递给应用。
 - 因此，你可以将blueprint视为应用功能的临时存储，以帮助组织代码。
 
-
+      blueprint的@bp.app_errorhandler装饰器和@app.errorhandler装饰器基本没区别，尽管两个装饰器最终都达到了相同的结果，但这样做的目的是试图使blueprint独立于应用，使其更具可移植性。
 
 
 

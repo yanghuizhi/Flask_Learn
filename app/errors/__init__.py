@@ -12,6 +12,7 @@ from app.errors import handlers  # 底部导入避免循环依赖
 
 
 # 错误处理Blueprint
+
 # app/
 #     errors/                    <-- blueprint package
 #         __init__.py            <-- blueprint creation
@@ -21,4 +22,3 @@ from app.errors import handlers  # 底部导入避免循环依赖
 #             404.html
 #             500.html
 #     __init__.py                <-- blueprint registration
-#

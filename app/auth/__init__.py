@@ -26,4 +26,3 @@ from app.auth import routes
 #             reset_password_request.html
 #             reset_password.html
 #     __init__.py                         <-- blueprint registration
-#
