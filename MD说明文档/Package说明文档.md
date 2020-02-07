@@ -1,16 +1,18 @@
 # Welcome to Flask_Learn!
 目录：<br/>
- &nbsp; [Flask](#flask) &nbsp; &nbsp; &nbsp; 基本定义 <br/>
- &nbsp; [Python-dotenv](#python-dotenv) &nbsp; &nbsp; &nbsp; 环境变量配置 <br/>
- &nbsp; [Flask-wtf](#flask-wtf) &nbsp; &nbsp; &nbsp; 集成WTF表单和全局csrd保护功能 <br/>
- &nbsp; [Flask-sqlalchemy](#flask-sqlalchemy) &nbsp; &nbsp; &nbsp; 数据库 <br/>
- &nbsp; [Flask-login](#flask-login) &nbsp; &nbsp; &nbsp; 用户登录 <br/>
- &nbsp; [Flask-mail](#flask-mail) &nbsp; &nbsp; &nbsp; 邮件服务 <br/>
- &nbsp; [Flask-pyjwt](#flask-pyjwt) &nbsp; &nbsp; &nbsp; 安全令牌 <br/>
- &nbsp; [Flask-Moment](#flask-moment) &nbsp; &nbsp; &nbsp; javascript时间插件 <br/>
- &nbsp; [Flask-Babel](#flask-babel) &nbsp; &nbsp; &nbsp; 翻译插件 <br/>  
- &nbsp; [Flask-blueprint](#flask-blueprint) &nbsp; &nbsp; &nbsp; 逻辑子集 <br/>          
-
+[Flask](#flask) &nbsp; &nbsp; &nbsp; 基本定义 <br/>
+[Python-dotenv](#python-dotenv) &nbsp; &nbsp; &nbsp; 环境变量配置 <br/>
+[Flask-SQLalchemy](#flask-sqlalchemy) &nbsp; &nbsp; &nbsp; 操作数据库 <br/>
+[Flask-migrate](#flask-migrate) &nbsp; &nbsp; &nbsp; 管理迁移数据库 <br/>
+[Flask-login](#flask-login) &nbsp; &nbsp; &nbsp; 认证用户状态 <br/>
+[Flask-mail](#flask-mail) &nbsp; &nbsp; &nbsp; 邮件服务 <br/>
+[Flask-pyjwt](#flask-pyjwt) &nbsp; &nbsp; &nbsp; 安全令牌 <br/>
+[Flask-Moment](#flask-moment) &nbsp; &nbsp; &nbsp; 本地化日期和时间 <br/>
+[Flask-Babel](#flask-babel) &nbsp; &nbsp; &nbsp; 翻译插件 <br/>
+[Flask-blueprint](#flask-blueprint) &nbsp; &nbsp; &nbsp; 逻辑子集 <br/>
+[Flask-script](#) &nbsp; &nbsp; &nbsp; 插入脚本，暂无 <br/>
+[Flask-RESTful](#) &nbsp; &nbsp; &nbsp; 开发REST API的工具，暂无 <br/>
+[Flask-Bootstrap](#) &nbsp; &nbsp; &nbsp; 开发REST 集成前端Twitter Bootstrap框架，暂无 <br/> 
 
 ## Flask
 
@@ -18,7 +20,6 @@
 - `redirect()` 函数 : 指引浏览器自动重定向到它的参数所关联的URL. 
 - `flash()` 函数 : 闪现消息，且只显示一次，将函数内的信息返回给`get_flashed_messages()`
 
-- `url_for()` 函数 : 可以更好地管理链接,它使用URL到视图函数的内部映射关系来生成URL。
 
 - `@before_request` 装饰器 : 注册在视图函数之前执行的函数。可以在一处地方编写代码，并让它在任何视图函数之前被执行。
 
@@ -32,31 +33,43 @@ Reads the key,value pair from .env and adds them to environment variable.
 - .env存储敏感信息的环境变量
 - .flaskenv存储公开环境变量
 
-## Flask-wtf
 
-用来处理`web`表单，集成WTForms，并带有 csrf 令牌的安全表单和全局的 csrf 保护的功能。
-
-常用操作`from flask_wtf import FlaskForm` 导入基类
-
-每次我们在建立表单所创建的类都是继承与flask_wtf中的FlaskForm，而FlaskForm是继承WTForms中forms。
-
-```python
-  form.hidden_tag()  # 自定义表单一定要加上，否则会提交不成功。这一行代码实质上是添加了一个隐藏字段csrf_token,这是一个随机生成的token，用来防范黑客攻击。
-  form.validate_on_submit()  # 实例方法会执行form校验的工作, 全部通过之后就会返回True
-```
   
-## Flask-sqlalchemy
+## Flask-SQLalchemy
 
 `flask-sqlalchemy` 是数据库软件的[ORM](https://baike.baidu.com/item/%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E6%98%A0%E5%B0%84/311152?fromtitle=ORM&fromid=3583252&fr=aladdin)，而是支持包含MySQL、PostgreSQL和SQLite在内的很多数据库软件。<br/>
 `flask_migrate` 数据库迁移引擎.
   
     `db.Model`: 它是Flask-SQLAlchemy中所有模型的基类,字段被创建为`db.Column`类的实例，它的可选参数中允许指示哪些字段是唯一的并且是可索引的，这对高效的数据检索十分重要
 
+## Flask-migrate
+管理迁移数据库
 ```python
 flask db init                # 创建迁移数据库，产生migrations的新目录
 flask db migrate -m "..."    # 创建数据库迁移
 flask db upgrade             # 将更改应用到数据库
 flask db downgrade           # 回滚数据库迁移
+```
+常用的SQLAlchemy查询过滤器
+```
+过滤器	说明
+filter()	把过滤器添加到原查询上，返回一个新查询
+filter_by()	把等值过滤器添加到原查询上，返回一个新查询
+limit	使用指定的值限定原查询返回的结果
+offset()	偏移原查询返回的结果，返回一个新查询
+order_by()	根据指定条件对原查询结果进行排序，返回一个新查询
+group_by()	根据指定条件对原查询结果进行分组，返回一个新查询
+```
+常用的SQLAlchemy查询执行器
+```
+方法	说明
+all()	以列表形式返回查询的所有结果
+first()	返回查询的第一个结果，如果未查到，返回None
+first_or_404()	返回查询的第一个结果，如果未查到，返回404
+get()	返回指定主键对应的行，如不存在，返回None
+get_or_404()	返回指定主键对应的行，如不存在，返回404
+count()	返回查询结果的数量
+paginate()	返回一个Paginate对象，它包含指定范围内的结果
 ```
 
 ## Flask-login
@@ -283,8 +296,23 @@ app/templates/base.html：为moment.js设置本地语言
  
 此时，除用户在用户动态或个人资料说明中提供的文本外，所有其他的文本均可翻译成其他语言。
  
-## Flask中，blueprint
+## Flask-blueprint 
 
+为什么学习蓝图？
+- 我们学习Flask框架，是从写单个文件，执行hello world开始的。我们在这单个文件中可以定义路由、视图函数、定义模型等等。但这显然存在一个问题：随着业务代码的增加，将所有代码都放在单个程序文件中，是非常不合适的。这不仅会让代码阅读变得困难，而且会给后期维护带来麻烦。
+
+什么是蓝图？
+- 蓝图：用于实现单个应用的视图、模板、静态文件的集合。
+- 蓝图就是模块化处理的类。
+- 简单来说，蓝图就是一个存储操作路由映射方法的容器，主要用来实现客户端请求和URL相互关联的功能。 在Flask中，使用蓝图可以帮助我们实现模块化应用的功能。
+
+蓝图的运行机制：
+- 蓝图是保存了一组将来可以在应用对象上执行的操作。注册路由就是一种操作,当在程序实例上调用route装饰器注册路由时，这个操作将修改对象的url_map路由映射列表。当我们在蓝图对象上调用route装饰器注册路由时，它只是在内部的一个延迟操作记录列表defered_functions中添加了一个项。当执行应用对象的 `register_blueprint()` 方法时，应用对象从蓝图对象的 defered_functions 列表中取出每一项，即调用应用对象的 add_url_rule() 方法，这将会修改程序实例的路由映射列表。
+- 为了注册blueprint，将使用Flask应用实例的register_blueprint()方法。 
+    在注册blueprint时，任何视图函数，模板，静态文件，错误处理程序等均连接到应用。将blueprint的导入放在app.register_blueprint()的上方，以避免循环依赖。
+    """
+    
+其他说明
 - 在Flask中，blueprint是代表应用子集的逻辑结构。
 - blueprint可以包括路由，视图函数，表单，模板和静态文件等元素。
 - 如果在单独的Python包中编写blueprint，那么你将拥有一个封装了应用特定功能的组件。

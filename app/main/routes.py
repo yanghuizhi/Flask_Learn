@@ -18,14 +18,16 @@ from app.main import bp
 
 @bp.before_app_request
 def before_request():  # 记录用户最后访问时间
-    if current_user.is_authenticated:  # 用户若已登录，给一个当前时间节点
+    if current_user.is_authenticated:
+        # 用户若已登录，给一个当前时间节点
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
-        g.search_form = SearchForm()  # 在请求处理前的处理器中初始化搜索表单
+        g.search_form = SearchForm()
+        # 在请求处理前的处理器中初始化搜索表单
     g.locale = str(get_locale())
 
 
-@bp.route('/', methods=['GET', 'POST']) # 修饰器在作为参数给出的URL和函数之间创建一个关联
+@bp.route('/', methods=['GET', 'POST']) # 将路由映射到视图函数
 @bp.route('/index', methods=['GET', 'POST'])
 @login_required  # 拒绝匿名用户访问
 def index():
@@ -69,7 +71,9 @@ def explore(): # 发现页面，展示所有用户的全部动态。
                            posts=posts.items, next_url=next_url,
                            prev_url=prev_url)
 
-
+# 路由传递的参数默认当做string处理，尖括号中的内容是动态的
+# 可以指定参数类型，例如('/user/<int:id>')，指定int类型
+@app.route('/user/<int:id>')
 @bp.route('/user/<username>')
 @login_required
 def user(username):  # 个人主页

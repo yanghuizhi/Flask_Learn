@@ -4,9 +4,6 @@
 # Time: 2020/1/31 2:32 PM
 
 
-import logging
-from logging.handlers import SMTPHandler, RotatingFileHandler
-import os
 from flask import Flask, request, current_app
 from flask_sqlalchemy import SQLAlchemy     # 数据库
 from flask_migrate import Migrate           # 数据库迁移引擎
@@ -15,10 +12,14 @@ from flask_mail import Mail
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from flask_babel import Babel, lazy_gettext as _l # 翻译
+from logging.handlers import SMTPHandler, RotatingFileHandler
 from elasticsearch import Elasticsearch
-from redis import Redis
-import rq
 from config import Config
+from redis import Redis
+import logging
+import rq
+import os
+
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -33,7 +34,7 @@ babel = Babel() # 全局扫描提取翻译
 
 
 def create_app(config_class=Config):
-    app = Flask(__name__)
+    app = Flask(__name__)  # Flask类接收一个参数__name__
     app.config.from_object(config_class)  # 读取配置
 
     db.init_app(app)  # 数据库注册
@@ -48,17 +49,13 @@ def create_app(config_class=Config):
     app.redis = Redis.from_url(app.config['REDIS_URL'])
     app.task_queue = rq.Queue('microblog-tasks', connection=app.redis)
 
-    """
-    为了注册blueprint，将使用Flask应用实例的register_blueprint()方法。 
-    在注册blueprint时，任何视图函数，模板，静态文件，错误处理程序等均连接到应用。
-    将blueprint的导入放在app.register_blueprint()的上方，以避免循环依赖。
-    """
-    # 注册 app.errors
+    # 每个模块分别注册蓝图
     from app.errors import bp as errors_bp
-    app.register_blueprint(errors_bp)
+    app.register_blueprint(errors_bp)  # 在实例中注册该蓝图
 
     from app.auth import bp as auth_bp
     app.register_blueprint(auth_bp, url_prefix='/auth')
+    # url_prefix参数默认值是根路由，如果指定，会在蓝图注册的路由url中添加前缀。
 
     from app.main import bp as main_bp
     app.register_blueprint(main_bp)
