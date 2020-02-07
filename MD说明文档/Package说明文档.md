@@ -45,7 +45,7 @@ Reads the key,value pair from .env and adds them to environment variable.
   form.validate_on_submit()  # 实例方法会执行form校验的工作, 全部通过之后就会返回True
 ```
   
-## Flask-sqlalchemy `and` Flask_migrate
+## Flask-sqlalchemy
 
 `flask-sqlalchemy` 是数据库软件的[ORM](https://baike.baidu.com/item/%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E6%98%A0%E5%B0%84/311152?fromtitle=ORM&fromid=3583252&fr=aladdin)，而是支持包含MySQL、PostgreSQL和SQLite在内的很多数据库软件。<br/>
 `flask_migrate` 数据库迁移引擎.
