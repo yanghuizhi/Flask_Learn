@@ -4,6 +4,8 @@
 # Time: 2020/1/31 2:32 PM
 
 
+# 注册自定义应用命令
+#
 # 命令行增强功能，所以现在工作流程就简便多了，而且不需要记住长而复杂的命令。
 #
 # 要添加新的语言，请使用：
@@ -24,7 +26,7 @@ def register(app):
     @app.cli.group()
     def translate():
         """Translation and localization commands."""
-        # 为子命令提供基础
+        # translate为子命令的跟，通过app.cli.group()装饰器创建，为子命令提供基础
         pass
 
     @translate.command()

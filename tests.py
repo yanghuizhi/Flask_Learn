@@ -3,17 +3,17 @@ from datetime import datetime, timedelta
 import unittest
 from app import create_app, db
 from app.models import User, Post
-from config import Config
+from app.config import Config
 
 
 class TestConfig(Config):
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = 'sqlite://'
+    SQLALCHEMY_DATABASE_URI = 'sqlite://'  # 覆盖SQLAlchemy配置以使用内存SQLite数据库
     ELASTICSEARCH_URL = None
 
 
 class UserModelCase(unittest.TestCase):
-    def setUp(self):
+    def setUp(self):  # 为每次测试创建一个应用
         self.app = create_app(TestConfig)
         self.app_context = self.app.app_context()
         self.app_context.push()
@@ -100,3 +100,23 @@ class UserModelCase(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
+
+# 新的应用将存储在self.app中，但光是创建一个应用不足以使所有的工作都成功。 思考创建数据库表的db.create_all()语句。 db实例需要注册到应用实例，因为它需要从app.config获取数据库URI，但是当你使用应用工厂时，应用就不止一个了。 那么db如何关联到我刚刚创建的self.app实例呢？
+#
+# 答案在application context中。 还记得current_app变量吗？当不存在全局应用实例导入时，该变量以代理的形式来引用应用实例。 这个变量在当前线程中查找活跃的应用上下文，如果找到了，它会从中获取应用实例。 如果没有上下文，那么就没有办法知道哪个应用实例处于活跃状态，所以current_app就会引发一个异常。 下面你可以看到它是如何在Python控制台中工作的。 这需要通过运行python启动，因为flask shell命令会自动激活应用程序上下文以方便使用。
+#
+# >>> from flask import current_app
+# >>> current_app.config['SQLALCHEMY_DATABASE_URI']
+# Traceback (most recent call last):
+#     ...
+# RuntimeError: Working outside of application context.
+#
+# >>> from app import create_app
+# >>> app = create_app()
+# >>> app.app_context().push()
+# >>> current_app.config['SQLALCHEMY_DATABASE_URI']
+# 'sqlite:////home/miguel/microblog/app.db'
+#
+# 这就是秘密所在！ 在调用你的视图函数之前，Flask推送一个应用上下文，它会使current_app和g生效。 当请求完成时，上下文将与这些变量一起被删除。 为了使db.create_all()调用在单元测试setUp()方法中工作，我为刚刚创建的应用程序实例推送了一个应用上下文，这样db.create_all()可以使用 current_app.config知道数据库在哪里。 然后在tearDown()方法中，我弹出上下文以将所有内容重置为干净状态。
+#
+# 你还应该知道，应用上下文是Flask使用的两种上下文之一，还有一个请求上下文，它更具体，因为它适用于请求。 在处理请求之前激活请求上下文时，Flask的request、session以及Flask-Login的current_user变量才会变成可用状态。

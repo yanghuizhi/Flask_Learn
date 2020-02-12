@@ -1,8 +1,8 @@
 FROM python:3.6-alpine
 
-RUN adduser -D microblog
+RUN adduser -D FLask_Learn
 
-WORKDIR /home/microblog
+WORKDIR /home/FLask_Learn
 
 COPY requirements.txt requirements.txt
 RUN python -m venv venv
@@ -14,10 +14,10 @@ COPY migrations migrations
 COPY Flask_Learn.py config.py boot.sh ./
 RUN chmod a+x boot.sh
 
-ENV FLASK_APP microblog.py
+ENV FLASK_APP FLask_Learn.py
 
-RUN chown -R microblog:microblog ./
-USER microblog
+RUN chown -R FLask_Learn:FLask_Learn ./
+USER FLask_Learn
 
 EXPOSE 5000
 ENTRYPOINT ["./boot.sh"]

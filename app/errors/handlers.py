@@ -10,7 +10,8 @@ from app.errors import bp
 from app.api.errors import error_response as api_error_response
 
 
-def wants_json_response():
+# 为错误响应进行内容协商
+def wants_json_response():  # 函数对JSON和HTML格式比较友好
     return request.accept_mimetypes['application/json'] >= request.accept_mimetypes['text/html']
 
 

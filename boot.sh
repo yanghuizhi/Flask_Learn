@@ -1,5 +1,6 @@
 #!/bin/sh
 # this script is used to boot a Docker container
+# Docker容器启动脚本
 source venv/bin/activate
 while true; do
     flask db upgrade
@@ -10,4 +11,4 @@ while true; do
     sleep 5
 done
 flask translate compile
-exec gunicorn -b :5000 --access-logfile - --error-logfile - microblog:app
+exec gunicorn -b :5000 --access-logfile - --error-logfile - Flask_Learn:app

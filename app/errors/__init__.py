@@ -6,7 +6,6 @@
 
 from flask import Blueprint
 
-# Blueprint必须指定两个参数，第一个表示蓝图的名称，第二个表示蓝图所在模块
 bp = Blueprint('errors', __name__)
 
 from app.errors import handlers  # 底部导入避免循环依赖

@@ -22,34 +22,35 @@ def before_request():  # 记录用户最后访问时间
         # 用户若已登录，给一个当前时间节点
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
-        g.search_form = SearchForm()
-        # 在请求处理前的处理器中初始化搜索表单
-    g.locale = str(get_locale())
+        g.search_form = SearchForm()  # 在请求处理前的处理器中初始化搜索表单
+
+    g.locale = str(get_locale())  # 存储选择的语言到flask.g中
 
 
 @bp.route('/', methods=['GET', 'POST']) # 将路由映射到视图函数
 @bp.route('/index', methods=['GET', 'POST'])
 @login_required  # 拒绝匿名用户访问
 def index():
+    # 运用了 Post/Redirect/Get 模式
     form = PostForm()
-    if form.validate_on_submit():  # form校验
+    if form.validate_on_submit():
+        # 为新的用户动态保存语言字段
         language = guess_language(form.post.data)
         if language == 'UNKNOWN' or len(language) > 5:
             language = ''
         post = Post(body=form.post.data, author=current_user, language=language)
         db.session.add(post)
-        db.session.commit()
+        # db.session.commit()  # 添加这里会存在隐患，导致不能2个用户同时发消息
         flash(_('Your post is now live!'))
         return redirect(url_for('main.index'))
-    # 添加分页
+    db.session.commit()  # 加在这里才是合适的
+    # 通过page查询字符串参数或默认值1，然后使用paginate()方法来检索指定范围的结果
     page = request.args.get('page', 1, type=int)
-    # 表单逻辑
     posts = current_user.followed_posts().paginate(
         page, current_app.config['POSTS_PER_PAGE'], False)
-    # has_next: 当前页之后存在后续页面时为真
-    # has_prev: 当前页之前存在前置页面时为真
-    # next_num: 下一页的页码
-    # prev_num: 上一页的页码
+    # has_prev、has_next: 当前页之前、后存在后续页面时为真
+    # prev_num、next_num: 上一页、下一页
+    # 通过上述更改，两个路由决定要显示的页码
     prev_url = url_for('main.index', page=posts.prev_num) if posts.has_prev else None
     next_url = url_for('main.index', page=posts.next_num) if posts.has_next else None
 
@@ -57,11 +58,9 @@ def index():
                            posts=posts.items, next_url=next_url,
                            prev_url=prev_url)
 
-
 @bp.route('/explore')
 @login_required
 def explore(): # 发现页面，展示所有用户的全部动态。
-    # paginate()方法来检索指定范围的结果
     page = request.args.get('page', 1, type=int)
     posts = Post.query.order_by(Post.timestamp.desc()).paginate(
         page, current_app.config['POSTS_PER_PAGE'], False)
@@ -71,17 +70,16 @@ def explore(): # 发现页面，展示所有用户的全部动态。
                            posts=posts.items, next_url=next_url,
                            prev_url=prev_url)
 
-# 路由传递的参数默认当做string处理，尖括号中的内容是动态的
-# 可以指定参数类型，例如('/user/<int:id>')，指定int类型
-@app.route('/user/<int:id>')
 @bp.route('/user/<username>')
 @login_required
 def user(username):  # 个人主页
     user = User.query.filter_by(username=username).first_or_404()
+
+    # 通过page查询字符串参数或默认值1，然后在获取最新的用户列表并排序，最后使用paginate()方法来检索指定范围的结果
     page = request.args.get('page', 1, type=int)
     posts = user.posts.order_by(Post.timestamp.desc()
             ).paginate(page, current_app.config['POSTS_PER_PAGE'], False)
-    # 分页导航
+    # 由url_for()函数生成的分页链接需要额外的username参数，因为它们指向个人主页，个人主页依赖用户名作为URL的动态组件。
     next_url = url_for('main.user', username=user.username, page=posts.next_num) if posts.has_next else None
     prev_url = url_for('main.user', username=user.username, page=posts.prev_num) if posts.has_prev else None
     return render_template('user.html', user=user, posts=posts.items, next_url=next_url, prev_url=prev_url)
@@ -96,14 +94,16 @@ def user_popup(username):  # 用户弹窗视图函数
 
 @bp.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
-def edit_profile():  # 个人资料编辑器, 将 EditProfileForm 和模版结合起来
-    form = EditProfileForm(current_user.username)  # validate_username 校验生效
+def edit_profile():  # 个人资料编辑器
+    form = EditProfileForm(current_user.username)
     if form.validate_on_submit():
         current_user.username = form.username.data
         current_user.about_me = form.about_me.data
         db.session.commit()
         flash(_('Your changes have been saved.'))
-        return redirect(url_for('main.edit_profile'))
+        # return redirect(url_for('main.edit_profile'))
+        return redirect(url_for('main.user',username=current_user.username))
+        # 修改 return，使得编辑后直接跳转主页，少一步操作
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
@@ -113,7 +113,7 @@ def edit_profile():  # 个人资料编辑器, 将 EditProfileForm 和模版结�
 
 @bp.route('/follow/<username>')
 @login_required
-def follow(username): # 集成粉丝关注机制
+def follow(username): # 粉丝关注机制
     user = User.query.filter_by(username=username).first()
     if user is None:
         flash(_('User %(username)s not found.', username=username))
@@ -129,7 +129,7 @@ def follow(username): # 集成粉丝关注机制
 
 @bp.route('/unfollow/<username>')
 @login_required
-def unfollow(username):  # 集成取消关注粉丝机制
+def unfollow(username):  # 取消关注粉丝机制
     user = User.query.filter_by(username=username).first()
     if user is None:
         flash(_('User %(username)s not found.', username=username))
@@ -145,10 +145,11 @@ def unfollow(username):  # 集成取消关注粉丝机制
 
 @bp.route('/translate', methods=['POST'])
 @login_required
-def translate_text():
-    return jsonify({'text': translate(request.form['text'],
-                                      request.form['source_language'],
-                                      request.form['dest_language'])})
+def translate_text():  # 文本翻译视图函数
+    return jsonify(
+        {'text': translate(request.form['text'],
+        request.form['source_language'],
+        request.form['dest_language'])})
 
 
 @bp.route('/search')
@@ -169,13 +170,14 @@ def search():
 
 @bp.route('/send_message/<recipient>', methods=['GET', 'POST'])
 @login_required
-def send_message(recipient):
+def send_message(recipient):  # 发送私有消息路由
     user = User.query.filter_by(username=recipient).first_or_404()
     form = MessageForm()
     if form.validate_on_submit():
         msg = Message(author=current_user, recipient=user,
                       body=form.message.data)
         db.session.add(msg)
+        # 更新用户通知
         user.add_notification('unread_message_count', user.new_messages())
         db.session.commit()
         flash(_('Your message has been sent.'))
@@ -186,9 +188,10 @@ def send_message(recipient):
 
 @bp.route('/messages')
 @login_required
-def messages():
+def messages():  # 查看消息视图函数
+    # 更新时间字段，标记所有消息为已读
     current_user.last_message_read_time = datetime.utcnow()
-    current_user.add_notification('unread_message_count', 0)
+    current_user.add_notification('unread_message_count', 0)  # 查看消息视图函数
     db.session.commit()
     page = request.args.get('page', 1, type=int)
     messages = current_user.messages_received.order_by(
@@ -204,7 +207,7 @@ def messages():
 
 @bp.route('/export_posts')
 @login_required
-def export_posts():
+def export_posts():  # 导出用户动态路由和视图函数
     if current_user.get_task_in_progress('export_posts'):
         flash(_('An export task is currently in progress'))
     else:
@@ -215,7 +218,7 @@ def export_posts():
 
 @bp.route('/notifications')
 @login_required
-def notifications():
+def notifications():  # 通知视图函数
     since = request.args.get('since', 0.0, type=float)
     notifications = current_user.notifications.filter(
         Notification.timestamp > since).order_by(Notification.timestamp.asc())

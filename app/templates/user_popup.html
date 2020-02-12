@@ -1,10 +1,15 @@
 <!--用户弹窗模板-->
-
+<!--当用户将鼠标指针悬停在用户名上时，小节中编写的JavaScript代码将会调用此路由。客户端将服务器端返回的响应中的html内容显示在弹出窗口中。 当用户移开鼠标时，弹出窗口将被删除。-->
 <table class="table">
     <tr>
-        <td width="64" style="border: 0px;"><img src="{{ user.avatar(64) }}"></td>
+        <td width="64" style="border: 0px;">
+            <img src="{{ user.avatar(64) }}">
+        </td>
         <td style="border: 0px;">
-            <p><a href="{{ url_for('main.user', username=user.username) }}">{{ user.username }}</a></p>
+            <p>
+                <a href="{{ url_for('main.user', username=user.username) }}">
+                    {{ user.username }}</a>
+            </p>
             <small>
                 {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
                 {% if user.last_seen %}
@@ -13,9 +18,11 @@
                 <p>{{ _('%(count)d followers', count=user.followers.count()) }}, {{ _('%(count)d following', count=user.followed.count()) }}</p>
                 {% if user != current_user %}
                     {% if not current_user.is_following(user) %}
-                    <a href="{{ url_for('main.follow', username=user.username) }}">{{ _('Follow') }}</a>
+                    <a href="{{ url_for('main.follow', username=user.username) }}">
+                        {{ _('Follow') }}</a>
                     {% else %}
-                    <a href="{{ url_for('main.unfollow', username=user.username) }}">{{ _('Unfollow') }}</a>
+                    <a href="{{ url_for('main.unfollow', username=user.username) }}">
+                        {{ _('Unfollow') }}</a>
                     {% endif %}
                 {% endif %}
             </small>

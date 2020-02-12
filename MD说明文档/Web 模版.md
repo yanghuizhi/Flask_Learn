@@ -1,52 +1,76 @@
 # Welcome to Templates!
 
-[1、变量](#1、变量) &nbsp; &nbsp; &nbsp;  <br/>
-[2、反向路由](#2、反向路由) &nbsp; &nbsp; &nbsp;  <br/>
-[3、过滤器](#3、过滤器) &nbsp; &nbsp; &nbsp;  <br/>
+[变量](#变量) &nbsp; &nbsp; &nbsp;  <br/>
+[反向路由](#反向路由) &nbsp; &nbsp; &nbsp;  <br/>
+[过滤器](#过滤器)
+1. [字符串操作](#字符串操作) 
+2. [列表操作](#列表操作) 
+3. [自定义过滤器](#自定义过滤器)
+
+[其他参数](#其他参数)
+[模版继承](#模版继承) &nbsp; &nbsp; &nbsp;  <br/>
 
 
 
-## 1、变量
-在模板中 `{{ variable }}` 结构表示变量，是一种特殊的占位符，告诉模板引擎这个位置的值，从渲染模板时使用的数据中获取；Jinja2除了能识别基本类型的变量，还能识别{}；
+## 变量
+`{{ variable }}` 结构表示变量，是一种特殊的占位符，告诉模板引擎这个位置的值，从渲染模板时使用的数据中获取；Jinja2除了能识别基本类型的变量，还能识别{}；
 
-并且 `{{ ... }}` 包含的内容是动态的, 只有在运行时才知道具体表示成什么样子.
+- {# 注释表达方式 #}
+- {{ ... }} 动态内容，运行时才知道具体内容
 
-## 2、反向路由
-Flask提供了 `url_for()` 辅助函数，接收视图函数名作为参数，返回对应的URL，可以使用程序URL映射中保存的信息生成URL；
+
+
+
+
+
+
+## 反向路由
+
+Flask提供了 `url_for()` 辅助函数，它使用URL到视图函数的内部映射关系来生成URL。 接收视图函数名作为参数，返回对应的URL。
+
+`url_for()`函数的一个有趣的地方是，你可以添加任何关键字参数，如果这些参数的名字没有直接在URL中匹配使用，那么Flask将它们设置为URL的查询字符串参数。
+
 ```python
 @app.route('/index')
 def index():
-    return render_template('index.html')
+    return render_template('index.html')  # 返回的是 /index
 
 @app.route('/user/')
 def redirect():
     return url_for('index',_external=True)  # 返回绝对地址
+    
+# 路由传递的参数默认当做string处理，尖括号<和>包裹中的内容是动态的
+# 可以指定参数类型，例如('/user/<int:id>')，指定int类型    
+@bp.route('/user/<username>')
+@bp.route('/user/<int:id>')
+def user(username):
+    pass
 ```
 
-## 3、过滤器
+
+
+
+
+
+## 过滤器
+
 过滤器的本质就是函数。有时候我们不仅仅只是需要输出变量的值，我们还需要修改变量的显示，甚至格式化、运算等等，这就用到了过滤器。 过滤器的使用方式为：变量名 | 过滤器。 过滤器名写在变量名后面，中间用 | 分隔。如：`{{variable | capitalize}}`，这个过滤器的作用：把变量variable的值的首字母转换为大写，其他字母转换为小写。 其他常用过滤器如下：
 
-### 字符串操作：
+### 字符串操作
 
 safe：禁用转义；
-```
-  <p>{{ '<em>hello</em>' | safe }}
-``` 
+
+      <p>{{ '<em>hello</em>' | safe }}
 
 capitalize：把变量值的首字母转成大写，其余字母转小写；
 ```
   <p>{{ 'hello' | capitalize }}</p>
 ```
 
-lower：把值转成小写；
-```
-  <p>{{ 'HELLO' | lower }}</p>
-```
-
-upper：把值转成大写；
-```
-  <p>{{ 'hello' | upper }}</p>
-```
+lower：把值转成大写、小写；
+    
+    <p>{{ 'hello' | upper }}</p>
+    <p>{{ 'HELLO' | lower }}</p>
 
 title：把值中的每个单词的首字母都转成大写；
 ```
@@ -73,6 +97,7 @@ striptags：渲染之前把值中所有的HTML标签都删掉；
 ```
 
 ### 列表操作
+
 first：取第一个元素
 ```
   <p>{{ [1,2,3,4,5,6] | first }}</p>
@@ -83,7 +108,7 @@ last：取最后一个元素
   <p>{{ [1,2,3,4,5,6] | last }}</p>
 ```
 
-length：获取列表长度
+*length：获取列表长度*
 ```
   <p>{{ [1,2,3,4,5,6] | length }}</p>
 ```
@@ -105,7 +130,8 @@ sort：列表排序
   {% endfilter %}
 ```
 
-### 自定义过滤器：
+### 自定义过滤器
+
 过滤器的本质是函数。当模板内置的过滤器不能满足需求，可以自定义过滤器。自定义过滤器有两种实现方式：一种是通过Flask应用对象的add_template_filter方法。还可以通过装饰器来实现自定义过滤器。
 
 自定义的过滤器名称如果和内置的过滤器重名，会覆盖内置的过滤器。
@@ -125,27 +151,39 @@ def filter_double_sort(ls):
     return ls[::-3]
 ```    
 
-- `{% extends '***.html' %}` :  即某模版继承了`***.html`模版
-    
-- `{% block content %} ... {% endblock %}` : 即将两个模版中间的语句合并在一起
 
+
+
+## 其他参数
+
+ 
 - `{% block navbar %} ... {% endblock %}` : `navbar`块是一个可选块，用于自定义模块
 
 
-### 条件语句 
-`{% ... ％}`块内使用控制语句
+#### if 条件语句 
 
-        {% if 判定项 %}        
+    {% if 判定项 %}        
         <title>{{ 判定项 }} - Microblog</title>
-        {% else %}
+    {% else %}
         <title>Welcome to Microblog</title>
-        {% endif %}
-        
-        {% for A in B %}
-            。。。。。。。
-        {% endfor %}
+    {% endif %}
 
-### 模版继承
+#### for 循环语句        
+        
+    {% for A in B %}
+        <div>
+            <p>{{ post.author.username }} says: <b>{{ post.body }}</b>
+            </p>
+        </div>
+    {% endfor %}
+
+
+
+
+
+
+
+## 模版继承
 
 父模版接手布局, `extends`语句用来建立了两个模板之间的继承关系，这样Jinja2就会按照要求展示网页.
 
@@ -160,7 +198,7 @@ def filter_double_sort(ls):
       {% endblock top %}
     
       {% block content %}
-        # 内容处
+        # 将两个模版中间的语句合并在一起
       {% endblock content %}
     
       {% block bottom %}
@@ -168,11 +206,13 @@ def filter_double_sort(ls):
       {% endblock bottom %}
 
 - 子模版
-
-       {% extends 'base.html' %}
-       {% block content %}
-           # 需要填充的内容
-       {% endblock content %}
+```
+   {% extends 'base.html' %}  # 继承模版
+   
+   {% block content %}
+       # 将两个模版中间的语句合并在一起
+   {% endblock content %}
+```
 
 模板继承使用时注意点：
 - 不支持多继承。

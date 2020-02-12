@@ -21,7 +21,8 @@ class EditProfileForm(FlaskForm):  # 个人资料编辑器
         super(EditProfileForm, self).__init__(*args, **kwargs)
         self.original_username = original_username
 
-    def validate_username(self, username): # 校验用户名是否和修改前一致，减少数据库校验
+    # 校验用户名是否和修改前一致，减少数据库校验
+    def validate_username(self, username):
         if username.data != self.original_username:
             user = User.query.filter_by(username=self.username.data).first()
             if user is not None:
@@ -44,7 +45,7 @@ class SearchForm(FlaskForm):  # 搜索表单
         super(SearchForm, self).__init__(*args, **kwargs)
 
 
-class MessageForm(FlaskForm):
+class MessageForm(FlaskForm):  # 私有消息表单类
     message = TextAreaField(_l('Message'), validators=[
         DataRequired(), Length(min=1, max=140)])
     submit = SubmitField(_l('Submit'))

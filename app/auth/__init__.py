@@ -17,9 +17,9 @@ from app.auth import routes
 #     auth/                               <-- blueprint package
 #         __init__.py                     <-- blueprint creation
 #         email.py                        <-- authentication emails
-#         forms.py                        <-- authentication forms
-#         routes.py                       <-- authentication routes
-#     templates/
+#         forms.py       表单类            <-- authentication forms
+#         routes.py      路由类            <-- authentication routes
+#     templates/         模版类
 #         auth/                           <-- blueprint templates
 #             login.html
 #             register.html

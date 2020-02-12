@@ -1,95 +1,93 @@
+<!--用户个人主页-->
 {% extends "base.html" %}
 
-<!--用户个人主页-->
 {% block app_content %}
     <table class="table table-hover">
-        <tr>
-            <td width="256px">  <!--用户头像-->
-                <img src="{{ user.avatar(256) }}">
-            </td>
-            <td>
-                <h1>{{ _('User') }}: {{ user.username }}</h1>
-                <!--展示 about_me 和 last_seen-->
-                {% if user.about_me %}
-                    <p>{{ user.about_me }}</p>
-                {% endif %}
-                {% if user.last_seen %}  <!--使用Moment.js-->
-                    <p>{{ _('Last seen on') }}: {{ moment(user.last_seen).format('LLLL') }}</p>
-                {% endif %}
+        <tr>  <!--用户头像-->
+        <!--使用User类来返回头像URL的好处是，如果有一天我不想继续使用Gravatar头像了，我可以重写avatar()方法来返回其他头像服务网站的URL，所有的模板将自动显示新的头像。-->
+        <td width="256px">
+            <img src="{{ user.avatar(256) }}">
+        </td>
+        <td>
+            <h1>{{ _('User') }}: {{ user.username }}</h1>
 
-<!--时间格式
-moment('2017-09-28T21:45:23Z').format('L')
-"09/28/2017"
-moment('2017-09-28T21:45:23Z').format('LL')
-"September 28, 2017"
-moment('2017-09-28T21:45:23Z').format('LLL')
-"September 28, 2017 2:45 PM"
-moment('2017-09-28T21:45:23Z').format('LLLL')
-"Thursday, September 28, 2017 2:45 PM"
-moment('2017-09-28T21:45:23Z').format('dddd')
-"Thursday"
-moment('2017-09-28T21:45:23Z').fromNow()
-"7 hours ago"
-moment('2017-09-28T21:45:23Z').calendar()
-"Today at 2:45 PM"-->
+            <!--展示主页 about_me 和 last_seen-->
+            {% if user.about_me %}
+                <p>{{ user.about_me }}</p>
+            {% endif %}
 
-                <p>{{ _('%(count)d followers', count=user.followers.count()) }},
-                   {{ _('%(count)d following', count=user.followed.count()) }}</p>
+            <!--使用moment.js渲染时间戳-->
+            {% if user.last_seen %}
+                <p>{{ _('Last seen on') }}:
+                    {{ moment(user.last_seen).format('LLLL') }}</p>
+            {% endif %}
+
+        <p>
+            {{ _('%(count)d followers', count=user.followers.count()) }},
+            {{ _('%(count)d following', count=user.followed.count()) }}
+        </p>
 
 
+{# 用户查看他(她)自己的个人主页 #}
+{% if user == current_user %}
+    <p>  <!--个人资料编辑页面-->
+        <a href="{{ url_for('main.edit_profile') }}">
+        {{ _('Edit your profile') }}</a>
+    </p>
+{% if not current_user.get_task_in_progress('export_posts') %}
+    <p>  <!--用户个人主页的导出链接-->
+        <a href="{{ url_for('main.export_posts') }}">
+        {{ _('Export your posts') }}</a>
+    </p>
+{% endif %}
 
-    {% if user == current_user %}  <!--用户查看他(她)自己的个人主页-->
-        <p><a href="{{ url_for('main.edit_profile') }}">  <!--个人资料编辑页面-->
-            {{ _('Edit your profile') }}
-        </a></p>
-    {% if not current_user.get_task_in_progress('export_posts') %}
-        <p><a href="{{ url_for('main.export_posts') }}">
-            {{ _('Export your posts') }}
-        </a></p>
-    {% endif %}
-
-<!--如果用户查看他(她)自己的个人主页，仍然是“Edit”链接不变。-->
-<!--如果用户查看其他并未关注的用户的个人主页，显示“Follow”链接。-->
-<!--如果用户查看其他已经关注的用户的个人主页，显示“Unfollow”链接。-->
-
-    {% elif not current_user.is_following(user) %}
-        <p><a href="{{ url_for('main.follow', username=user.username) }}">
-            {{ _('Follow') }}   <!--关注对方-->
-        </a></p>
-    {% else %}
-        <p><a href="{{ url_for('main.unfollow', username=user.username) }}">
-            {{ _('Unfollow') }}   <!--取消关注对方-->
-        </a></p>
-    {% endif %}
-    {% if user != current_user %}
-        <p><a href="{{ url_for('main.send_message', recipient=user.username) }}">
-            {{ _('Send private message') }}
-        </a></p>
-    {% endif %}
-            </td>
-        </tr>
-    </table>
+{# 如果用户查看其他并未关注的用户的个人主页，显示“Follow”链接。 #}
+{# 如果用户查看其他已经关注的用户的个人主页，显示“Unfollow”链接。 #}
+{% elif not current_user.is_following(user) %}
+    <p>  <!--关注对方-->
+        <a href="{{ url_for('main.follow', username=user.username) }}">
+        {{ _('Follow') }}
+    </a></p>
+{% else %}
+    <p>  <!--取消关注对方-->
+        <a href="{{ url_for('main.unfollow', username=user.username) }}">
+        {{ _('Unfollow') }}
+    </a></p>
+{% endif %}
+<!--个人主页中添加发送私有消息的链接-->
+{% if user != current_user %}
+    <p>
+        <a href="{{ url_for('main.send_message', recipient=user.username) }}">
+        {{ _('Send private message') }}
+    </a></p>
+{% endif %}
+        </td>
+    </tr>
+</table>
 
 
-    {% for post in posts %}   <!--引用 _post.html 子模版-->
-        {% include '_post.html' %}
-    {% endfor %}
+<!--引用 _post.html 子模版-->
+{% for post in posts %}
+    {% include '_post.html' %}
+{% endfor %}
 
-    <!--分页导航-->
-    <nav aria-label="...">
-        <ul class="pager">
-            <li class="previous{% if not prev_url %} disabled{% endif %}">
-                <a href="{{ prev_url or '#' }}">
-                    <span aria-hidden="true">&larr;</span>
-                    {{ _('Newer posts') }}
-                </a>
-            </li>
-            <li class="next{% if not next_url %} disabled{% endif %}">
-                <a href="{{ next_url or '#' }}">
-                    {{ _('Older posts') }}
-                    <span aria-hidden="true">&rarr;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+
+<!--分页导航-->
+<nav aria-label="...">
+    <ul class="pager">
+        <li class="previous{% if not prev_url %} disabled{% endif %}">
+            <a href="{{ prev_url or '#' }}">
+                <span aria-hidden="true">&larr;</span>
+                {{ _('Newer posts') }}
+            </a>
+        </li>
+        <li class="next{% if not next_url %} disabled{% endif %}">
+            <a href="{{ next_url or '#' }}">
+                {{ _('Older posts') }}
+                <span aria-hidden="true">&rarr;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
 {% endblock %}

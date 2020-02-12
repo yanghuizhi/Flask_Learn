@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block app_content %}
+<head>
+	<meta charset="UTF-8">
+	<title>Time</title>
+</head>
+<body>
+	<span id="time"></span>
+	<script>
+		function show() {
+			//创建内置Date对象
+			var date = new Date();
+			//获取当前年份
+			var year = date.getFullYear();
+			//获取当前的月份,范围是0-11
+			var month = date.getMonth() + 1;
+			//获取该月的第几天
+			var day = date.getDate();
+			//getDay方法获取当前是这个星期的第几天范围是0-6
+			//周日对应0，123456分别是对应的星期几
+			var week = "日一二三四五六".charAt(date.getDay());
+			//获取当前小时分钟和秒
+			var hour = date.getHours();
+			var minute = date.getMinutes();
+			var second = date.getSeconds();
+			//选择id为time的标签
+			var element = document.getElementById("time");
+			element.innerHTML = year+"年"+month+"月"+day+"日"+"星期"+week+"	"+hour+"时"+minute+"分"+second+"秒";
+		}
+		show();
+		//每间隔1000毫秒执行一次程序，保证时间动态显示
+		setInterval("show()",1000);
+	</script>
+</body>
+{% endblock %}

@@ -5,6 +5,13 @@ from app.api import bp
 from app.api.auth import token_auth
 from app.api.errors import bad_request
 
+# HTTP方法	  资源 URL	                注释
+# GET	     /api/users/<id>	        返回一个用户
+# GET	     /api/users	                返回所有用户的集合
+# GET	     /api/users/<id>/followers	返回某个用户的粉丝集合
+# GET	     /api/users/<id>/followed	返回某个用户关注的用户集合
+# POST	     /api/users	                注册一个新用户
+# PUT	     /api/users/<id>	        修改某个用户
 
 @bp.route('/users/<int:id>', methods=['GET'])
 @token_auth.login_required
@@ -13,7 +20,7 @@ def get_user(id):
 
 
 @bp.route('/users', methods=['GET'])
-@token_auth.login_required
+@token_auth.login_required  # 使用token认证保护用户路由
 def get_users():
     page = request.args.get('page', 1, type=int)
     per_page = min(request.args.get('per_page', 10, type=int), 100)

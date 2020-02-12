@@ -13,11 +13,12 @@ from app import create_app, db
 from app.models import User, Post, Task
 from app.email import send_email
 
+# 创建应用及其上下文
 app = create_app()
 app.app_context().push()
 
 
-def _set_task_progress(progress):
+def _set_task_progress(progress):  # 设置任务进度
     job = get_current_job()
     if job:
         job.meta['progress'] = progress
@@ -30,7 +31,7 @@ def _set_task_progress(progress):
         db.session.commit()
 
 
-def export_posts(user_id):
+def export_posts(user_id):  # 带进度的示例后台任务
     try:
         user = User.query.get(user_id)
         _set_task_progress(0)

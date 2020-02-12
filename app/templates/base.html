@@ -1,6 +1,7 @@
+<!--基本模板，所有模版的内容从这里开始继承-->
 {% extends 'bootstrap/base.html' %}
 
-<!-- 网页标题 -->
+<!-- 页面标题 -->
 {% block title %}
     {% if title %}
         {{ title }} - Microblog
@@ -9,7 +10,7 @@
     {% endif %}
 {% endblock %}
 
-<!--网页导航栏-->
+<!--页面导航栏-->
 {% block navbar %}
     <nav class="navbar navbar-default">
         <div class="container">
@@ -20,18 +21,20 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+<!--                <a class="navbar-brand" href="{{ url_for('yhz.yhz1') }}">测试</a>-->
                 <a class="navbar-brand" href="{{ url_for('main.index') }}">Leo</a>
             </div>
-            <!-- 网页标题 -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="{{ url_for('main.index') }}">{{ _('Home') }}</a>
-                    </li>
-                    <li>  <!--发现栏-->
-                        <a href="{{ url_for('main.explore') }}">{{ _('Explore') }}</a>
-                    </li>
-                </ul>
+
+<!-- 网页标题 -->
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+        <li>  <!--主页栏-->
+            <a href="{{ url_for('main.index') }}">{{ _('Home') }}</a>
+        </li>
+        <li>  <!--发现栏-->
+            <a href="{{ url_for('main.explore') }}">{{ _('Explore') }}</a>
+        </li>
+    </ul>
                 {% if g.search_form %}
                 <form class="navbar-form navbar-left" method="get" action="{{ url_for('main.search') }}">
                     <div class="form-group">
@@ -41,169 +44,273 @@
                 </form>
                 {% endif %}
 
-    <ul class="nav navbar-nav navbar-right">
-        {% if current_user.is_anonymous %}  <!--用户未登录时的值是True-->
-        <li>
-            <a href="{{ url_for('auth.login') }}">{{ _('Login') }}</a>  <!--用户登录-->
-        </li>
-        {% else %}
-        <li>
-            <a href="{{ url_for('main.messages') }}">{{ _('Messages') }}
-                {% set new_messages = current_user.new_messages() %}
-                <!--不知道是啥，貌似可以注释掉-->
-                <!--<span id="message_count" class="badge" style="visibility:{% if new_messages %} visible-->
-                    <!--{% else %} hidden-->
-                    <!--{% endif %} ;">-->
-                    <!--{{ new_messages }}-->
-                <!--</span>-->
-            </a>
-        </li>
-        <li>
-            <a href="{{ url_for('main.user', username=current_user.username) }}">
-                {{ _('Profile') }}  <!--个人主页-->
-            </a>
-        </li>
-        <li>
-            <a href="{{ url_for('auth.logout') }}">
-                {{ _('Logout') }}  <!--用户登出-->
-            </a>
-        </li>
-        {% endif %}
-    </ul>
+<ul class="nav navbar-nav navbar-right">
+    {% if current_user.is_anonymous %}  <!--用户未登录时的值是True-->
+    <li>   <!--用户登录-->
+        <a href="{{ url_for('auth.login') }}">{{ _('Login') }}</a>
+    </li>
+    {% else %}
+    <li>   <!--消息链接 and 静态消息通知徽章，使用JavaScript渲染的友好未读消息徽章-->
+        <a href="{{ url_for('main.messages') }}">
+            {{ _('Messages') }}
+            {% set new_messages = current_user.new_messages() %}
+            <span id="message_count" class="badge"
+                  style="visibility: {% if new_messages %} visible
+                                     {% else %} hidden {% endif %} ;">
+                  {{ new_messages }}
+            </span>
+        </a>
+    </li>
+    <li>  <!--个人主页-->
+        <a href="{{ url_for('main.user', username=current_user.username) }}">
+            {{ _('Profile') }}
+        </a>
+    </li>
+    <li>  <!--用户登出-->
+        <a href="{{ url_for('auth.logout') }}">
+            {{ _('Logout') }}
+        </a>
+    </li>
+    {% endif %}
+</ul>
 
             </div>
         </div>
     </nav>
 {% endblock %}
 
-<!--网页内容-->
+
+<!--页面内容-->
 {% block content %}
-    <div class="container">
+    <div class="container">  <!--础模板中的导出进度Alert组件-->
         {% if current_user.is_authenticated %}
-        {% with tasks = current_user.get_tasks_in_progress() %}
-        {% if tasks %}
-            {% for task in tasks %}
-            <div class="alert alert-success" role="alert">
-                {{ task.description }}
-                <span id="{{ task.id }}-progress">{{ task.get_progress() }}</span>%
+            {% with tasks = current_user.get_tasks_in_progress() %}
+                {% if tasks %}
+                    {% for task in tasks %}
+                    <div class="alert alert-success" role="alert">
+                        {{ task.description }}
+                        <span id="{{ task.id }}-progress">
+                            {{ task.get_progress() }}</span>%</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        {% endif %}
+
+
+<!--闪现消息的逻辑：返回用flash()注册过的消息列表-->
+{% with messages = get_flashed_messages() %}
+    {% if messages %}  <!--如果有消息就显示出来-->
+        {% for message in messages %}
+            <div class="alert alert-info" role="alert">
+             {{ message }}
             </div>
-            {% endfor %}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<!--智哥：对闪现增加一个特效-->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script>$(".alert-info").fadeOut(2000,"linear");</script>
 
-        {% endif %}
-        {% endwith %}
 
-        {% endif %}
-        {% with messages = get_flashed_messages() %}  <!--返回用flash()注册过的消息列表-->
-        {% if messages %}
-            {% for message in messages %}
-            <div class="alert alert-info" role="alert">{{ message }}</div>
-            {% endfor %}
-        {% endif %}
-        {% endwith %}
+<!--应用程序内容需要在应用程序内容块中提供-->
+<!--页面模板的原始版本在名为content的块中定义了它们的内容。 正如你在上面看到的，Flask-Bootstrap使用名为content的块，所以我将我的内容块重命名为app_content。 所以我所有的模板都必须重命名为使用app_content作为它们的内容块。-->
+{# application content needs to be provided in the app_content block #}
+{% block app_content %}{% endblock %}
 
-        {# application content needs to be provided in the app_content block #}
-        {% block app_content %}{% endblock %}
-    </div>
+</div>
 {% endblock %}
 
-<!--如果追加moment.js库的话，就需要使用super()语句，才能继承基础模板中已有的内容，否则就是替换-->
-<!--在基础模板中包含moment.js-->
+
+<!--moment.js-->
 {% block scripts %}
     {{ super() }}
     {{ moment.include_moment() }}
-    {{ moment.lang(g.locale) }}
+    {{ moment.lang(g.locale) }}  <!--为moment.js设置本地语言-->
 
 <!--创建一个页面加载完毕后运行的 JavaScript 函数-->
 <!--函数完成时，将为所有页面配置悬停和弹出行为-->
 <!--这个函数来查找页面中的所有用户链接，并使用Bootstrap中的弹出窗口组件配置它们-->
 
+
+<!--客户端翻译函数-->
+<!--前两个参数是用户动态和翻译链接节点的唯一ID，后两个参数是源语言和目标语言代码。-->
+<!--页面加载完毕后运行函数-->
 <script>
-    function translate(sourceElem, destElem, sourceLang, destLang) {
-        $(destElem).html('<img src="{{ url_for('static', filename='loading.gif') }}">');
-        $.post('/translate', {
-            text: $(sourceElem).text(),
-            source_language: sourceLang,
-            dest_language: destLang
-        }).done(function(response) {
-            $(destElem).text(response['text'])
-        }).fail(function() {
-            $(destElem).text("{{ _('Error: Could not contact server.') }}");
-        });
-    }
-    $(function () {
-        var timer = null;
-        var xhr = null;
-        // 悬停事件
-        $('.user_popup').hover(
-            function(event) {
-                // mouse in event handler, 鼠标在事件处理程序中
-                var elem = $(event.currentTarget);
-                timer = setTimeout(function() {
-                    timer = null;
-                    xhr = $.ajax('/user/' + elem.first().text().trim() + '/popup'
-                        ).done(
-                        // 显示弹窗
-                        function(data) {
-                            xhr = null;
-                            elem.popover({
-                                trigger: 'manual',
-                                html: true,
-                                animation: false,
-                                container: elem,
-                                content: data
-                            }).popover('show');
-                            flask_moment_render_all();
-                            }
-                        );
-                }, 1000);
-            },
-            // 销毁弹窗
-            function(event) {
-                // mouse out event handler, 鼠标移出事件处理程序
-                var elem = $(event.currentTarget);
-                if (timer) {
-                    clearTimeout(timer);
-                    timer = null;
-                }
-                else if (xhr) {
-                    xhr.abort();
-                    xhr = null;
-                }
-                else {
-                    elem.popover('destroy');
-                }
-            }
-        );
-    });
-    function set_message_count(n) {
-        $('#message_count').text(n);
-        $('#message_count').css('visibility', n ? 'visible' : 'hidden');
-    }
-    function set_task_progress(task_id, progress) {
-        $('#' + task_id + '-progress').text(progress);
-    }
-    {% if current_user.is_authenticated %}
-    $(function() {
-        var since = 0;
-        setInterval(function() {
-            $.ajax('{{ url_for('main.notifications') }}?since=' + since).done(
-                function(notifications) {
-                    for (var i = 0; i < notifications.length; i++) {
-                        switch (notifications[i].name) {
-                            case 'unread_message_count':
-                                set_message_count(notifications[i].data);
-                                break;
-                            case 'task_progress':
-                                set_task_progress(notifications[i].data.task_id,
-                                    notifications[i].data.progress);
-                                break;
-                        }
-                        since = notifications[i].timestamp;
+        function translate(sourceElem, destElem, sourceLang, destLang) {
+            $(destElem).html('<img src="{{ url_for('static', filename='loading.gif') }}">');
+            $.post('/translate', {
+                text: $(sourceElem).text(),
+                source_language: sourceLang,
+                dest_language: destLang
+            }).done(function(response) {
+                $(destElem).text(response['text'])
+            }).fail(function() {
+                $(destElem).text("{{ _('Error: Could not contact server.') }}");
+            });
+        }
+        // 悬停事件+延迟
+        $(function () {
+            var timer = null;
+            var xhr = null;
+            $('.user_popup').hover(
+                function(event) {
+                    // mouse in event handler
+                    var elem = $(event.currentTarget);
+                    timer = setTimeout(function() {
+                        timer = null;
+                        xhr = $.ajax(
+                            '/user/' + elem.first().text().trim() + '/popup').done(
+                                function(data) {
+                                    xhr = null;
+                                    elem.popover({
+                                        trigger: 'manual',
+                                        html: true,
+                                        animation: false,
+                                        container: elem,
+                                        content: data
+                                    }).popover('show');
+                                    flask_moment_render_all();
+                                }
+                            );
+                    }, 1000);
+                },
+                function(event) {
+                    // mouse out event handler
+                    var elem = $(event.currentTarget);
+                    if (timer) {
+                        clearTimeout(timer);
+                        timer = null;
+                    }
+                    else if (xhr) {
+                        xhr.abort();
+                        xhr = null;
+                    }
+                    else {
+                        elem.popover('destroy');
                     }
                 }
             );
-        }, 10000);
-    });
-    {% endif %}
-</script>
+        });
+        // 导航栏中的动态消息通知徽章，设置徽章元素中的消息数量，并调整可见性，以便在计数为0时隐藏徽章
+        function set_message_count(n) {
+            $('#message_count').text(n);
+            $('#message_count').css('visibility', n ? 'visible' : 'hidden');
+        }
+        // 动态更新任务进度的辅助函数
+        function set_task_progress(task_id, progress) {
+            $('#' + task_id + '-progress').text(progress);
+        }
+        {% if current_user.is_authenticated %}
+        // 消息轮询通知，在模版中实现，以便所有页面自动继承该行为
+        $(function() {
+            var since = 0;
+            setInterval(function() {
+                $.ajax('{{ url_for('main.notifications') }}?since=' + since).done(
+                    function(notifications) {
+                        for (var i = 0; i < notifications.length; i++) {
+                            switch (notifications[i].name) {
+                                case 'unread_message_count':
+                                    set_message_count(notifications[i].data);
+                                    break;
+                                case 'task_progress':
+                                    set_task_progress(notifications[i].data.task_id,
+                                        notifications[i].data.progress);
+                                    break;
+                            }
+                            since = notifications[i].timestamp;
+                        }
+                    }
+                );
+            }, 10000);
+        });
+        {% endif %}
+    </script>
 {% endblock %}
+
+
+<!--app/templates/base.html：悬停事件。-->
+
+<!--    $(function() {-->
+<!--        $('.user_popup').hover(-->
+<!--            function(event) {-->
+<!--                // mouse in event handler-->
+<!--                var elem = event.currentTarget;-->
+<!--            },-->
+<!--            function(event) {-->
+<!--                // mouse out event handler-->
+<!--                var elem = event.currentTarget;-->
+<!--            }-->
+<!--        )-->
+<!--    });-->
+
+<!--app/templates/base.html：悬停延迟。-->
+
+<!--    $(function() {-->
+<!--        var timer = null;-->
+<!--        $('.user_popup').hover(-->
+<!--            function(event) {-->
+<!--                // mouse in event handler-->
+<!--                var elem = event.currentTarget;-->
+<!--                timer = setTimeout(function() {-->
+<!--                    timer = null;-->
+<!--                    // popup logic goes here-->
+<!--                }, 1000);-->
+<!--            },-->
+<!--            function(event) {-->
+<!--                // mouse out event handler-->
+<!--                var elem = event.currentTarget;-->
+<!--                if (timer) {-->
+<!--                    clearTimeout(timer);-->
+<!--                    timer = null;-->
+<!--                }-->
+<!--            }-->
+<!--        )-->
+<!--    });-->
+<!--setTimeout()函数在浏览器环境中才可用。 它需要两个参数，函数和毫秒单位的时间。 setTimeout()的效果是函数在给定的延迟后被调用。 所以我添加了一个函数（现在是空的），将在悬停事件的一秒钟后被调用。 由于JavaScript语言中的闭包机制，此函数可以访问在外部作用域中定义的变量，例如elem。-->
+
+<!--我将timer对象存储在hover()调用之外定义的timer变量中，以使timer对象也可以被“mouse out”处理程序访问。 我需要这么做的原因是为了获得良好的用户体验。 如果用户将鼠标指针移动到其中一个用户链接中，并在移动它之前停留了半秒钟，我不希望该timer继续运行并调用显示弹出窗口的函数。 所以我的鼠标移出事件处理程序检查是否有一个活动的timer对象，如果有，就取消它。-->
+
+
+<!--app/templates/base.html：XHR请求。-->
+
+<!--    $(function() {-->
+<!--        var timer = null;-->
+<!--        var xhr = null;-->
+<!--        $('.user_popup').hover(-->
+<!--            function(event) {-->
+<!--                // mouse in event handler-->
+<!--                var elem = $(event.currentTarget);-->
+<!--                timer = setTimeout(function() {-->
+<!--                    timer = null;-->
+<!--                    xhr = $.ajax(-->
+<!--                        '/user/' + elem.first().text().trim() + '/popup').done(-->
+<!--                            function(data) {-->
+<!--                                xhr = null-->
+<!--                                // create and display popup here-->
+<!--                            }-->
+<!--                        );-->
+<!--                }, 1000);-->
+<!--            },-->
+<!--            function(event) {-->
+<!--                // mouse out event handler-->
+<!--                var elem = $(event.currentTarget);-->
+<!--                if (timer) {-->
+<!--                    clearTimeout(timer);-->
+<!--                    timer = null;-->
+<!--                }-->
+<!--                else if (xhr) {-->
+<!--                    xhr.abort();-->
+<!--                    xhr = null;-->
+<!--                }-->
+<!--                else {-->
+<!--                    // destroy popup here-->
+<!--                }-->
+<!--            }-->
+<!--        )-->
+<!--    });-->
+
+<!--代码中，我在外部范围中定义了一个新变量xhr。 这个变量将保存我通过调用$.ajax()来初始化的异步请求对象。 不幸的是，当直接在JavaScript端构建URL时，我无法使用Flask中的url_for()，所以在这种情况下，我必须显式连接URL的各个部分。-->
+
+<!--$.ajax()调用返回一个promise，这是一个代表异步操作的特殊JavaScript对象。 我可以通过添加.done(function)来附加一个完成回调函数，所以一旦请求完成，我的回调函数就会被调用。 回调函数将接收到的响应作为参数，你可以在上面的代码中看到，我将其命名为data。 这将是我要放入popover的HTML内容。-->
+
+<!--但在我们获得弹窗之前，还有一个细节需要处理，以便给予用户一个良好的体验。 回想一下之前添加的逻辑，如果用户在触发鼠标进入事件之后的一秒内将鼠标指针移出<span>，将触发取消弹窗的逻辑。 同样的逻辑也需要应用于异步请求，所以我添加了第二个子句来放弃我的xhr请求对象（如果存在）。-->
