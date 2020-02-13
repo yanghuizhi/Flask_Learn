@@ -1,0 +1,579 @@
+2020-02-12 17:19:09,555 ERROR: Exception on /index [POST] [in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1179, in _execute_context
+    context = constructor(dialect, self, conn, *args)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 719, in _init_compiled
+    param.append(processors[key](compiled_params[key]))
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/dialects/sqlite/base.py", line 740, in process
+    "SQLite DateTime type only accepts Python "
+TypeError: SQLite DateTime type only accepts Python datetime and date objects as input.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/main/routes.py", line 43, in index
+    db.session.commit()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/scoping.py", line 162, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1027, in commit
+    self.transaction.commit()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 494, in commit
+    self._prepare_impl()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 473, in _prepare_impl
+    self.session.flush()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 2459, in flush
+    self._flush(objects)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 2597, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 68, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 153, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 2557, in _flush
+    flush_context.execute()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 422, in execute
+    rec.execute(self)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 589, in execute
+    uow,
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 245, in save_obj
+    insert,
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1138, in _emit_insert_statements
+    statement, params
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 988, in execute
+    return meth(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 287, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1107, in _execute_clauseelement
+    distilled_params,
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1182, in _execute_context
+    e, util.text_type(statement), parameters, None, None
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1473, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 398, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 152, in reraise
+    raise value.with_traceback(tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1179, in _execute_context
+    context = constructor(dialect, self, conn, *args)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 719, in _init_compiled
+    param.append(processors[key](compiled_params[key]))
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/dialects/sqlite/base.py", line 740, in process
+    "SQLite DateTime type only accepts Python "
+sqlalchemy.exc.StatementError: (builtins.TypeError) SQLite DateTime type only accepts Python datetime and date objects as input.
+[SQL: INSERT INTO post (body, timestamp, user_id, language) VALUES (?, ?, ?, ?)]
+[parameters: [{'body': '我是1', 'user_id': 1, 'language': 'zh'}]]
+2020-02-12 17:20:09,437 INFO: Microblog startup [in /Users/yhz/Desktop/pypy/Flask_Learn/app/__init__.py:105]
+2020-02-12 17:20:15,216 ERROR: Exception on /index [POST] [in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/main/routes.py", line 43, in index
+    db.session.commit()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/scoping.py", line 162, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1027, in commit
+    self.transaction.commit()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 501, in commit
+    self.session.dispatch.after_commit(self.session)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/event/attr.py", line 261, in __call__
+    fn(*args, **kw)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/models.py", line 47, in after_commit
+    add_to_index(obj.__tablename__, obj)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/search.py", line 21, in add_to_index
+    current_app.elasticsearch.index(index=index, id=model.id, body=payload)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/client/utils.py", line 84, in _wrapped
+    return func(*args, params=params, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/client/__init__.py", line 398, in index
+    body=body,
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/transport.py", line 358, in perform_request
+    timeout=timeout,
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/connection/http_urllib3.py", line 261, in perform_request
+    self._raise_error(response.status, raw_data)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/connection/base.py", line 182, in _raise_error
+    status_code, error_message, additional_info
+elasticsearch.exceptions.AuthorizationException: AuthorizationException(403, 'cluster_block_exception', 'blocked by: [FORBIDDEN/12/index read-only / allow delete (api)];')
+2020-02-12 17:21:08,282 INFO: Microblog startup [in /Users/yhz/Desktop/pypy/Flask_Learn/app/__init__.py:105]
+2020-02-12 17:21:10,622 ERROR: Exception on /index [POST] [in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1179, in _execute_context
+    context = constructor(dialect, self, conn, *args)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 719, in _init_compiled
+    param.append(processors[key](compiled_params[key]))
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/dialects/sqlite/base.py", line 740, in process
+    "SQLite DateTime type only accepts Python "
+TypeError: SQLite DateTime type only accepts Python datetime and date objects as input.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/main/routes.py", line 43, in index
+    db.session.commit()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/scoping.py", line 162, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1027, in commit
+    self.transaction.commit()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 494, in commit
+    self._prepare_impl()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 473, in _prepare_impl
+    self.session.flush()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 2459, in flush
+    self._flush(objects)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 2597, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 68, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 153, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 2557, in _flush
+    flush_context.execute()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 422, in execute
+    rec.execute(self)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 589, in execute
+    uow,
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 245, in save_obj
+    insert,
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1138, in _emit_insert_statements
+    statement, params
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 988, in execute
+    return meth(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 287, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1107, in _execute_clauseelement
+    distilled_params,
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1182, in _execute_context
+    e, util.text_type(statement), parameters, None, None
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1473, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 398, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 152, in reraise
+    raise value.with_traceback(tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1179, in _execute_context
+    context = constructor(dialect, self, conn, *args)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 719, in _init_compiled
+    param.append(processors[key](compiled_params[key]))
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/dialects/sqlite/base.py", line 740, in process
+    "SQLite DateTime type only accepts Python "
+sqlalchemy.exc.StatementError: (builtins.TypeError) SQLite DateTime type only accepts Python datetime and date objects as input.
+[SQL: INSERT INTO post (body, timestamp, user_id, language) VALUES (?, ?, ?, ?)]
+[parameters: [{'user_id': 1, 'language': 'zh', 'body': '我是1'}]]
+2020-02-12 17:28:33,530 INFO: Microblog startup [in /Users/yhz/Desktop/pypy/Flask_Learn/app/__init__.py:105]
+2020-02-12 17:28:44,347 ERROR: Exception on /index [POST] [in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/main/routes.py", line 43, in index
+    db.session.commit()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/scoping.py", line 162, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1027, in commit
+    self.transaction.commit()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 501, in commit
+    self.session.dispatch.after_commit(self.session)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/event/attr.py", line 261, in __call__
+    fn(*args, **kw)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/models.py", line 47, in after_commit
+    add_to_index(obj.__tablename__, obj)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/search.py", line 21, in add_to_index
+    current_app.elasticsearch.index(index=index, id=model.id, body=payload)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/client/utils.py", line 84, in _wrapped
+    return func(*args, params=params, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/client/__init__.py", line 398, in index
+    body=body,
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/transport.py", line 358, in perform_request
+    timeout=timeout,
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/connection/http_urllib3.py", line 261, in perform_request
+    self._raise_error(response.status, raw_data)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/connection/base.py", line 182, in _raise_error
+    status_code, error_message, additional_info
+elasticsearch.exceptions.AuthorizationException: AuthorizationException(403, 'cluster_block_exception', 'blocked by: [FORBIDDEN/12/index read-only / allow delete (api)];')
+2020-02-12 18:35:43,547 INFO: Microblog startup [in /Users/yhz/Desktop/pypy/Flask_Learn/app/__init__.py:105]
+2020-02-12 18:35:52,491 ERROR: Exception on /index [POST] [in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/main/routes.py", line 43, in index
+    db.session.commit()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/scoping.py", line 162, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1027, in commit
+    self.transaction.commit()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 501, in commit
+    self.session.dispatch.after_commit(self.session)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/event/attr.py", line 261, in __call__
+    fn(*args, **kw)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/models.py", line 47, in after_commit
+    add_to_index(obj.__tablename__, obj)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/search.py", line 21, in add_to_index
+    current_app.elasticsearch.index(index=index, id=model.id, body=payload)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/client/utils.py", line 84, in _wrapped
+    return func(*args, params=params, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/client/__init__.py", line 398, in index
+    body=body,
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/transport.py", line 358, in perform_request
+    timeout=timeout,
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/connection/http_urllib3.py", line 261, in perform_request
+    self._raise_error(response.status, raw_data)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/connection/base.py", line 182, in _raise_error
+    status_code, error_message, additional_info
+elasticsearch.exceptions.AuthorizationException: AuthorizationException(403, 'cluster_block_exception', 'blocked by: [FORBIDDEN/12/index read-only / allow delete (api)];')
+2020-02-12 18:36:11,567 INFO: Microblog startup [in /Users/yhz/Desktop/pypy/Flask_Learn/app/__init__.py:105]
+2020-02-12 18:36:14,051 ERROR: Exception on /index [POST] [in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/main/routes.py", line 43, in index
+    db.session.commit()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/scoping.py", line 162, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1027, in commit
+    self.transaction.commit()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 501, in commit
+    self.session.dispatch.after_commit(self.session)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/event/attr.py", line 261, in __call__
+    fn(*args, **kw)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/models.py", line 47, in after_commit
+    add_to_index(obj.__tablename__, obj)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/search.py", line 21, in add_to_index
+    current_app.elasticsearch.index(index=index, id=model.id, body=payload)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/client/utils.py", line 84, in _wrapped
+    return func(*args, params=params, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/client/__init__.py", line 398, in index
+    body=body,
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/transport.py", line 358, in perform_request
+    timeout=timeout,
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/connection/http_urllib3.py", line 261, in perform_request
+    self._raise_error(response.status, raw_data)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/connection/base.py", line 182, in _raise_error
+    status_code, error_message, additional_info
+elasticsearch.exceptions.AuthorizationException: AuthorizationException(403, 'cluster_block_exception', 'blocked by: [FORBIDDEN/12/index read-only / allow delete (api)];')
+2020-02-12 18:38:33,216 INFO: Microblog startup [in /Users/yhz/Desktop/pypy/Flask_Learn/app/__init__.py:105]
+2020-02-12 18:38:33,982 ERROR: Exception on /index [POST] [in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/main/routes.py", line 43, in index
+    db.session.commit()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/scoping.py", line 162, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1027, in commit
+    self.transaction.commit()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 501, in commit
+    self.session.dispatch.after_commit(self.session)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/event/attr.py", line 261, in __call__
+    fn(*args, **kw)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/models.py", line 47, in after_commit
+    add_to_index(obj.__tablename__, obj)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/search.py", line 21, in add_to_index
+    current_app.elasticsearch.index(index=index, id=model.id, body=payload)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/client/utils.py", line 84, in _wrapped
+    return func(*args, params=params, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/client/__init__.py", line 398, in index
+    body=body,
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/transport.py", line 358, in perform_request
+    timeout=timeout,
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/connection/http_urllib3.py", line 261, in perform_request
+    self._raise_error(response.status, raw_data)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/connection/base.py", line 182, in _raise_error
+    status_code, error_message, additional_info
+elasticsearch.exceptions.AuthorizationException: AuthorizationException(403, 'cluster_block_exception', 'blocked by: [FORBIDDEN/12/index read-only / allow delete (api)];')
+2020-02-12 18:39:39,016 INFO: Microblog startup [in /Users/yhz/Desktop/pypy/Flask_Learn/app/__init__.py:105]
+2020-02-12 18:39:42,723 ERROR: Exception on /index [POST] [in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/main/routes.py", line 43, in index
+    db.session.commit()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/scoping.py", line 162, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1027, in commit
+    self.transaction.commit()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 501, in commit
+    self.session.dispatch.after_commit(self.session)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/event/attr.py", line 261, in __call__
+    fn(*args, **kw)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/models.py", line 47, in after_commit
+    add_to_index(obj.__tablename__, obj)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/search.py", line 21, in add_to_index
+    current_app.elasticsearch.index(index=index, id=model.id, body=payload)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/client/utils.py", line 84, in _wrapped
+    return func(*args, params=params, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/client/__init__.py", line 398, in index
+    body=body,
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/transport.py", line 358, in perform_request
+    timeout=timeout,
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/connection/http_urllib3.py", line 261, in perform_request
+    self._raise_error(response.status, raw_data)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/connection/base.py", line 182, in _raise_error
+    status_code, error_message, additional_info
+elasticsearch.exceptions.AuthorizationException: AuthorizationException(403, 'cluster_block_exception', 'blocked by: [FORBIDDEN/12/index read-only / allow delete (api)];')
+2020-02-12 18:44:26,830 INFO: Microblog startup [in /Users/yhz/Desktop/pypy/Flask_Learn/app/__init__.py:105]
+2020-02-12 18:44:30,168 ERROR: Exception on /index [POST] [in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/main/routes.py", line 43, in index
+    db.session.commit()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/scoping.py", line 162, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1027, in commit
+    self.transaction.commit()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 501, in commit
+    self.session.dispatch.after_commit(self.session)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/event/attr.py", line 261, in __call__
+    fn(*args, **kw)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/models.py", line 47, in after_commit
+    add_to_index(obj.__tablename__, obj)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/search.py", line 21, in add_to_index
+    current_app.elasticsearch.index(index=index, id=model.id, body=payload)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/client/utils.py", line 84, in _wrapped
+    return func(*args, params=params, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/client/__init__.py", line 398, in index
+    body=body,
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/transport.py", line 358, in perform_request
+    timeout=timeout,
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/connection/http_urllib3.py", line 261, in perform_request
+    self._raise_error(response.status, raw_data)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/connection/base.py", line 182, in _raise_error
+    status_code, error_message, additional_info
+elasticsearch.exceptions.AuthorizationException: AuthorizationException(403, 'cluster_block_exception', 'blocked by: [FORBIDDEN/12/index read-only / allow delete (api)];')
+2020-02-12 18:45:06,374 INFO: Microblog startup [in /Users/yhz/Desktop/pypy/Flask_Learn/app/__init__.py:105]
+2020-02-12 18:45:19,541 INFO: Microblog startup [in /Users/yhz/Desktop/pypy/Flask_Learn/app/__init__.py:105]
+2020-02-12 18:51:21,575 INFO: Microblog startup [in /Users/yhz/Desktop/pypy/Flask_Learn/app/__init__.py:105]
+2020-02-12 18:51:23,968 ERROR: Exception on /index [POST] [in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/main/routes.py", line 43, in index
+    db.session.commit()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/scoping.py", line 162, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1027, in commit
+    self.transaction.commit()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 501, in commit
+    self.session.dispatch.after_commit(self.session)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/event/attr.py", line 261, in __call__
+    fn(*args, **kw)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/models.py", line 47, in after_commit
+    add_to_index(obj.__tablename__, obj)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/search.py", line 21, in add_to_index
+    current_app.elasticsearch.index(index=index, id=model.id, body=payload)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/client/utils.py", line 84, in _wrapped
+    return func(*args, params=params, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/client/__init__.py", line 398, in index
+    body=body,
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/transport.py", line 358, in perform_request
+    timeout=timeout,
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/connection/http_urllib3.py", line 261, in perform_request
+    self._raise_error(response.status, raw_data)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/connection/base.py", line 182, in _raise_error
+    status_code, error_message, additional_info
+elasticsearch.exceptions.AuthorizationException: AuthorizationException(403, 'cluster_block_exception', 'blocked by: [FORBIDDEN/12/index read-only / allow delete (api)];')
+2020-02-12 18:51:45,089 INFO: Microblog startup [in /Users/yhz/Desktop/pypy/Flask_Learn/app/__init__.py:105]
+2020-02-12 18:51:46,734 ERROR: Exception on /index [POST] [in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/main/routes.py", line 43, in index
+    db.session.commit()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/scoping.py", line 162, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1027, in commit
+    self.transaction.commit()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 501, in commit
+    self.session.dispatch.after_commit(self.session)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/event/attr.py", line 261, in __call__
+    fn(*args, **kw)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/models.py", line 47, in after_commit
+    add_to_index(obj.__tablename__, obj)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/search.py", line 21, in add_to_index
+    current_app.elasticsearch.index(index=index, id=model.id, body=payload)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/client/utils.py", line 84, in _wrapped
+    return func(*args, params=params, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/client/__init__.py", line 398, in index
+    body=body,
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/transport.py", line 358, in perform_request
+    timeout=timeout,
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/connection/http_urllib3.py", line 261, in perform_request
+    self._raise_error(response.status, raw_data)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/connection/base.py", line 182, in _raise_error
+    status_code, error_message, additional_info
+elasticsearch.exceptions.AuthorizationException: AuthorizationException(403, 'cluster_block_exception', 'blocked by: [FORBIDDEN/12/index read-only / allow delete (api)];')
+2020-02-12 18:55:20,008 INFO: Microblog startup [in /Users/yhz/Desktop/pypy/Flask_Learn/app/__init__.py:105]
+2020-02-12 18:55:22,747 ERROR: Exception on /index [POST] [in /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/main/routes.py", line 43, in index
+    db.session.commit()  # 添加这里会存在隐患，导致不能2个用户同时发消息
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/scoping.py", line 162, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1027, in commit
+    self.transaction.commit()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 501, in commit
+    self.session.dispatch.after_commit(self.session)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sqlalchemy/event/attr.py", line 261, in __call__
+    fn(*args, **kw)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/models.py", line 47, in after_commit
+    add_to_index(obj.__tablename__, obj)
+  File "/Users/yhz/Desktop/pypy/Flask_Learn/app/search.py", line 21, in add_to_index
+    current_app.elasticsearch.index(index=index, id=model.id, body=payload)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/client/utils.py", line 84, in _wrapped
+    return func(*args, params=params, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/client/__init__.py", line 398, in index
+    body=body,
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/transport.py", line 358, in perform_request
+    timeout=timeout,
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/connection/http_urllib3.py", line 261, in perform_request
+    self._raise_error(response.status, raw_data)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/elasticsearch/connection/base.py", line 182, in _raise_error
+    status_code, error_message, additional_info
+elasticsearch.exceptions.AuthorizationException: AuthorizationException(403, 'cluster_block_exception', 'blocked by: [FORBIDDEN/12/index read-only / allow delete (api)];')
