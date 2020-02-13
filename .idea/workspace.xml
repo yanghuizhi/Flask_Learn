@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a99dc7f-1c7d-42c6-ad6a-1f21d81d8792" name="Default" comment="update">
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fb2edf1c-4c87-445d-a533-3c9749fd4609.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fb2edf1c-4c87-445d-a533-3c9749fd4609/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +244,8 @@
       <workItem from="1581314672311" duration="215000" />
       <workItem from="1581314996825" duration="209000" />
       <workItem from="1581315464748" duration="8223000" />
-      <workItem from="1581326815518" duration="26497000" />
+      <workItem from="1581326815518" duration="26885000" />
+      <workItem from="1581556158654" duration="16000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1579524006043</created>
@@ -325,22 +328,22 @@
       <screen x="0" y="23" width="1390" height="877" />
     </state>
     <state x="458" y="209" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1390.877/-303.-1057.1920.1057@0.23.1390.877" timestamp="1581330017823" />
-    <state width="1291" height="206" key="GridCell.Tab.0.bottom" timestamp="1581330011219">
+    <state width="1291" height="206" key="GridCell.Tab.0.bottom" timestamp="1581555806460">
       <screen x="0" y="23" width="1390" height="877" />
     </state>
-    <state width="1291" height="206" key="GridCell.Tab.0.bottom/0.23.1390.877/-303.-1057.1920.1057@0.23.1390.877" timestamp="1581330011219" />
-    <state width="1291" height="206" key="GridCell.Tab.0.center" timestamp="1581330011218">
+    <state width="1291" height="206" key="GridCell.Tab.0.bottom/0.23.1390.877/-303.-1057.1920.1057@0.23.1390.877" timestamp="1581555806460" />
+    <state width="1291" height="206" key="GridCell.Tab.0.center" timestamp="1581555806459">
       <screen x="0" y="23" width="1390" height="877" />
     </state>
-    <state width="1291" height="206" key="GridCell.Tab.0.center/0.23.1390.877/-303.-1057.1920.1057@0.23.1390.877" timestamp="1581330011218" />
-    <state width="1291" height="206" key="GridCell.Tab.0.left" timestamp="1581330011218">
+    <state width="1291" height="206" key="GridCell.Tab.0.center/0.23.1390.877/-303.-1057.1920.1057@0.23.1390.877" timestamp="1581555806459" />
+    <state width="1291" height="206" key="GridCell.Tab.0.left" timestamp="1581555806455">
       <screen x="0" y="23" width="1390" height="877" />
     </state>
-    <state width="1291" height="206" key="GridCell.Tab.0.left/0.23.1390.877/-303.-1057.1920.1057@0.23.1390.877" timestamp="1581330011218" />
-    <state width="1291" height="206" key="GridCell.Tab.0.right" timestamp="1581330011219">
+    <state width="1291" height="206" key="GridCell.Tab.0.left/0.23.1390.877/-303.-1057.1920.1057@0.23.1390.877" timestamp="1581555806455" />
+    <state width="1291" height="206" key="GridCell.Tab.0.right" timestamp="1581555806459">
       <screen x="0" y="23" width="1390" height="877" />
     </state>
-    <state width="1291" height="206" key="GridCell.Tab.0.right/0.23.1390.877/-303.-1057.1920.1057@0.23.1390.877" timestamp="1581330011219" />
+    <state width="1291" height="206" key="GridCell.Tab.0.right/0.23.1390.877/-303.-1057.1920.1057@0.23.1390.877" timestamp="1581555806459" />
     <state x="222" y="94" key="SettingsEditor" timestamp="1581476950406">
       <screen x="0" y="23" width="1392" height="877" />
     </state>
