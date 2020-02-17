@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 basedirs=os.path.dirname(os.path.dirname(__file__))
-load_dotenv(os.path.join(basedir, '.env'))
+load_dotenv(os.path.join(basedirs, '.env'))
 
 
 class Config(object):
@@ -28,4 +28,4 @@ class Config(object):
     LANGUAGES = ['zh', 'en', 'zh_Hans_CN']  # 语言explore
 
 
-print(Config.SQLALCHEMY_DATABASE_URI)
+print(Config.ELASTICSEARCH_URL)
