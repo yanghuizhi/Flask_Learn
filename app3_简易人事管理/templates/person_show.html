@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<form action="../person_show_search" method="GET">
+    {{form.searchstring.label}}
+    {{form.searchstring}}
+    <input type="submit" value="查询"><br><br>
+</form>
+
+<a href="/creat/">新建人员</a><br><br>
+
+<table>
+    <tr>
+        <th>序号</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>年龄</th>
+        <th>身高</th>
+        <th>职业</th>
+        <th>颜值</th>
+        <th>创建时间</th>
+        <th>操作</th>
+    </tr>
+    {% for ir in AllResult_tuple %}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{ir[1]}}</td>
+            <td>{{ir[2]}}</td>
+            <td>{{ir[3]}}</td>
+            <td>{{ir[4]}}</td>
+            <td>{{ir[5]}}</td>
+            <td>{{ir[6]}}</td>
+            <td>{{ir[7]}}</td>
+            <td>
+                <a href="{{url_for('edit',id=ir[0])}}">修改</a>
+                <a href="{{url_for('delete',id=ir[0])}}">删除</a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
+
+
+<!--所有人员的数据展示页面-->
+<!--注意：这里的action =后面的网址是带有../的，因为地址后面通常会跟有后缀，所以加上../代表其父地址-->

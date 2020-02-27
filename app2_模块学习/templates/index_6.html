@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>登录页面</title>
+    </head>
+    <body>
+        <h1>页面当前使用的HTTP方法是 : {{ thismethod }}</h1>
+        <form method="POST">
+            <div>
+                <input type="text">
+            </div>
+            <div>
+                <input type="password">
+            </div>
+            <div>
+                <input type="submit">
+            </div>
+        </form>
+    </body>
+</html>
+
+<!--注意：HTTP方法:{{ thismethod }}这句，此时定义的form里的请求方式是GET-->

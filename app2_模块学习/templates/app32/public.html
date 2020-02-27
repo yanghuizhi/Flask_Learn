@@ -1,0 +1,15 @@
+{% extends 'app32/base.html' %}
+{% block content %}
+    <body>
+    <h3>这里是公共页面</h3>
+    {% if session.get("admin")%}
+        <a href="{{url_for('AdminUser')}}">进入管理员页面</a>
+    {% else %}
+        <a href="{{url_for('public')}}">点吧，点了还是这个页面</a>
+    {%endif%}
+    </body>
+    </html>
+{% endblock %}
+
+<!--如果session.get("admin")值存在，就展示【进入管理员页面】链接，并让链接跳转至AdminUser.html页面
+否则，就展示【点吧，点了还是这个页面】链接，并让链接还跳转至public.html页面-->

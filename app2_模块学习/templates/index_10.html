@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>模板练习</title>
+</head>
+<body>
+    <div class="row">
+        <table>
+            <tr>
+                <th>序号：</th>
+                <th>姓名：</th>
+            </tr>
+            {% for i in user_list %}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{i}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+ <html >
+ <head>
+ <meta charset="UTF-8">
+ <title>模板练习</title>
+ </head>
+ <body>
+ <h1>下面是消息提示:</h1>
+ <h5> {{get_flashed_messages()[0]}} </h5>
+</body>
+</html>
+
+<!--模板文件中出现了{{get_flashed_messages（）[0]}}这个变量，
+它取的是路由文件中的flash（）函数的内容，即“消息提示出来了”，
+由于flash（）这个函数返回的是一个列表，
+所以，路由文件里的get_flashed_messages（）后要加上[0]，
+因为我们路由文件的flash（）只设置了一个返回值，所以取列表里的第一个值，即[0]-->

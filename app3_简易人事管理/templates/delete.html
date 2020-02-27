@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h3>您要删除的数据是:</h3>
+    <table>
+        <tr>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>年龄</th>
+            <th>身高</th>
+            <th>职业</th>
+            <th>颜值</th>
+            <th>创建时间</th>
+        </tr>
+        <tr>
+            <td>{{OneResult_tuple[1]}}</td>
+            <td>{{OneResult_tuple[2]}}</td>
+            <td>{{OneResult_tuple[3]}}</td>
+            <td>{{OneResult_tuple[4]}}</td>
+            <td>{{OneResult_tuple[5]}}</td>
+            <td>{{OneResult_tuple[6]}}</td>
+            <td>{{OneResult_tuple[7]}}</td>
+        </tr>
+    </table>
+    <br><br>
+    确定删除吗？<br>
+    <a href="{{url_for('person_show',id=OneResult_tuple[0])}}">确定删除</a>
+    <a href="{{url_for('person_show',id=-1)}}">放弃删除</a>
+{% endblock %}
+
+<!--删除页面，该页面与编辑页面相似，都需要把被编辑数据的原始值展现出来，而不同的是，编辑页面是用输入元素展现的，你可以直接在输入元素里进行输入，而删除页面没有输入元素，只是把欲被删除数据的细分值展现在列表里即可。-->

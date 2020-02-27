@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if ErrorMessage %}
+        <h3>{{ErrorMessage}}</h3>
+        <style>
+            h3 {color: red;}
+</style>
+    {% endif %}
+
+    <form method="POST">
+        {{form.username.label}}
+        {{form.username}}<br><br>
+        {{form.password.label}}
+        {{form.password}}<br><br>
+        <input type="submit" value="确定"><br><br>
+    </form>
+</body>
+</html>
+{% endblock %}
+
+<!--登录页面，相关视图函数已为它传递了ErrorMessage和form-->

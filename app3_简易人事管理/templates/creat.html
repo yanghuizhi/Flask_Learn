@@ -1,0 +1,27 @@
+
+{% extends 'base.html' %}
+{% block content %}
+    {% if ErrorMessage %}
+        <h3>{{ErrorMessage}}</h3>
+        <style>
+            h3 {color: red;}
+</style>
+    {% endif %}
+    <form method="POST">
+        {{form.name.label}}
+        {{form.name}}<br><br>
+        {{form.sex.label}}
+        {{form.sex}}<br><br>
+        {{form.age.label}}
+        {{form.age}}<br><br>
+        {{form.height.label}}
+        {{form.height}}<br><br>
+        {{form.job.label}}
+        {{form.job}}<br><br>
+        {{form.facelevel.label}}
+        {{form.facelevel}}<br><br>
+        <input type="submit" value="提交"/><br><br>
+    </form>
+{% endblock %}
+
+<!--创建页面，该页面中接收了的ErrorMessage和形式-->

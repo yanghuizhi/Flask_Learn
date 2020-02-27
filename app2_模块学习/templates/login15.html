@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+      {% if ErrorMessage %}
+        <h1>{{ErrorMessage}}</h1>
+   {% endif %}
+</head>
+<body>
+
+<form method="POST">
+<input type="text" name="username"><br><br>
+<input type="password" name="password"><br><br>
+<input type="submit" value="submit"><br><br>
+</form>
+</body>
+</html>

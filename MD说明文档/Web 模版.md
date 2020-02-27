@@ -1,5 +1,22 @@
 # Welcome to Templates!
 
+1.	模板实际就是一个文件，文件里有一个字符串（通常很长），字符串的内容就是html代码，其中用变量来表示动态部分
+
+2.	使用真实的值来替换字符串中的变量，再返回最终结果的过程叫做渲染，Flask使用jinja2这个模板引擎来渲染模板
+
+3. Jinja2模板使用双大括号，即{{变量名}}来代表变量，如<标签>{{变量名}}<标签>
+
+4. Flask的render_template函数封装了Jinja2模板的引擎，render_template函数的第一个参数是模板名称，后面的参数代表了模板中对应变量的真实值
+
+5.	render_template函数会把变量传递给Jinja2模板来替换Jinja2模板中预先定义好的变量
+
+6.	所有的模板文件必须放到一个名为templates的文件夹里（注意，是文件夹，不是python包），路由文件必须和templates在同一级目录下
+
+7.	templates文件夹里也可以有多级文件夹，若在多级文件夹下，则需要如下方式写：render_template("admin/login.html")
+
+8.	再次强调，在调试代码时，如果只修改了路由文件，无需重启服务，直接在地址栏输入地址即可进入新修改的程序，如果修改了模板文件，则需重启服务，否则报错
+
+
 [变量](#变量) &nbsp; &nbsp; &nbsp;  <br/>
 [反向路由](#反向路由) &nbsp; &nbsp; &nbsp;  <br/>
 [过滤器](#过滤器)
@@ -7,16 +24,28 @@
 2. [列表操作](#列表操作) 
 3. [自定义过滤器](#自定义过滤器)
 
-[其他参数](#其他参数)
+[判断与循环](#判断与循环)
 [模版继承](#模版继承) &nbsp; &nbsp; &nbsp;  <br/>
 
 
 
 ## 变量
-`{{ variable }}` 结构表示变量，是一种特殊的占位符，告诉模板引擎这个位置的值，从渲染模板时使用的数据中获取；Jinja2除了能识别基本类型的变量，还能识别{}；
 
-- {# 注释表达方式 #}
-- {{ ... }} 动态内容，运行时才知道具体内容
+模板语句的标识：
+
+    {% 模板语句 %}
+    如：{% for ir in AllResult_tuple %}
+    注意：与python不同，所有的关键字后面都不带冒号
+
+模板语句的变量：<br/>
+是一种特殊的占位符，告诉模板引擎这个位置的值，从渲染模板时使用的数据中获取；Jinja2除了能识别基本类型的变量，还能识别{ }；
+
+    {{ 变量名 }}
+    如：{{form.password}}
+
+模板语句的注释
+    
+    {# 注释内容 #}
 
 
 
@@ -154,13 +183,12 @@ def filter_double_sort(ls):
 
 
 
-## 其他参数
+## 判断与循环
 
- 
 - `{% block navbar %} ... {% endblock %}` : `navbar`块是一个可选块，用于自定义模块
 
 
-#### if 条件语句 
+#### **if-else语句**
 
     {% if 判定项 %}        
         <title>{{ 判定项 }} - Microblog</title>
@@ -168,17 +196,28 @@ def filter_double_sort(ls):
         <title>Welcome to Microblog</title>
     {% endif %}
 
-#### for 循环语句        
+#### **for 循环语句**        
         
     {% for A in B %}
-        <div>
-            <p>{{ post.author.username }} says: <b>{{ post.body }}</b>
-            </p>
-        </div>
+       。。。
     {% endfor %}
 
+#### 序号
 
+     {% for i in user_list %}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{i}}</td>
+        </tr>
+     {% endfor %}
+ 注意：loop.index不是python的语法，而是jinja2的语法，用于在模板上生成一个显示用的序号
 
+注意：
+1.	这个序号只是显示用的，与数据库里的ID无关
+
+2.	由于不是python的语法，而是用来显示在模板上给用户看的是，所以它从1开始，而不像python从0开始
+
+3.	{{loop.index}}通常和table配合使用，因为只有table才能循环展示数据
 
 
 

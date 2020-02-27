@@ -1,0 +1,28 @@
+
+{% extends 'base.html' %}
+{% block content %}
+    {% if ErrorMessage %}
+        <h3>{{ErrorMessage}}</h3>
+        <style>
+            h3 {color: red;}
+</style>
+    {% endif %}
+    <form method="POST">
+        {{form.name.label}}
+        {{form.name}}<br><br>
+        {{form.sex.label}}
+        {{form.sex}}<br><br>
+        {{form.age.label}}
+        {{form.age}}<br><br>
+        {{form.height.label}}
+        {{form.height}}<br><br>
+        {{form.job.label}}
+        {{form.job}}<br><br>
+        {{form.facelevel.label}}
+        {{form.facelevel}}<br><br>
+        <input type="submit" value="提交"/><br><br>
+    </form>
+{% endblock %}
+
+<!--编辑页面，它同样接收了ErrorMessage和form而与creat.html页面不同的是，它需要把被编辑数据的原始分段值展现出来
+首次发表，在模型类中拖动框要这样写choices = [（“男”，“男”），（“女”，“女”）]]，不要这样写choices = [（“ 1”，“男” ），（（“ 2”，“女”）]，否则页面的原始数据展示就只能展示1或2，而不是男或女-->

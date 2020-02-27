@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>session练习</title>
+</head>
+<body>
+session练习
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+
+{% if session['admin'] %}
+    你好：{{session['admin']}}
+{% elif session['normal_user'] %}
+    你好：{{session['normal_user']}}
+{% else %}
+    未登录
+{% endif %}
+&nbsp &nbsp &nbsp
+
+{% if session!={} %}
+    <a href="{{url_for('login')}}">退出</a>
+{% endif %}
+<br><br><br>
+
+{% block content %}
+
+{% endblock %}
+
+</body>
+</html>
+
+<!--设置问候语，通过session取到用户名，展示在页面上
+如果session的admin键不存在，normal_user键也不存在，则显示未登录
+注意：再次强调，session是全局的，随时随地可以引用，在路由文件里，并没有base()函数，更不可能给这个页面传session值，但在这里就是可以直接引用，因为session是全局的-->

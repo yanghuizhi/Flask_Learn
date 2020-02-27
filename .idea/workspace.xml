@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a99dc7f-1c7d-42c6-ad6a-1f21d81d8792" name="Default" comment="update">
-      <change beforePath="$PROJECT_DIR$/.idea/Flask_Learn.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Flask_Learn_YHZ.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Flask_Learn_YHZ.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Flask_Learn_YHZ.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.db" beforeDir="false" afterPath="$PROJECT_DIR$/app.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MD说明文档/Web 模版.md" beforeDir="false" afterPath="$PROJECT_DIR$/MD说明文档/Web 模版.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/microblog.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/microblog.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,8 +52,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -77,7 +76,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/.gitignore&#10;true" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app4_MVC学习/login" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -97,23 +96,23 @@
     </option>
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/app/templates/YhzTest" />
-      <recent name="$PROJECT_DIR$/app/templates" />
-      <recent name="$PROJECT_DIR$/app" />
-      <recent name="$PROJECT_DIR$/MD说明文档" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app4_MVC学习/login" />
+      <recent name="$PROJECT_DIR$/app2/templates/app32" />
+      <recent name="$PROJECT_DIR$/app2" />
       <recent name="$PROJECT_DIR$/MD说明文档" />
-      <recent name="$PROJECT_DIR$/app/myhzlearn" />
+      <recent name="$PROJECT_DIR$/app3" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app4_MVC学习" />
+      <recent name="$PROJECT_DIR$/app2/templates" />
+      <recent name="$PROJECT_DIR$/app2/templates/app_11" />
+      <recent name="$PROJECT_DIR$/app2" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/app/templates" />
-      <recent name="$PROJECT_DIR$/app/templates/errors" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.config">
-    <configuration name="Flask_Learn" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.app32_练习Session">
+    <configuration name="app30_打印Session" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Flask_Learn_YHZ" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -121,12 +120,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app2" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Flask_Learn.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app2/app30_打印Session.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -135,7 +134,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="__init__" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="app31_配置Session" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Flask_Learn_YHZ" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -143,12 +142,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app2" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app/__init__.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app2/app31_配置Session.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -157,7 +156,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="config" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="app32_练习Session" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Flask_Learn_YHZ" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -165,12 +164,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app2" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app/config.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app2/app32_练习Session.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -179,52 +178,57 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for tests.UserModelCase" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="db" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Flask_Learn_YHZ" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app3_简易人事管理" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;tests.UserModelCase&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app3_简易人事管理/db.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest in tests.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="person" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Flask_Learn_YHZ" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app3_简易人事管理" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app3_简易人事管理/person.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <list>
-      <item itemvalue="Python.__init__" />
-      <item itemvalue="Python.Flask_Learn" />
-      <item itemvalue="Python.config" />
-      <item itemvalue="Python tests.pytest for tests.UserModelCase" />
-      <item itemvalue="Python tests.pytest in tests.py" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.config" />
-        <item itemvalue="Python tests.pytest in tests.py" />
-        <item itemvalue="Python tests.pytest for tests.UserModelCase" />
-        <item itemvalue="Python.Flask_Learn" />
-        <item itemvalue="Python.__init__" />
+        <item itemvalue="Python.app32_练习Session" />
+        <item itemvalue="Python.app31_配置Session" />
+        <item itemvalue="Python.app30_打印Session" />
+        <item itemvalue="Python.person" />
+        <item itemvalue="Python.db" />
       </list>
     </recent_temporary>
   </component>
@@ -251,6 +255,11 @@
       <workItem from="1581556180034" duration="94000" />
       <workItem from="1581576848858" duration="527000" />
       <workItem from="1581931621599" duration="2015000" />
+      <workItem from="1581936525869" duration="69000" />
+      <workItem from="1582700037905" duration="4135000" />
+      <workItem from="1582720163986" duration="14672000" />
+      <workItem from="1582795933793" duration="672000" />
+      <workItem from="1582798318076" duration="4938000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1579524006043</created>
@@ -321,10 +330,21 @@
     <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="320" y="121" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581333178511">
-      <screen x="0" y="23" width="1390" height="877" />
+    <state x="373" y="127" key="#Inspections" timestamp="1582721250851">
+      <screen x="60" y="23" width="1380" height="877" />
+    </state>
+    <state x="373" y="127" key="#Inspections/60.23.1380.877/-303.-1057.1920.1057@60.23.1380.877" timestamp="1582721250851" />
+    <state x="144" y="121" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582785696677">
+      <screen x="60" y="23" width="1380" height="877" />
     </state>
     <state x="320" y="121" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1390.877/-303.-1057.1920.1057@0.23.1390.877" timestamp="1581333178511" />
+    <state x="130" y="121" key="#com.intellij.execution.impl.EditConfigurationsDialog/45.23.1395.877/-303.-1057.1920.1057@45.23.1395.877" timestamp="1582703611682" />
+    <state x="144" y="121" key="#com.intellij.execution.impl.EditConfigurationsDialog/60.23.1380.877/-303.-1057.1920.1057@60.23.1380.877" timestamp="1582785696677" />
+    <state x="464" y="271" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1582803925635">
+      <screen x="52" y="23" width="1388" height="877" />
+    </state>
+    <state x="464" y="271" key="#com.intellij.fileTypes.FileTypeChooser/52.23.1388.877/-303.-1057.1920.1057@52.23.1388.877" timestamp="1582803925635" />
+    <state x="465" y="271" key="#com.intellij.fileTypes.FileTypeChooser/54.23.1386.877/-303.-1057.1920.1057@54.23.1386.877" timestamp="1582795731428" />
     <state x="310" y="215" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1581313008109">
       <screen x="0" y="23" width="1386" height="877" />
     </state>
@@ -333,48 +353,105 @@
       <screen x="0" y="23" width="1390" height="877" />
     </state>
     <state x="458" y="209" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1390.877/-303.-1057.1920.1057@0.23.1390.877" timestamp="1581330017823" />
-    <state width="1291" height="212" key="GridCell.Tab.0.bottom" timestamp="1581935975811">
-      <screen x="0" y="23" width="1390" height="877" />
+    <state width="1291" height="253" key="GridCell.Tab.0.bottom" timestamp="1582800982887">
+      <screen x="52" y="23" width="1388" height="877" />
     </state>
-    <state width="1291" height="212" key="GridCell.Tab.0.bottom/0.23.1390.877/-303.-1057.1920.1057@0.23.1390.877" timestamp="1581935975811" />
-    <state width="1291" height="212" key="GridCell.Tab.0.center" timestamp="1581935975809">
-      <screen x="0" y="23" width="1390" height="877" />
+    <state width="1291" height="211" key="GridCell.Tab.0.bottom/0.23.1390.877/-303.-1057.1920.1057@0.23.1390.877" timestamp="1581936594019" />
+    <state width="1291" height="276" key="GridCell.Tab.0.bottom/45.23.1395.877/-303.-1057.1920.1057@45.23.1395.877" timestamp="1582705559629" />
+    <state width="1291" height="211" key="GridCell.Tab.0.bottom/47.23.1393.877/-303.-1057.1920.1057@47.23.1393.877" timestamp="1582717276086" />
+    <state width="1291" height="276" key="GridCell.Tab.0.bottom/50.23.1390.877/-303.-1057.1920.1057@50.23.1390.877" timestamp="1582717564407" />
+    <state width="1291" height="253" key="GridCell.Tab.0.bottom/52.23.1388.877/-303.-1057.1920.1057@52.23.1388.877" timestamp="1582800982887" />
+    <state width="1291" height="276" key="GridCell.Tab.0.bottom/54.23.1386.877/-303.-1057.1920.1057@54.23.1386.877" timestamp="1582795929147" />
+    <state width="1291" height="211" key="GridCell.Tab.0.bottom/60.23.1380.877/-303.-1057.1920.1057@60.23.1380.877" timestamp="1582793051849" />
+    <state width="1291" height="253" key="GridCell.Tab.0.center" timestamp="1582800982885">
+      <screen x="52" y="23" width="1388" height="877" />
     </state>
-    <state width="1291" height="212" key="GridCell.Tab.0.center/0.23.1390.877/-303.-1057.1920.1057@0.23.1390.877" timestamp="1581935975809" />
-    <state width="1291" height="212" key="GridCell.Tab.0.left" timestamp="1581935975808">
-      <screen x="0" y="23" width="1390" height="877" />
+    <state width="1291" height="211" key="GridCell.Tab.0.center/0.23.1390.877/-303.-1057.1920.1057@0.23.1390.877" timestamp="1581936594017" />
+    <state width="1291" height="276" key="GridCell.Tab.0.center/45.23.1395.877/-303.-1057.1920.1057@45.23.1395.877" timestamp="1582705559627" />
+    <state width="1291" height="211" key="GridCell.Tab.0.center/47.23.1393.877/-303.-1057.1920.1057@47.23.1393.877" timestamp="1582717276084" />
+    <state width="1291" height="276" key="GridCell.Tab.0.center/50.23.1390.877/-303.-1057.1920.1057@50.23.1390.877" timestamp="1582717564400" />
+    <state width="1291" height="253" key="GridCell.Tab.0.center/52.23.1388.877/-303.-1057.1920.1057@52.23.1388.877" timestamp="1582800982885" />
+    <state width="1291" height="276" key="GridCell.Tab.0.center/54.23.1386.877/-303.-1057.1920.1057@54.23.1386.877" timestamp="1582795929146" />
+    <state width="1291" height="211" key="GridCell.Tab.0.center/60.23.1380.877/-303.-1057.1920.1057@60.23.1380.877" timestamp="1582793051848" />
+    <state width="1291" height="253" key="GridCell.Tab.0.left" timestamp="1582800982884">
+      <screen x="52" y="23" width="1388" height="877" />
     </state>
-    <state width="1291" height="212" key="GridCell.Tab.0.left/0.23.1390.877/-303.-1057.1920.1057@0.23.1390.877" timestamp="1581935975808" />
-    <state width="1291" height="212" key="GridCell.Tab.0.right" timestamp="1581935975809">
-      <screen x="0" y="23" width="1390" height="877" />
+    <state width="1291" height="211" key="GridCell.Tab.0.left/0.23.1390.877/-303.-1057.1920.1057@0.23.1390.877" timestamp="1581936594017" />
+    <state width="1291" height="276" key="GridCell.Tab.0.left/45.23.1395.877/-303.-1057.1920.1057@45.23.1395.877" timestamp="1582705559624" />
+    <state width="1291" height="211" key="GridCell.Tab.0.left/47.23.1393.877/-303.-1057.1920.1057@47.23.1393.877" timestamp="1582717276082" />
+    <state width="1291" height="276" key="GridCell.Tab.0.left/50.23.1390.877/-303.-1057.1920.1057@50.23.1390.877" timestamp="1582717564399" />
+    <state width="1291" height="253" key="GridCell.Tab.0.left/52.23.1388.877/-303.-1057.1920.1057@52.23.1388.877" timestamp="1582800982884" />
+    <state width="1291" height="276" key="GridCell.Tab.0.left/54.23.1386.877/-303.-1057.1920.1057@54.23.1386.877" timestamp="1582795929146" />
+    <state width="1291" height="211" key="GridCell.Tab.0.left/60.23.1380.877/-303.-1057.1920.1057@60.23.1380.877" timestamp="1582793051846" />
+    <state width="1291" height="253" key="GridCell.Tab.0.right" timestamp="1582800982885">
+      <screen x="52" y="23" width="1388" height="877" />
     </state>
-    <state width="1291" height="212" key="GridCell.Tab.0.right/0.23.1390.877/-303.-1057.1920.1057@0.23.1390.877" timestamp="1581935975809" />
-    <state x="222" y="94" key="SettingsEditor" timestamp="1581476950406">
-      <screen x="0" y="23" width="1392" height="877" />
+    <state width="1291" height="211" key="GridCell.Tab.0.right/0.23.1390.877/-303.-1057.1920.1057@0.23.1390.877" timestamp="1581936594018" />
+    <state width="1291" height="276" key="GridCell.Tab.0.right/45.23.1395.877/-303.-1057.1920.1057@45.23.1395.877" timestamp="1582705559628" />
+    <state width="1291" height="211" key="GridCell.Tab.0.right/47.23.1393.877/-303.-1057.1920.1057@47.23.1393.877" timestamp="1582717276085" />
+    <state width="1291" height="276" key="GridCell.Tab.0.right/50.23.1390.877/-303.-1057.1920.1057@50.23.1390.877" timestamp="1582717564406" />
+    <state width="1291" height="253" key="GridCell.Tab.0.right/52.23.1388.877/-303.-1057.1920.1057@52.23.1388.877" timestamp="1582800982885" />
+    <state width="1291" height="276" key="GridCell.Tab.0.right/54.23.1386.877/-303.-1057.1920.1057@54.23.1386.877" timestamp="1582795929147" />
+    <state width="1291" height="211" key="GridCell.Tab.0.right/60.23.1380.877/-303.-1057.1920.1057@60.23.1380.877" timestamp="1582793051848" />
+    <state x="280" y="94" key="SettingsEditor" timestamp="1582768099732">
+      <screen x="60" y="23" width="1380" height="877" />
     </state>
     <state x="222" y="94" key="SettingsEditor/0.23.1392.877/-303.-1057.1920.1057@0.23.1392.877" timestamp="1581476950406" />
+    <state x="267" y="94" key="SettingsEditor/45.23.1395.877/-303.-1057.1920.1057@45.23.1395.877" timestamp="1582705356495" />
+    <state x="280" y="94" key="SettingsEditor/60.23.1380.877/-303.-1057.1920.1057@60.23.1380.877" timestamp="1582768099732" />
     <state x="308" y="117" key="com.intellij.database.dbimport.ImportDialog" timestamp="1581327438195">
       <screen x="0" y="23" width="1390" height="877" />
     </state>
     <state x="308" y="117" key="com.intellij.database.dbimport.ImportDialog/0.23.1390.877/-303.-1057.1920.1057@0.23.1390.877" timestamp="1581327438195" />
-    <state x="377" y="286" key="com.intellij.ide.util.TipDialog" timestamp="1581577187694">
-      <screen x="0" y="23" width="1380" height="877" />
+    <state x="434" y="286" key="com.intellij.ide.util.TipDialog" timestamp="1582798318171">
+      <screen x="52" y="23" width="1388" height="877" />
     </state>
     <state x="377" y="286" key="com.intellij.ide.util.TipDialog/0.23.1380.877/-303.-1057.1920.1057@0.23.1380.877" timestamp="1581577187694" />
     <state x="379" y="286" key="com.intellij.ide.util.TipDialog/0.23.1386.877/-303.-1057.1920.1057@0.23.1386.877" timestamp="1581313055959" />
     <state x="380" y="286" key="com.intellij.ide.util.TipDialog/0.23.1388.877/-303.-1057.1920.1057@0.23.1388.877" timestamp="1581314671391" />
     <state x="380" y="286" key="com.intellij.ide.util.TipDialog/0.23.1390.877/-303.-1057.1920.1057@0.23.1390.877" timestamp="1581315051624" />
-    <state x="379" y="212" width="683" height="486" key="find.popup" timestamp="1581504570881">
-      <screen x="0" y="23" width="1390" height="877" />
+    <state x="428" y="286" key="com.intellij.ide.util.TipDialog/45.23.1395.877/-303.-1057.1920.1057@45.23.1395.877" timestamp="1582700040672" />
+    <state x="434" y="286" key="com.intellij.ide.util.TipDialog/52.23.1388.877/-303.-1057.1920.1057@52.23.1388.877" timestamp="1582798318171" />
+    <state x="435" y="286" key="com.intellij.ide.util.TipDialog/54.23.1386.877/-303.-1057.1920.1057@54.23.1386.877" timestamp="1582720165702" />
+    <state x="60" y="155" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1582767560705">
+      <screen x="60" y="23" width="1380" height="877" />
+    </state>
+    <state x="60" y="155" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/60.23.1380.877/-303.-1057.1920.1057@60.23.1380.877" timestamp="1582767560705" />
+    <state x="430" y="212" width="692" height="486" key="find.popup" timestamp="1582801879826">
+      <screen x="52" y="23" width="1388" height="877" />
     </state>
     <state x="379" y="212" width="683" height="486" key="find.popup/0.23.1390.877/-303.-1057.1920.1057@0.23.1390.877" timestamp="1581504570881" />
     <state x="380" y="212" width="684" height="486" key="find.popup/0.23.1392.877/-303.-1057.1920.1057@0.23.1392.877" timestamp="1581476667001" />
     <state x="380" y="212" width="685" height="486" key="find.popup/0.23.1393.877/-303.-1057.1920.1057@0.23.1393.877" timestamp="1581487263894" />
+    <state x="430" y="212" width="692" height="486" key="find.popup/52.23.1388.877/-303.-1057.1920.1057@52.23.1388.877" timestamp="1582801879826" />
+    <state x="436" y="212" width="688" height="486" key="find.popup/60.23.1380.877/-303.-1057.1920.1057@60.23.1380.877" timestamp="1582785997342" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app_9_for.coverage" NAME="app_9-for循环 Coverage Results" MODIFIED="1582770310967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app11_.coverage" NAME="app11_模版继承 Coverage Results" MODIFIED="1582780789400" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$person.coverage" NAME="person Coverage Results" MODIFIED="1582795585298" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app3_简易人事管理" />
+    <SUITE FILE_PATH="coverage/Flask_Learn$config.coverage" NAME="config Coverage Results" MODIFIED="1581330001166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$routes.coverage" NAME="routes Coverage Results" MODIFIED="1582768230998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app32_Session.coverage" NAME="app32_练习Session Coverage Results" MODIFIED="1582800982867" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app.coverage" NAME="app Coverage Results" MODIFIED="1582705551549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1582703586356" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app31_Session.coverage" NAME="app31_配置Session Coverage Results" MODIFIED="1582799964339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app14_.coverage" NAME="app14_捕获异常 Coverage Results" MODIFIED="1582785157698" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app_8_if.coverage" NAME="app_8-if判断 Coverage Results" MODIFIED="1582769929887" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$db.coverage" NAME="db Coverage Results" MODIFIED="1582795574220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app3_简易人事管理" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$config.coverage" NAME="config Coverage Results" MODIFIED="1581936568983" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app12_.coverage" NAME="app12_消息提示 Coverage Results" MODIFIED="1582781447129" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app_3_URL_.coverage" NAME="app_3-URL+变量 Coverage Results" MODIFIED="1582767104309" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app30_Session.coverage" NAME="app30_打印Session Coverage Results" MODIFIED="1582799347721" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app_10_for.coverage" NAME="app_10-for有序循环 Coverage Results" MODIFIED="1582770566970" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app20_wtforms.coverage" NAME="app20_wtforms扩展 Coverage Results" MODIFIED="1582788549994" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app_7_.coverage" NAME="app_7-分离变量 Coverage Results" MODIFIED="1582769423359" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app13_2.coverage" NAME="app13_消息提示2 Coverage Results" MODIFIED="1582781845743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$__init__2_YHZ.coverage" NAME="__init__2_YHZ Coverage Results" MODIFIED="1582703698682" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/Flask_Learn$pytest_for_tests_UserModelCase.coverage" NAME="pytest for tests.UserModelCase Coverage Results" MODIFIED="1581324044294" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Flask_Learn$pytest_in_tests_py.coverage" NAME="pytest in tests.py Coverage Results" MODIFIED="1581327107630" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$config.coverage" NAME="config Coverage Results" MODIFIED="1581935792901" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Flask_Learn$config.coverage" NAME="config Coverage Results" MODIFIED="1581330001166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app_5_.coverage" NAME="app_5-例子 Coverage Results" MODIFIED="1582767858038" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$pytest_in___init__2_YHZ_py.coverage" NAME="pytest in __init__2_YHZ.py Coverage Results" MODIFIED="1582703551946" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app15_.coverage" NAME="app15_简单登录程序 Coverage Results" MODIFIED="1582785707494" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
   </component>
 </project>

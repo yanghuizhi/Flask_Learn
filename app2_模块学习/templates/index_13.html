@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <h1>{{get_flashed_messages()[0]}}</h1>
+</head>
+<body>
+<form action="/login/" method="POST">
+    <input type="text" name="username"><br><br>
+    <input type="password" name="password"><br><br>
+    <input type="submit" value="submit" style="width:100px;"><br><br>
+</form>
+</body>
+</html>

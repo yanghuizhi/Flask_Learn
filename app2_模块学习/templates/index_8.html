@@ -1,0 +1,15 @@
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>模板练习</title>
+</head>
+<body>
+{% if user %}
+<!--    <h1>ID号 = {{user.userid }}</h1>-->
+<!--    <h1>用户名 = {{user.username}}</h1>-->
+    <h1> 恭喜 {{user.userid }} ：登录成功</h1>
+{% else %}
+    <h1>你是个假人，赶紧报警</h1>
+{% endif %}
+</body>
+</html>

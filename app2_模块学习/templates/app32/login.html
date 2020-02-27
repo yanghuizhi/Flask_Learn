@@ -1,0 +1,12 @@
+{% extends 'app32/base.html' %}
+{% block content %}
+    <form method="POST">
+        {{form.username.label}}
+        {{form.username}}<br><br>
+        {{form.password.label}}
+        {{form.password}}<br><br>
+        <input type="submit" value="登录"><br><br>
+    </form>
+    </body>
+    </html>
+{% endblock %}
