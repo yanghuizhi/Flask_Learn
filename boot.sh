@@ -1,7 +1,7 @@
 #!/bin/sh
 # this script is used to boot a Docker container
 # Docker容器启动脚本
-source venv/bin/activate
+source activate
 while true; do
     flask db upgrade
     if [[ "$?" == "0" ]]; then
