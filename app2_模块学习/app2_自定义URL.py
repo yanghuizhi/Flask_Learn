@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route("/user/") # 自定义url
 def index2(): # 创建一个函数，返回一个值
-    return "hello word"
+    return "hello word",888    # 自定义返回状态码
 
 if __name__ == '__main__':
     app.debug = True  # 打开debug调试功能

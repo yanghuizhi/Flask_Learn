@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="7a99dc7f-1c7d-42c6-ad6a-1f21d81d8792" name="Default" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app2_模块学习/app1.py" beforeDir="false" afterPath="$PROJECT_DIR$/app2_模块学习/app1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boot.sh" beforeDir="false" afterPath="$PROJECT_DIR$/boot.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MD说明文档/其他命令.md" beforeDir="false" afterPath="$PROJECT_DIR$/MD说明文档/其他命令.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app2_模块学习/app2_自定义URL.py" beforeDir="false" afterPath="$PROJECT_DIR$/app2_模块学习/app2_自定义URL.py" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,6 +49,90 @@
     </expand>
     <select />
   </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/boot.sh">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.env">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/main/forms.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Flask_Learn.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="275">
+                <caret line="11" selection-start-line="11" selection-end-line="11" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MD说明文档/其他命令.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="175">
+                <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app2_模块学习/app1.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-170" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app2_模块学习/app2_自定义URL.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="275">
+              <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app2_模块学习/app3_URL+变量.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="28" column="46" lean-forward="true" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app2_模块学习/app4_反向路由.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-225" />
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -61,9 +144,52 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/MD说明文档/其他命令.md" />
+        <option value="$PROJECT_DIR$/app2_模块学习/app2_自定义URL.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="2631" />
+    <option name="y" value="52" />
+    <option name="width" value="1565" />
+    <option name="height" value="966" />
+  </component>
   <component name="ProjectId" id="1Xb7KXwMD6h0mZ7teE6IGSZF8Vt" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Flask_Learn_YHZ" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Flask_Learn_YHZ" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Flask_Learn_YHZ" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Flask_Learn_YHZ" type="462c0819:PsiDirectoryNode" />
+              <item name="app2_模块学习" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Flask_Learn_YHZ" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Flask_Learn_YHZ" type="462c0819:PsiDirectoryNode" />
+              <item name="MD说明文档" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -74,6 +200,7 @@
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="sqlite.xerial&#10;sqlite" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/.gitignore&#10;true" />
     <property name="database.console.LAST_STATE" value="false" />
@@ -97,13 +224,6 @@
     </option>
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app2_模块学习" />
-      <recent name="$PROJECT_DIR$/app4_MVC学习" />
-      <recent name="$PROJECT_DIR$/app2/templates" />
-      <recent name="$PROJECT_DIR$/app2/templates/app_11" />
-      <recent name="$PROJECT_DIR$/app2" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app4_MVC学习/login" />
       <recent name="$PROJECT_DIR$/app2/templates/app32" />
@@ -111,6 +231,25 @@
       <recent name="$PROJECT_DIR$/MD说明文档" />
       <recent name="$PROJECT_DIR$/app3" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app2_模块学习" />
+      <recent name="$PROJECT_DIR$/app4_MVC学习" />
+      <recent name="$PROJECT_DIR$/app2/templates" />
+      <recent name="$PROJECT_DIR$/app2/templates/app_11" />
+      <recent name="$PROJECT_DIR$/app2" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="Python.app32_练习Session">
     <configuration name="app30_打印Session" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -271,6 +410,7 @@
       <workItem from="1584249754252" duration="214000" />
       <workItem from="1584250091076" duration="90000" />
       <workItem from="1584859659673" duration="1174000" />
+      <workItem from="1607837858129" duration="2563000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1579524006043</created>
@@ -324,6 +464,9 @@
     <option name="localTasksCounter" value="8" />
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="2563000" />
+  </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
@@ -332,6 +475,33 @@
       <are-packages-shown value="true" />
       <is-autoscroll-to-source value="true" />
     </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="2631" y="52" width="1565" height="966" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24983388" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" weight="0.32932693" />
+      <window_info anchor="bottom" id="Version Control" weight="0.32932693" />
+      <window_info anchor="bottom" id="Python Console" weight="0.328125" />
+      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.32932693" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32932693" />
+      <window_info anchor="right" id="SciView" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -438,31 +608,126 @@
     <state x="436" y="212" width="688" height="486" key="find.popup/60.23.1380.877/-303.-1057.1920.1057@60.23.1380.877" timestamp="1582785997342" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app_9_for.coverage" NAME="app_9-for循环 Coverage Results" MODIFIED="1582770310967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
-    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app11_.coverage" NAME="app11_模版继承 Coverage Results" MODIFIED="1582780789400" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
-    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$person.coverage" NAME="person Coverage Results" MODIFIED="1582795585298" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app3_简易人事管理" />
-    <SUITE FILE_PATH="coverage/Flask_Learn$config.coverage" NAME="config Coverage Results" MODIFIED="1581330001166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$routes.coverage" NAME="routes Coverage Results" MODIFIED="1582768230998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
     <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app32_Session.coverage" NAME="app32_练习Session Coverage Results" MODIFIED="1582800982867" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
     <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app.coverage" NAME="app Coverage Results" MODIFIED="1582705551549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
-    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1582703586356" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
-    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app31_Session.coverage" NAME="app31_配置Session Coverage Results" MODIFIED="1582799964339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
-    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app14_.coverage" NAME="app14_捕获异常 Coverage Results" MODIFIED="1582785157698" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
-    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app_8_if.coverage" NAME="app_8-if判断 Coverage Results" MODIFIED="1582769929887" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
-    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$db.coverage" NAME="db Coverage Results" MODIFIED="1582795574220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app3_简易人事管理" />
-    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$config.coverage" NAME="config Coverage Results" MODIFIED="1581936568983" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app12_.coverage" NAME="app12_消息提示 Coverage Results" MODIFIED="1582781447129" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
-    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app_3_URL_.coverage" NAME="app_3-URL+变量 Coverage Results" MODIFIED="1582767104309" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
-    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app30_Session.coverage" NAME="app30_打印Session Coverage Results" MODIFIED="1582799347721" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
-    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app_10_for.coverage" NAME="app_10-for有序循环 Coverage Results" MODIFIED="1582770566970" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
-    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app20_wtforms.coverage" NAME="app20_wtforms扩展 Coverage Results" MODIFIED="1582788549994" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
-    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app_7_.coverage" NAME="app_7-分离变量 Coverage Results" MODIFIED="1582769423359" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
-    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app13_2.coverage" NAME="app13_消息提示2 Coverage Results" MODIFIED="1582781845743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
-    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$__init__2_YHZ.coverage" NAME="__init__2_YHZ Coverage Results" MODIFIED="1582703698682" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/Flask_Learn$pytest_for_tests_UserModelCase.coverage" NAME="pytest for tests.UserModelCase Coverage Results" MODIFIED="1581324044294" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app_9_for.coverage" NAME="app_9-for循环 Coverage Results" MODIFIED="1582770310967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$routes.coverage" NAME="routes Coverage Results" MODIFIED="1582768230998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app_10_for.coverage" NAME="app_10-for有序循环 Coverage Results" MODIFIED="1582770566970" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$person.coverage" NAME="person Coverage Results" MODIFIED="1582795585298" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app3_简易人事管理" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app15_.coverage" NAME="app15_简单登录程序 Coverage Results" MODIFIED="1582785707494" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app_7_.coverage" NAME="app_7-分离变量 Coverage Results" MODIFIED="1582769423359" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
     <SUITE FILE_PATH="coverage/Flask_Learn$pytest_in_tests_py.coverage" NAME="pytest in tests.py Coverage Results" MODIFIED="1581327107630" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app_3_URL_.coverage" NAME="app_3-URL+变量 Coverage Results" MODIFIED="1582767104309" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app13_2.coverage" NAME="app13_消息提示2 Coverage Results" MODIFIED="1582781845743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app12_.coverage" NAME="app12_消息提示 Coverage Results" MODIFIED="1582781447129" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app20_wtforms.coverage" NAME="app20_wtforms扩展 Coverage Results" MODIFIED="1582788549994" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
     <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app_5_.coverage" NAME="app_5-例子 Coverage Results" MODIFIED="1582767858038" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
     <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$pytest_in___init__2_YHZ_py.coverage" NAME="pytest in __init__2_YHZ.py Coverage Results" MODIFIED="1582703551946" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
-    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app15_.coverage" NAME="app15_简单登录程序 Coverage Results" MODIFIED="1582785707494" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$__init__2_YHZ.coverage" NAME="__init__2_YHZ Coverage Results" MODIFIED="1582703698682" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app14_.coverage" NAME="app14_捕获异常 Coverage Results" MODIFIED="1582785157698" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$config.coverage" NAME="config Coverage Results" MODIFIED="1581936568983" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app31_Session.coverage" NAME="app31_配置Session Coverage Results" MODIFIED="1582799964339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app_8_if.coverage" NAME="app_8-if判断 Coverage Results" MODIFIED="1582769929887" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
+    <SUITE FILE_PATH="coverage/Flask_Learn$config.coverage" NAME="config Coverage Results" MODIFIED="1581330001166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1582703586356" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app30_Session.coverage" NAME="app30_打印Session Coverage Results" MODIFIED="1582799347721" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$app11_.coverage" NAME="app11_模版继承 Coverage Results" MODIFIED="1582780789400" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app2" />
+    <SUITE FILE_PATH="coverage/Flask_Learn_YHZ$db.coverage" NAME="db Coverage Results" MODIFIED="1582795574220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app3_简易人事管理" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevconsole.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/third_party/thriftpy/_shaded_thriftpy/_compat.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="101" selection-start-line="101" selection-end-line="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/microblog.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Language.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.flaskenv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/main/forms.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Flask_Learn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/boot.sh">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="275">
+            <caret line="11" selection-start-line="11" selection-end-line="11" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MD说明文档/其他命令.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="175">
+            <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app2_模块学习/app1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-170" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app2_模块学习/app4_反向路由.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-225" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app2_模块学习/app3_URL+变量.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="28" column="46" lean-forward="true" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app2_模块学习/app2_自定义URL.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
